@@ -8,25 +8,21 @@ exports.handler = async function (event) {
   try {
     const { team_id, voter_name, votes_count, amount } = JSON.parse(event.body);
 
-    const merchantCode = process.env.QIOSPAY_MERCHANT_CODE; // Kode Merchant Anda
-    const apiKey = process.env.QIOSPAY_API_KEY;             // API Key Anda
-    const privateKey = process.env.QIOSPAY_PRIVATE_Key;     // Private Key Anda
+    const apiKey = process.env.QIOSPAY_API_KEY;
+    const privateKey = process.env.QIOSPAY_PRIVATE_Key;
     const baseUrl = "https://my.qiospay.com/v1";
 
     const orderId = "SMESTA7-" + Date.now();
     const redirectUrl = "https://idca-kab-bekasi.netlify.app/";
 
-    // Format string yang ditandatangani sesuai dokumentasi Qiospay:
-    // order_id|amount|redirect_url
+    // Hitung signature keamanan HMAC-SHA256
     const stringToSign = `${orderId}|${amount}|${redirectUrl}`;
-    
-    // Hitung signature menggunakan HMAC-SHA256 dengan Private Key
     const signature = crypto
       .createHmac('sha256', privateKey)
       .update(stringToSign)
       .digest('hex');
 
-    // Kirim permintaan (request) pembuatan transaksi ke API Qiospay
+    // Minta link pembayaran dinamis ke Qiospay
     const qiospayResponse = await fetch(`${baseUrl}/transaction/create`, {
       method: "POST",
       headers: {
