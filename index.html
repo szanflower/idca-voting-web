@@ -225,6 +225,7 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
   .btn{transition:none}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -356,21 +357,21 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
     <div class="wrap">
       <div class="sec-head">
         <h2>Cara mendukung</h2>
-        <p>Dukungan dihitung setelah pembayaran dikonfirmasi panitia.</p>
+        <p>Dukungan masuk secara otomatis setelah pembayaran QRIS terverifikasi sistem.</p>
       </div>
       <ol class="steps">
         <li><h3>Pilih tim</h3><p>Tekan tombol Dukung pada tim yang ingin kamu bantu.</p></li>
-        <li><h3>Tentukan jumlah</h3><p>Pilih paket atau isi jumlah sendiri. Total bayar langsung dihitung.</p></li>
-        <li><h3>Kirim konfirmasi</h3><p>Kirim kode konfirmasi ke panitia lewat WhatsApp untuk mendapatkan info pembayaran.</p></li>
-        <li><h3>Dukungan masuk</h3><p>Setelah pembayaran dipastikan, panitia menambahkan dukungan ke papan peringkat.</p></li>
+        <li><h3>Tentukan jumlah</h3><p>Pilih paket atau isi jumlah sendiri, lalu lanjut ke pembayaran.</p></li>
+        <li><h3>Bayar via QRIS</h3><p>Scan QRIS dan transfer <strong>persis hingga 3 digit terakhir</strong> (kode unik).</p></li>
+        <li><h3>Dukungan masuk</h3><p>Sistem memverifikasi pembayaran otomatis dan memperbarui papan peringkat secara real-time.</p></li>
       </ol>
       <div class="terms">
         <h3>Ketentuan</h3>
         <ul>
-          <li>Dukungan baru dihitung setelah panitia memastikan pembayaran masuk.</li>
-          <li>Tulis kode konfirmasi pada pesan WhatsApp agar pembayaran mudah dicocokkan.</li>
-          <li>Dukungan yang sudah dikonfirmasi tidak dapat dibatalkan atau dipindahkan ke tim lain.</li>
-          <li>Papan peringkat diperbarui manual oleh panitia, jadi angkanya bisa terlambat beberapa jam.</li>
+          <li>Pastikan nominal yang ditransfer <strong>persis hingga 3 digit terakhir</strong> agar sistem dapat mengenali transaksi kamu secara otomatis.</li>
+          <li>Pembayaran dapat dilakukan menggunakan aplikasi m-Banking atau e-Wallet apa saja yang mendukung QRIS.</li>
+          <li>Dukungan yang sudah dibayarkan tidak dapat dibatalkan atau dipindahkan ke tim lain.</li>
+          <li>Jika mengalami kendala pembayaran, hubungi panitia melalui tombol WhatsApp yang tersedia.</li>
         </ul>
       </div>
     </div>
@@ -436,7 +437,7 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
       </div>
       <div class="stack">
         <div><span class="small">Kode konfirmasi</span><br><span class="code" id="orderCode"></span></div>
-        <p>Total dukungan <strong class="mono" id="payTotal"></strong>. Kirim kode di atas ke panitia lewat WhatsApp, lalu transfer sesuai info yang diberikan.</p>
+        <p>Total transfer <strong class="mono" id="payTotal"></strong>. Transfer <strong>PERSIS hingga 3 digit terakhir</strong> agar dukungan masuk otomatis.</p>
       </div>
       <div class="pay" id="payList"></div>
       <div class="warn" id="payNote" hidden>Nomor rekening atau QRIS diberikan panitia lewat WhatsApp. Kirim pesan konfirmasi di bawah untuk mendapatkannya.</div>
@@ -460,6 +461,16 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
 /* ==========================================================
    KONFIGURASI: edit bagian ini saja, lalu unggah ulang file.
    ========================================================== */
+// PENTING: Masukkan URL Project dan Anon Key dari Supabase Anda (Menu Project Settings > API)
+const SUPABASE_URL = "GANTI_DENGAN_SUPABASE_URL_ANDA";
+const SUPABASE_ANON_KEY = "GANTI_DENGAN_SUPABASE_ANON_KEY_ANDA";
+
+// Inisialisasi koneksi Supabase jika URL sudah diisi
+const isSupabaseConfigured = SUPABASE_URL.startsWith("http") && !SUPABASE_URL.includes("GANTI_DENGAN");
+const supabaseClient = (window.supabase && isSupabaseConfigured)
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+
 const CONTACTS = [
   { name: "Ka Tere",  phone: "+62 857-7121-2779" },
   { name: "Ka Aning", phone: "+62 896-9121-9728" },
@@ -473,28 +484,25 @@ const REGISTRATION_URL = "https://smestajilid7.netlify.app";   // tautan dari QR
 const EVENT_DATE = "2026-11-22T00:00:00+07:00";
 
 const CONFIG = {
-  demoTeams: true,                    // ubah ke false setelah nama tim dan angka dukungan diganti
-  pricePerVote: 2000,                 // harga 1 dukungan (rupiah), contoh, ganti sesuai keputusan panitia
+  demoTeams: false,                   // ubah ke false setelah terhubung ke Supabase
+  pricePerVote: 2000,                 // harga 1 dukungan (rupiah)
   packages: [5, 10, 25, 50, 100],     // pilihan jumlah dukungan
   votingOpen: true,                   // false = tombol Dukung dinonaktifkan
   votingEvent: "SMESTA 7",
   votingDeadline: "Batas waktu dukungan diumumkan panitia",
-  lastUpdate: "29 Oktober 2026",      // tanggal terakhir angka dukungan diperbarui
-  // Opsional: papan peringkat otomatis dari Google Sheets (kolom: tim, asal, suara).
-  // File > Bagikan > Publikasikan ke web > CSV, lalu tempel tautannya di sini.
-  sheetCsvUrl: "",
-  // Opsional: isi bila panitia ingin menampilkan rekening/QRIS langsung di halaman.
-  // Contoh: { label: "Transfer bank", detail: "Bank ... 1234567890 a.n. ..." }
+  lastUpdate: "Real-time Otomatis",
+  // Masukkan URL gambar QRIS Qiospay toko Anda di bawah ini agar muncul di pop-up pembayaran:
+  qrisImageUrl: "",
   payment: []
 };
 
-// Peserta dan jumlah dukungan. Perbarui angka "votes" setelah pembayaran dikonfirmasi.
+// Data tim cadangan (fallback) jika Supabase belum diisi atau tabel masih kosong
 let teams = [
-  { name: "Tim Contoh 1", origin: "Sekolah / komunitas asal", votes: 240 },
-  { name: "Tim Contoh 2", origin: "Sekolah / komunitas asal", votes: 185 },
-  { name: "Tim Contoh 3", origin: "Sekolah / komunitas asal", votes: 130 },
-  { name: "Tim Contoh 4", origin: "Sekolah / komunitas asal", votes: 95 },
-  { name: "Tim Contoh 5", origin: "Sekolah / komunitas asal", votes: 40 }
+  { id: 1, name: "Tim Contoh 1", origin: "Sekolah / komunitas asal", total_votes: 240 },
+  { id: 2, name: "Tim Contoh 2", origin: "Sekolah / komunitas asal", total_votes: 185 },
+  { id: 3, name: "Tim Contoh 3", origin: "Sekolah / komunitas asal", total_votes: 130 },
+  { id: 4, name: "Tim Contoh 4", origin: "Sekolah / komunitas asal", total_votes: 95 },
+  { id: 5, name: "Tim Contoh 5", origin: "Sekolah / komunitas asal", total_votes: 40 }
 ];
 
 /* ==================== Kode halaman ==================== */
@@ -535,38 +543,56 @@ function renderStatic(){
   $("countdown").textContent = days > 1 ? days + " hari lagi" : days === 1 ? "Besok" : days === 0 ? "Hari ini" : "Sudah berlangsung";
 }
 
+function getVotes(t){
+  return typeof t.total_votes === "number" ? t.total_votes : (t.votes || 0);
+}
+
 function renderBoard(){
-  const sorted = [...teams].sort((a, b) => b.votes - a.votes);
-  const max = Math.max(1, ...sorted.map(t => t.votes));
-  const total = sorted.reduce((s, t) => s + t.votes, 0);
+  const sorted = [...teams].sort((a, b) => getVotes(b) - getVotes(a));
+  const max = Math.max(1, ...sorted.map(t => getVotes(t)));
+  const total = sorted.reduce((s, t) => s + getVotes(t), 0);
   $("totalVotes").textContent = num(total);
   $("totalTeams").textContent = sorted.length;
   $("board").innerHTML = sorted.map((t, i) => `
-    <li class="row" style="--w:${Math.round(t.votes / max * 100)}%">
+    <li class="row" style="--w:${Math.round(getVotes(t) / max * 100)}%">
       <span class="rank mono">${i + 1}</span>
-      <div class="info"><strong>${esc(t.name)}</strong><span>${esc(t.origin)}</span><span class="votes">${num(t.votes)} dukungan</span></div>
-      <div class="act"><button class="btn btn-red" type="button" data-team="${esc(t.name)}" ${CONFIG.votingOpen ? "" : "disabled"}>${CONFIG.votingOpen ? "Dukung" : "Ditutup"}</button></div>
+      <div class="info"><strong>${esc(t.name)}</strong><span>${esc(t.origin || "")}</span><span class="votes">${num(getVotes(t))} dukungan</span></div>
+      <div class="act"><button class="btn btn-red" type="button" data-team-id="${esc(t.id)}" data-team="${esc(t.name)}" ${CONFIG.votingOpen ? "" : "disabled"}>${CONFIG.votingOpen ? "Dukung" : "Ditutup"}</button></div>
     </li>`).join("");
-  $("boardNote").textContent = "Diperbarui panitia: " + CONFIG.lastUpdate + ". Angka dihitung dari pembayaran yang sudah dikonfirmasi.";
+  $("boardNote").textContent = "Status Papan Peringkat: " + CONFIG.lastUpdate + ". Angka dukungan bertambah otomatis setelah pembayaran QRIS berhasil.";
 }
 
-async function loadSheet(){
-  if(!CONFIG.sheetCsvUrl) return;
+async function fetchTeamsFromSupabase(){
+  if(!supabaseClient) return;
   try{
-    const r = await fetch(CONFIG.sheetCsvUrl, { cache: "no-store" });
-    if(!r.ok) throw new Error("gagal");
-    const clean = s => (s || "").trim().replace(/^"|"$/g, "");
-    const rows = (await r.text()).trim().split(/\r?\n/).slice(1).map(l => l.split(","));
-    const parsed = rows.map(c => ({ name: clean(c[0]), origin: clean(c[1]), votes: parseInt(clean(c[2]), 10) || 0 })).filter(t => t.name);
-    if(parsed.length){ teams = parsed; renderBoard(); }
+    const { data, error } = await supabaseClient
+      .from("teams")
+      .select("*")
+      .order("total_votes", { ascending: false });
+    if(error) throw error;
+    if(data && data.length > 0){
+      teams = data;
+      $("sampleNote").hidden = true;
+      renderBoard();
+    }
   }catch(e){
-    /* tetap memakai data di file ini */
+    console.error("Gagal memuat data tim dari Supabase:", e.message);
   }
+}
+
+function subscribeRealtimeVotes(){
+  if(!supabaseClient) return;
+  supabaseClient
+    .channel("public:teams")
+    .on("postgres_changes", { event: "*", schema: "public", table: "teams" }, () => {
+      fetchTeamsFromSupabase();
+    })
+    .subscribe();
 }
 
 /* ---- dialog dukungan ---- */
 const dlg = $("dlg");
-let activeTeam = "", qty = 0;
+let activeTeam = "", activeTeamId = null, qty = 0, activeTrxChannel = null;
 
 function setQty(n){
   qty = Math.max(0, Math.min(10000, Math.floor(n) || 0));
@@ -582,9 +608,10 @@ function openModal(d){
   if(typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
 }
 
-function openDialog(team){
-  activeTeam = team;
-  $("dlgSub").textContent = team;
+function openDialog(teamId, teamName){
+  activeTeamId = teamId;
+  activeTeam = teamName;
+  $("dlgSub").textContent = teamName;
   $("step1").hidden = false;
   $("step2").hidden = true;
   $("form").reset();
@@ -607,50 +634,120 @@ async function copyText(text, btn){
   setTimeout(() => { btn.textContent = old; }, 1600);
 }
 
-function submitForm(ev){
+async function submitForm(ev){
   ev.preventDefault();
   const nama = $("nama").value.trim();
   const err = $("formError");
+  const submitBtn = $("form").querySelector("button[type=submit]");
+
   if(!nama){ err.textContent = "Isi nama kamu dulu."; err.hidden = false; $("nama").focus(); return; }
   if(qty < 1){ err.textContent = "Pilih atau isi jumlah dukungan minimal 1."; err.hidden = false; return; }
   err.hidden = true;
 
-  const code = newCode();
-  const total = qty * CONFIG.pricePerVote;
-  const text = [
-    "Halo Panitia SMESTA 7, saya ingin konfirmasi dukungan tim.",
-    "",
-    "Kode: " + code,
-    "Tim: " + activeTeam,
-    "Jumlah dukungan: " + qty,
-    "Total bayar: " + rupiah(total),
-    "Nama: " + nama,
-    "",
-    "Mohon info pembayarannya. Bukti transfer akan saya kirim setelah membayar."
-  ].join("\n");
+  // Hitung nominal dasar + 3 digit kode unik acak (101 - 999)
+  const baseTotal = qty * CONFIG.pricePerVote;
+  const uniqueCode = Math.floor(101 + Math.random() * 899);
+  const finalAmount = baseTotal + uniqueCode;
+  let code = newCode();
 
-  $("orderCode").textContent = code;
-  $("doneSub").textContent = activeTeam + " · " + num(qty) + " dukungan";
-  $("payTotal").textContent = rupiah(total);
-  $("payList").innerHTML = CONFIG.payment.map((p, i) =>
-    `<div><span><b>${esc(p.label)}</b>${esc(p.detail)}</span><button type="button" class="btn btn-out btn-sm" data-copy="${i}">Salin</button></div>`).join("");
-  $("payNote").hidden = CONFIG.payment.length > 0;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Membuat pesanan...";
 
-  $("waList").innerHTML = CONTACTS.map((c, i) =>
-    `<a class="btn ${i === 0 ? "btn-red" : "btn-out"}" href="${esc(waUrl(c.phone, text))}" target="_blank" rel="noopener">Kirim ke ${esc(c.name)} lewat WhatsApp</a>`).join("");
+  try {
+    if(supabaseClient && activeTeamId){
+      const { data, error } = await supabaseClient
+        .from("transactions")
+        .insert([{
+          team_id: activeTeamId,
+          voter_name: nama,
+          votes_count: qty,
+          amount: finalAmount,
+          status: "PENDING"
+        }])
+        .select();
 
-  $("step1").hidden = true;
-  $("step2").hidden = false;
-  dlg.scrollTop = 0;
+      if(error) throw error;
+      if(data && data.length > 0){
+        const trx = data[0];
+        code = "TRX-" + String(trx.id).slice(0, 8).toUpperCase();
+
+        // Pantau status transaksi secara real-time
+        if(activeTrxChannel) supabaseClient.removeChannel(activeTrxChannel);
+        activeTrxChannel = supabaseClient
+          .channel("trx-" + trx.id)
+          .on("postgres_changes", { event: "UPDATE", schema: "public", table: "transactions", filter: `id=eq.${trx.id}` }, payload => {
+            if(payload.new && payload.new.status === "PAID"){
+              $("payList").innerHTML = `<div style="border-color:var(--good);background:color-mix(in srgb,var(--good) 15%,transparent);padding:1rem;text-align:center;width:100%;">
+                <strong style="color:var(--good);font-size:1.2rem;display:block;">✅ PEMBAYARAN BERHASIL!</strong>
+                <span>Terima kasih ${esc(nama)}, ${num(qty)} dukungan untuk <b>${esc(activeTeam)}</b> telah masuk ke papan peringkat.</span>
+              </div>`;
+              fetchTeamsFromSupabase();
+            }
+          })
+          .subscribe();
+      }
+    }
+
+    const text = [
+      "Halo Panitia SMESTA 7, saya ingin konfirmasi dukungan tim.",
+      "",
+      "Kode: " + code,
+      "Tim: " + activeTeam,
+      "Jumlah dukungan: " + qty,
+      "Total transfer (dengan kode unik): " + rupiah(finalAmount),
+      "Nama: " + nama,
+      "",
+      "Berikut saya lampirkan bukti transfer QRIS."
+    ].join("\n");
+
+    $("orderCode").textContent = code;
+    $("doneSub").textContent = activeTeam + " · " + num(qty) + " dukungan";
+    $("payTotal").textContent = rupiah(finalAmount);
+
+    $("payList").innerHTML = `
+      <div>
+        <span>
+          <b>Nominal Transfer QRIS (Wajib Persis)</b>
+          <strong class="mono" style="font-size:1.35rem;color:var(--accent)">${rupiah(finalAmount)}</strong>
+          <br><small style="color:var(--muted)">*Sudah termasuk 3 digit kode unik (${uniqueCode}) untuk verifikasi otomatis</small>
+        </span>
+        <button type="button" class="btn btn-out btn-sm" data-copy-raw="${finalAmount}">Salin Nominal</button>
+      </div>
+    ` + CONFIG.payment.map((p, i) =>
+      `<div><span><b>${esc(p.label)}</b>${esc(p.detail)}</span><button type="button" class="btn btn-out btn-sm" data-copy="${i}">Salin</button></div>`).join("");
+
+    if(CONFIG.qrisImageUrl){
+      $("payNote").innerHTML = `<div style="text-align:center"><img src="${esc(CONFIG.qrisImageUrl)}" alt="QRIS Pembayaran" style="max-width:220px;width:100%;border-radius:6px;margin:0 auto .5rem;display:block;"><span>Scan QRIS di atas dan masukkan nominal <b>${rupiah(finalAmount)}</b></span></div>`;
+      $("payNote").hidden = false;
+    } else {
+      $("payNote").innerHTML = `Pastikan Anda mentransfer tepat sebesar <b>${rupiah(finalAmount)}</b> melalui QRIS resmi panitia agar poin dukungan langsung bertambah otomatis.`;
+      $("payNote").hidden = false;
+    }
+
+    $("waList").innerHTML = CONTACTS.map((c, i) =>
+      `<a class="btn ${i === 0 ? "btn-red" : "btn-out"}" href="${esc(waUrl(c.phone, text))}" target="_blank" rel="noopener">Bantuan / Konfirmasi WA ke ${esc(c.name)}</a>`).join("");
+
+    $("step1").hidden = true;
+    $("step2").hidden = false;
+    dlg.scrollTop = 0;
+  } catch (err) {
+    console.error(err);
+    err.textContent = "Gagal membuat transaksi: " + (err.message || "Periksa koneksi internet Anda.");
+    err.hidden = false;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Lanjut ke pembayaran";
+  }
 }
 
 /* ---- pasang event ---- */
 document.addEventListener("click", e => {
   const t = e.target.closest("button");
   if(!t) return;
-  if(t.dataset.team !== undefined) openDialog(t.dataset.team);
+  if(t.dataset.team !== undefined) openDialog(t.dataset.teamId, t.dataset.team);
   else if(t.dataset.q !== undefined){ $("jumlah").value = ""; setQty(Number(t.dataset.q)); }
   else if(t.dataset.copy !== undefined) copyText(CONFIG.payment[Number(t.dataset.copy)].detail, t);
+  else if(t.dataset.copyRaw !== undefined) copyText(t.dataset.copyRaw, t);
   else if(t.hasAttribute("data-close")) t.closest("dialog").close();
   else if(t.id === "mapBtn") openModal($("mapDlg"));
 });
@@ -669,7 +766,8 @@ const IMG = {
 buildChips();
 renderStatic();
 renderBoard();
-loadSheet();
+fetchTeamsFromSupabase();
+subscribeRealtimeVotes();
 </script>
 </body>
 </html>
