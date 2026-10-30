@@ -1,35 +1,4 @@
 // api/create-payment.js
-
-// Fungsi kalkulasi CRC16-CCITT standar EMVCo / QRIS Bank Indonesia
-function getCRC16(str) {
-  let crc = 0xFFFF;
-  for (let c = 0; c < str.length; c++) {
-    crc ^= str.charCodeAt(c) << 8;
-    for (let i = 0; i < 8; i++) {
-      if (crc & 0x8000) {
-        crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
-      } else {
-        crc = (crc << 1) & 0xFFFF;
-      }
-    }
-  }
-  let hex = (crc & 0xFFFF).toString(16).toUpperCase();
-  return hex.padStart(4, "0");
-}
-
-// Konversi QRIS Statis DANA Bisnis SANNN STORE menjadi QRIS Dinamis (Nominal Terkunci)
-function generateDynamicQRIS(amount) {
-  const baseStaticQR = "00020101021126610014ID.DANA.WWW0118936009153250533131021000024921660303UMI51440014ID.DANA.WWW02150000000000000000303UMI520458125303360";
-  const postPart = "5802ID5911SANNN STORE6006BEKASI61051753062070703A016304";
-  
-  const amountStr = String(amount);
-  const tag54 = "54" + String(amountStr.length).padStart(2, "0") + amountStr;
-  
-  let dynamicRaw = baseStaticQR.replace("010211", "010212") + tag54 + postPart;
-  const crc = getCRC16(dynamicRaw);
-  return dynamicRaw + crc;
-}
-
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -60,7 +29,7 @@ module.exports = async (req, res) => {
     const siteUrl = "https://smesta-7.vercel.app";
     const callbackUrl = `${siteUrl}/api/qiospay-webhook`;
 
-    // Buat invoice di Qiospay untuk mendapatkan kode unik resmi & tracking mutasi
+    // Minta invoice QRIS Dinamis langsung dari gateway Qiospay
     const qiospayRes = await fetch("https://my.qiospay.com/v1/invoices", {
       method: "POST",
       headers: {
@@ -76,13 +45,22 @@ module.exports = async (req, res) => {
         callback_url: callbackUrl,
         redirect_url: siteUrl,
         expired_menit: 15,
-        metadata: { team_id: parseInt(team_id, 10), voter_name, votes_count: parseInt(votes_count, 10), order_id: orderId }
+        metadata: { 
+          team_id: parseInt(team_id, 10), 
+          voter_name, 
+          votes_count: parseInt(votes_count, 10), 
+          order_id: orderId 
+        }
       })
     });
 
     const resText = await qiospayRes.text();
     let result;
-    try { result = JSON.parse(resText); } catch (_) { result = { message: resText }; }
+    try { 
+      result = JSON.parse(resText); 
+    } catch (_) { 
+      result = { message: resText }; 
+    }
 
     if (!qiospayRes.ok || result.status === "error") {
       const errMsg = result.error ? (result.error.message || JSON.stringify(result.error)) : (result.message || resText);
@@ -91,9 +69,8 @@ module.exports = async (req, res) => {
 
     const resData = result.data || result;
     const finalAmount = resData.total_amount || resData.amount || amount;
-
-    // Generate string QRIS Dinamis berstandar EMVCo resmi dengan nominal terkunci
-    const dynamicQrisContent = generateDynamicQRIS(finalAmount);
+    const qrImageUrl = resData.qr_image_url || null;
+    const qrisContent = resData.qris_content || resData.qris_string || null;
 
     if (supabaseKey) {
       await fetch(`${supabaseUrl}/rest/v1/transactions`, {
@@ -120,7 +97,8 @@ module.exports = async (req, res) => {
       status: "success",
       order_id: orderId,
       amount: finalAmount,
-      qris_content: dynamicQrisContent,
+      qr_image_url: qrImageUrl,
+      qris_content: qrisContent,
       expires_at: new Date(Date.now() + 15 * 60 * 1000).toISOString()
     });
 
