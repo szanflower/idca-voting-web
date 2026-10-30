@@ -22,7 +22,12 @@ module.exports = async (req, res) => {
     }
 
     const apiKey = (process.env.QIOSPAY_API_KEY || "").trim();
-    const supabaseUrl = (process.env.SUPABASE_URL || "https://zdgmskqimgxypihmrywf.supabase.co").trim();
+    let rawSupabaseUrl = (process.env.SUPABASE_URL || "https://zdgmskqimgxypihmrywf.supabase.co").trim();
+    
+    // Bersihkan URL jika tersimpan dalam format markdown [url](url)
+    const urlMatch = rawSupabaseUrl.match(/https?:\/\/[^\s\)\'\"\]]+/);
+    const supabaseUrl = urlMatch ? urlMatch[0].replace(/\/+$/, "") : "https://zdgmskqimgxypihmrywf.supabase.co";
+
     const supabaseKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
 
     if (!apiKey) {
