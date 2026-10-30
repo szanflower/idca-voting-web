@@ -76,6 +76,7 @@ module.exports = async (req, res) => {
       method: 'POST',
       headers: {
         'x-api-key': cleanApiKey,
+        'Authorization': `Bearer ${cleanApiKey}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -94,7 +95,15 @@ module.exports = async (req, res) => {
       console.error('Qiospay error detail:', qiospayRes.status, result);
       let detailMsg = '';
       if (typeof result === 'object' && result !== null) {
-        detailMsg = result.message || result.error || result.msg || JSON.stringify(result);
+        if (result.message && typeof result.message === 'string') {
+          detailMsg = result.message;
+        } else if (result.error && typeof result.error === 'string') {
+          detailMsg = result.error;
+        } else if (result.msg && typeof result.msg === 'string') {
+          detailMsg = result.msg;
+        } else {
+          detailMsg = JSON.stringify(result);
+        }
       } else {
         detailMsg = String(result);
       }
