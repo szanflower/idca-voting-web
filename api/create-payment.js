@@ -1,115 +1,74 @@
+// api/create-payment.js
 module.exports = async (req, res) => {
-  // Set header CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  // Atur header CORS
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method Not Allowed" });
   }
 
   try {
-    let body = req.body;
-    if (typeof body === 'string') {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        body = {};
-      }
-    }
-    body = body || {};
-
+    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
     const { team_id, voter_name, votes_count, amount } = body;
 
     if (!team_id || !voter_name || !votes_count || !amount) {
-      return res.status(400).json({ error: 'Data formulir belum lengkap.' });
+      return res.status(400).json({ error: "Data transaksi tidak lengkap." });
     }
 
-    const apiKey = process.env.QIOSPAY_API_KEY;
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const apiKey = (process.env.QIOSPAY_API_KEY || "").trim();
+    const supabaseUrl = (process.env.SUPABASE_URL || "https://zdgmskqimgxypihmrywf.supabase.co").trim();
+    const supabaseKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
 
     if (!apiKey) {
-      return res.status(500).json({ error: 'QIOSPAY_API_KEY belum terpasang di Environment Variables Vercel.' });
-    }
-    if (!supabaseUrl || !supabaseKey) {
-      return res.status(500).json({ error: 'Kredensial Supabase belum terpasang di Environment Variables Vercel.' });
+      return res.status(500).json({ error: "Konfigurasi server belum lengkap: QIOSPAY_API_KEY kosong di Vercel." });
     }
 
-    const orderId = 'SMESTA7-' + Date.now();
-    const proto = req.headers['x-forwarded-proto'] || 'https';
-    const host = req.headers['x-forwarded-host'] || req.headers.host;
-    const siteUrl = `${proto}://${host}`;
+    const orderId = "SMESTA7-" + Date.now();
+    const siteUrl = "https://smesta-7.vercel.app";
     const callbackUrl = `${siteUrl}/api/qiospay-webhook`;
 
-    // Buat payload sesuai dokumentasi resmi Qiospay v1 Invoices
-    const payload = {
-      order_id: orderId,
-      amount: parseInt(amount, 10),
-      keterangan: `Dukungan SMESTA 7 - Tim #${team_id} (${voter_name})`,
-      "customer.name": voter_name,
-      customer: {
-        name: voter_name
-      },
-      callback_url: callbackUrl,
-      redirect_url: siteUrl,
-      expired_menit: 15,
-      metadata: {
-        team_id: parseInt(team_id, 10),
-        voter_name: voter_name,
-        votes_count: parseInt(votes_count, 10),
-        order_id: orderId
-      }
-    };
-
-    // Panggil API Qiospay v1 Invoices murni dengan header x-api-key sesuai dokumentasi
-    const cleanApiKey = apiKey.trim();
-    const qiospayRes = await fetch('https://my.qiospay.com/v1/invoices', {
-      method: 'POST',
+    // Kirim request pembuatan invoice QRIS dinamis ke Qiospay
+    const qiospayRes = await fetch("https://my.qiospay.com/v1/invoices", {
+      method: "POST",
       headers: {
-        'x-api-key': cleanApiKey,
-        'Authorization': `Bearer ${cleanApiKey}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        "x-api-key": apiKey,
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        order_id: orderId,
+        amount: parseInt(amount, 10),
+        keterangan: `Dukungan SMESTA 7 - Tim #${team_id} (${voter_name})`,
+        customer_name: voter_name,
+        callback_url: callbackUrl,
+        redirect_url: siteUrl,
+        expired_menit: 15,
+        metadata: {
+          team_id: parseInt(team_id, 10),
+          voter_name: voter_name,
+          votes_count: parseInt(votes_count, 10),
+          order_id: orderId
+        }
+      })
     });
 
-    let result;
     const resText = await qiospayRes.text();
+    let result;
     try {
       result = JSON.parse(resText);
-    } catch (e) {
+    } catch (_) {
       result = { message: resText };
     }
 
-    if (!qiospayRes.ok || result.status === 'error' || result.status === false) {
-      console.error('Qiospay error detail:', qiospayRes.status, result);
-      let detailMsg = '';
-      if (typeof result === 'object' && result !== null) {
-        if (result.message && typeof result.message === 'string') {
-          detailMsg = result.message;
-        } else if (result.error && typeof result.error === 'string') {
-          detailMsg = result.error;
-        } else if (result.msg && typeof result.msg === 'string') {
-          detailMsg = result.msg;
-        } else {
-          detailMsg = JSON.stringify(result);
-        }
-      } else {
-        detailMsg = String(result);
-      }
-      return res.status(400).json({
-        error: `Qiospay (HTTP ${qiospayRes.status}): ${detailMsg}`
-      });
+    if (!qiospayRes.ok || result.status === "error") {
+      const errMsg = result.error ? (result.error.message || JSON.stringify(result.error)) : (result.message || resText);
+      return res.status(400).json({ error: `Qiospay (HTTP ${qiospayRes.status}): ${errMsg}` });
     }
 
     const resData = result.data || result;
@@ -118,15 +77,15 @@ module.exports = async (req, res) => {
     const qrisContent = resData.qris_content || null;
     const payUrl = resData.pay_url || null;
 
-    // Catat ke Supabase (non-blocking jika tabel belum ada)
-    try {
+    // Catat ke Supabase jika service key terisi
+    if (supabaseKey) {
       await fetch(`${supabaseUrl}/rest/v1/transactions`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'apikey': supabaseKey,
-          'Authorization': `Bearer ${supabaseKey}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=representation'
+          "apikey": supabaseKey,
+          "Authorization": `Bearer ${supabaseKey}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=representation"
         },
         body: JSON.stringify({
           order_id: orderId,
@@ -134,16 +93,14 @@ module.exports = async (req, res) => {
           voter_name: voter_name,
           votes_count: parseInt(votes_count, 10),
           amount: finalAmount,
-          status: 'PENDING',
+          status: "PENDING",
           expires_at: new Date(Date.now() + 15 * 60 * 1000).toISOString()
         })
       });
-    } catch (dbErr) {
-      console.warn('Gagal mencatat transaksi ke Supabase:', dbErr.message);
     }
 
     return res.status(200).json({
-      status: 'success',
+      status: "success",
       order_id: orderId,
       amount: finalAmount,
       qr_image_url: qrImageUrl,
@@ -153,7 +110,6 @@ module.exports = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Create-payment catch error:', error);
-    return res.status(500).json({ error: error.message || 'Terjadi kesalahan sistem.' });
+    return res.status(500).json({ error: error.message || "Terjadi kesalahan server." });
   }
 };
