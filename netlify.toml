@@ -1,4 +1,6 @@
 [build]
+  # Only the static site is published; function sources and config stay private.
+  publish = "public"
   functions = "netlify/functions"
 
 [build.environment]
