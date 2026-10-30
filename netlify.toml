@@ -1,9 +1,0 @@
-[build]
-  # Only the static site is published; function sources and config stay private.
-  publish = "public"
-  functions = "netlify/functions"
-
-[build.environment]
-  # The Supabase project URL is intentionally public: the browser client in
-  # index.html needs it (alongside the public anon key) to read the leaderboard.
-  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL"
