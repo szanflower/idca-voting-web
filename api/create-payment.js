@@ -70,12 +70,12 @@ module.exports = async (req, res) => {
       }
     };
 
-    // Panggil API Qiospay v1 Invoices
+    // Panggil API Qiospay v1 Invoices murni dengan header x-api-key sesuai dokumentasi
+    const cleanApiKey = apiKey.trim();
     const qiospayRes = await fetch('https://my.qiospay.com/v1/invoices', {
       method: 'POST',
       headers: {
-        'x-api-key': apiKey.trim(),
-        'Authorization': `Bearer ${apiKey.trim()}`,
+        'x-api-key': cleanApiKey,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -92,7 +92,12 @@ module.exports = async (req, res) => {
 
     if (!qiospayRes.ok || result.status === 'error' || result.status === false) {
       console.error('Qiospay error detail:', qiospayRes.status, result);
-      const detailMsg = result.message || result.error || result.msg || JSON.stringify(result);
+      let detailMsg = '';
+      if (typeof result === 'object' && result !== null) {
+        detailMsg = result.message || result.error || result.msg || JSON.stringify(result);
+      } else {
+        detailMsg = String(result);
+      }
       return res.status(400).json({
         error: `Qiospay (HTTP ${qiospayRes.status}): ${detailMsg}`
       });
