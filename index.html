@@ -362,7 +362,7 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
       <div class="terms">
         <h3>Ketentuan</h3>
         <ul>
-          <li>Pembayaran menggunakan QRIS Dinamis otomatis (nominal terkunci pas termasuk kode unik).</li>
+          <li>Pembayaran menggunakan QRIS Dinamis resmi dari Qiospay (nominal otomatis terkunci).</li>
           <li>Pembayaran dapat menggunakan ShopeePay, SeaBank, BCA, GoPay, DANA, atau aplikasi QRIS apa saja.</li>
           <li>Dukungan yang sudah dibayarkan tidak dapat dibatalkan atau dipindahkan ke tim lain.</li>
           <li>Jika mengalami kendala pembayaran, hubungi panitia melalui kontak yang tersedia.</li>
@@ -435,7 +435,7 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
           <div class="pay-amount-box">
             <span class="pay-label">Total Pembayaran (Nominal Terkunci)</span>
             <span class="pay-nominal mono" id="payNominal">Rp 0</span>
-            <small class="pay-hint">Pindai QR di atas menggunakan <strong>Shopee, SeaBank, BCA, GoPay, atau bank apa saja</strong>. Nominal langsung terkunci otomatis di aplikasi Anda.</small>
+            <small class="pay-hint">Pindai QR di atas menggunakan <strong>ShopeePay, SeaBank, BCA, GoPay, atau bank apa saja</strong>. Nominal langsung terkunci otomatis di aplikasi Anda.</small>
           </div>
           <div class="pay-timer">
             <span>Batas waktu pembayaran:</span>
@@ -781,17 +781,24 @@ async function submitForm(ev){
     $("step2Sub").textContent = qty + " dukungan untuk " + activeTeam;
     $("payNominal").textContent = rupiah(data.amount);
 
-    // Render QRIS Dinamis dengan nominal otomatis terkunci
+    // Tampilkan gambar QRIS langsung dari Qiospay atau render qris_content
     const qrisContainer = $("qrisContainer");
     qrisContainer.innerHTML = "";
-    new QRCode(qrisContainer, {
-      text: data.qris_content,
-      width: 220,
-      height: 220,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M
-    });
+
+    if (data.qr_image_url) {
+      qrisContainer.innerHTML = '<img src="' + data.qr_image_url + '" alt="QRIS Dinamis Qiospay">';
+    } else if (data.qris_content && window.QRCode) {
+      new QRCode(qrisContainer, {
+        text: data.qris_content,
+        width: 220,
+        height: 220,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } else {
+      qrisContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(data.qris_content || "") + '" alt="QRIS Dinamis">';
+    }
 
     startTimer(data.expires_at || Date.now() + 15 * 60 * 1000);
     startPollingStatus(currentOrderId);
