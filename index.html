@@ -190,12 +190,11 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
 .zoom{display:block;width:100%;height:auto;border-radius:4px}
 
 .qr-pay-wrap{display:grid;gap:1rem;text-align:center}
-.qr-canvas{display:flex;justify-content:center;align-items:center;padding:.5rem;background:#fff;border:1px solid var(--line);border-radius:8px;margin:0 auto;max-width:250px}
-.qr-canvas img{display:block;margin:0 auto;width:100%;height:auto;border-radius:4px}
-.pay-amount-box{padding:.85rem;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px dashed var(--accent);border-radius:6px;display:grid;gap:.35rem}
+.qr-canvas{display:flex;justify-content:center;align-items:center;padding:.85rem;background:#fff;border:1px solid var(--line);border-radius:8px;margin:0 auto;width:240px;min-height:240px}
+.qr-canvas canvas, .qr-canvas img{display:block;margin:0 auto;max-width:100%;height:auto}
+.pay-amount-box{padding:.85rem;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px dashed var(--accent);border-radius:6px;display:grid;gap:.25rem}
 .pay-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
 .pay-nominal{font-size:2.1rem;font-weight:800;font-family:var(--font-display);color:var(--accent);line-height:1.1}
-.copy-btn-wrap{display:flex;justify-content:center}
 .pay-hint{font-size:.8rem;color:var(--muted);line-height:1.4}
 .pay-timer{display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border:1px solid var(--line);border-radius:4px;font-size:.88rem}
 .pay-timer strong{color:var(--accent);font-size:1.05rem}
@@ -220,6 +219,7 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -356,14 +356,14 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
       <ol class="steps">
         <li><h3>Pilih tim</h3><p>Tekan tombol Dukung pada tim yang ingin kamu bantu.</p></li>
         <li><h3>Tentukan jumlah</h3><p>Pilih paket atau isi jumlah sendiri, lalu lanjut ke pembayaran.</p></li>
-        <li><h3>Scan & Bayar</h3><p>Pindai QRIS SANNN STORE resmi dan masukkan nominal pas (termasuk kode unik).</p></li>
-        <li><h3>Dukungan masuk</h3><p>Sistem otomatis membaca notifikasi mutasi dan menambah poin secara real-time.</p></li>
+        <li><h3>Scan QRIS Dinamis</h3><p>Pindai QR code. Nominal pembayaran langsung terkunci otomatis di aplikasi.</p></li>
+        <li><h3>Dukungan masuk</h3><p>Sistem memverifikasi pembayaran dan memperbarui papan peringkat secara real-time.</p></li>
       </ol>
       <div class="terms">
         <h3>Ketentuan</h3>
         <ul>
-          <li>Pembayaran menggunakan QRIS DANA Bisnis resmi (SANNN STORE) dan dapat discan melalui aplikasi m-Banking atau e-Wallet apa saja.</li>
-          <li>Pastikan nominal pembayaran <strong>persis sampai 3 angka terakhir</strong> agar verifikasi sistem otomatis berhasil.</li>
+          <li>Pembayaran menggunakan QRIS Dinamis otomatis (nominal terkunci pas termasuk kode unik).</li>
+          <li>Pembayaran dapat menggunakan ShopeePay, SeaBank, BCA, GoPay, DANA, atau aplikasi QRIS apa saja.</li>
           <li>Dukungan yang sudah dibayarkan tidak dapat dibatalkan atau dipindahkan ke tim lain.</li>
           <li>Jika mengalami kendala pembayaran, hubungi panitia melalui kontak yang tersedia.</li>
         </ul>
@@ -424,23 +424,18 @@ input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem 
     <div id="step2" hidden>
       <div class="dlg-head">
         <div>
-          <h3>Scan QRIS Pembayaran</h3>
+          <h3>Scan QRIS Dinamis</h3>
           <p id="step2Sub">Dukungan untuk tim</p>
         </div>
         <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
       </div>
       <div class="qr-pay-wrap">
-        <div id="qrisContainer" class="qr-canvas">
-          <img id="staticQrisImg" src="/qris.jpg" alt="QRIS Merchant DANA Bisnis SANNN STORE">
-        </div>
+        <div id="qrisContainer" class="qr-canvas"></div>
         <div class="pay-detail">
           <div class="pay-amount-box">
-            <span class="pay-label">Nominal Transfer WAJIB TEPAT:</span>
+            <span class="pay-label">Total Pembayaran (Nominal Terkunci)</span>
             <span class="pay-nominal mono" id="payNominal">Rp 0</span>
-            <div class="copy-btn-wrap">
-              <button type="button" class="btn btn-out btn-sm" id="btnCopyAmount" style="margin-top:.2rem">📋 Salin Nominal</button>
-            </div>
-            <small class="pay-hint">Pindai QR di atas menggunakan <strong>Shopee, SeaBank, BCA, GoPay, atau e-Wallet apa saja</strong>. Pastikan nominal pembayaran sama persis dengan angka di atas agar otomatis terverifikasi.</small>
+            <small class="pay-hint">Pindai QR di atas menggunakan <strong>Shopee, SeaBank, BCA, GoPay, atau bank apa saja</strong>. Nominal langsung terkunci otomatis di aplikasi Anda.</small>
           </div>
           <div class="pay-timer">
             <span>Batas waktu pembayaran:</span>
@@ -533,8 +528,6 @@ const num = n => new Intl.NumberFormat("id-ID").format(n);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const digits = p => p.replace(/\D/g, "");
 const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
-
-let rawPayAmount = 0;
 
 function renderStatic(){
   $("year").textContent = new Date().getFullYear();
@@ -753,7 +746,7 @@ async function submitForm(ev){
   const baseAmount = qty * CONFIG.pricePerVote;
 
   submitBtn.disabled = true;
-  submitBtn.textContent = "Membuat Transaksi...";
+  submitBtn.textContent = "Membuat QRIS Dinamis...";
 
   try {
     const endpoint = window.location.hostname.includes("netlify")
@@ -785,9 +778,20 @@ async function submitForm(ev){
     }
 
     currentOrderId = data.order_id;
-    rawPayAmount = data.amount;
     $("step2Sub").textContent = qty + " dukungan untuk " + activeTeam;
     $("payNominal").textContent = rupiah(data.amount);
+
+    // Render QRIS Dinamis dengan nominal otomatis terkunci
+    const qrisContainer = $("qrisContainer");
+    qrisContainer.innerHTML = "";
+    new QRCode(qrisContainer, {
+      text: data.qris_content,
+      width: 220,
+      height: 220,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
 
     startTimer(data.expires_at || Date.now() + 15 * 60 * 1000);
     startPollingStatus(currentOrderId);
@@ -813,14 +817,6 @@ document.addEventListener("click", e => {
   else if(t.dataset.q !== undefined){ $("jumlah").value = ""; setQty(Number(t.dataset.q)); }
   else if(t.hasAttribute("data-close")) t.closest("dialog").close();
   else if(t.id === "mapBtn") openModal($("mapDlg"));
-  else if(t.id === "btnCopyAmount"){
-    if(rawPayAmount){
-      navigator.clipboard.writeText(String(rawPayAmount)).then(() => {
-        t.textContent = "✅ Tersalin!";
-        setTimeout(() => { t.textContent = "📋 Salin Nominal"; }, 2000);
-      });
-    }
-  }
 });
 
 $("jumlah").addEventListener("input", e => setQty(Number(e.target.value)));
