@@ -50,37 +50,52 @@ module.exports = async (req, res) => {
     const siteUrl = `${proto}://${host}`;
     const callbackUrl = `${siteUrl}/api/qiospay-webhook`;
 
+    // Buat payload sesuai dokumentasi resmi Qiospay v1 Invoices
+    const payload = {
+      order_id: orderId,
+      amount: parseInt(amount, 10),
+      keterangan: `Dukungan SMESTA 7 - Tim #${team_id} (${voter_name})`,
+      "customer.name": voter_name,
+      customer: {
+        name: voter_name
+      },
+      callback_url: callbackUrl,
+      redirect_url: siteUrl,
+      expired_menit: 15,
+      metadata: {
+        team_id: parseInt(team_id, 10),
+        voter_name: voter_name,
+        votes_count: parseInt(votes_count, 10),
+        order_id: orderId
+      }
+    };
+
     // Panggil API Qiospay v1 Invoices
     const qiospayRes = await fetch('https://my.qiospay.com/v1/invoices', {
       method: 'POST',
       headers: {
-        'x-api-key': apiKey,
-        'Content-Type': 'application/json'
+        'x-api-key': apiKey.trim(),
+        'Authorization': `Bearer ${apiKey.trim()}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-      body: JSON.stringify({
-        order_id: orderId,
-        amount: parseInt(amount, 10),
-        keterangan: `Dukungan SMESTA 7 - Tim #${team_id} (${voter_name})`,
-        customer: {
-          name: voter_name
-        },
-        callback_url: callbackUrl,
-        redirect_url: siteUrl,
-        expired_menit: 15,
-        metadata: {
-          team_id: parseInt(team_id, 10),
-          voter_name: voter_name,
-          votes_count: parseInt(votes_count, 10),
-          order_id: orderId
-        }
-      })
+      body: JSON.stringify(payload)
     });
 
-    const result = await qiospayRes.json();
+    let result;
+    const resText = await qiospayRes.text();
+    try {
+      result = JSON.parse(resText);
+    } catch (e) {
+      result = { message: resText };
+    }
 
-    if (!qiospayRes.ok || result.status === 'error') {
-      console.error('Qiospay error response:', result);
-      return res.status(400).json({ error: result.message || 'Qiospay menolak pembuatan invoice.' });
+    if (!qiospayRes.ok || result.status === 'error' || result.status === false) {
+      console.error('Qiospay error detail:', qiospayRes.status, result);
+      const detailMsg = result.message || result.error || result.msg || JSON.stringify(result);
+      return res.status(400).json({
+        error: `Qiospay (HTTP ${qiospayRes.status}): ${detailMsg}`
+      });
     }
 
     const resData = result.data || result;
