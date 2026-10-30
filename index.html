@@ -769,6 +769,7 @@ async function submitForm(ev){
     const endpoint = window.location.hostname.includes("netlify")
       ? "/.netlify/functions/create-payment"
       : "/api/create-payment";
+
     const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -780,8 +781,18 @@ async function submitForm(ev){
       })
     });
 
-    const data = await response.json();
-    if(data.error) throw new Error(data.error);
+    let data;
+    const contentType = response.headers.get("content-type");
+    if(contentType && contentType.includes("application/json")){
+      data = await response.json();
+    } else {
+      const rawText = await response.text();
+      throw new Error(`Server status ${response.status}: ${rawText.slice(0, 100)}`);
+    }
+
+    if(!response.ok || data.error){
+      throw new Error(data.error || `Gagal menghubungi server (HTTP ${response.status})`);
+    }
 
     currentOrderId = data.order_id;
     $("step2Sub").textContent = qty + " dukungan untuk " + activeTeam;
@@ -802,7 +813,7 @@ async function submitForm(ev){
         correctLevel: QRCode.CorrectLevel.M
       });
     } else {
-      qrisContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=' + encodeURIComponent(data.qris_string) + '" alt="QRIS Dinamis">';
+      qrisContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=' + encodeURIComponent(data.qris_string || "") + '" alt="QRIS Dinamis">';
     }
 
     startTimer(data.expires_at || Date.now() + 15 * 60 * 1000);
@@ -811,9 +822,12 @@ async function submitForm(ev){
     showStep(2);
 
   } catch (err) {
-    console.error(err);
-    err.textContent = "Gagal membuat pembayaran: " + (err.message || "Periksa koneksi internet.");
-    err.hidden = false;
+    console.error("Payment error:", err);
+    const errBox = $("formError");
+    errBox.textContent = "Gagal memproses QRIS: " + (err.message || "Periksa koneksi internet.");
+    errBox.hidden = false;
+    errBox.style.color = "var(--accent)";
+  } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "Lanjut ke pembayaran";
   }
