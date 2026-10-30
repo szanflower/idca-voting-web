@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMESTA 7 - IDCA Kabupaten Bekasi</title>
+<meta name="description" content="SMESTA 7, lomba marching band IDCA Kabupaten Bekasi, 22 November 2026 di Go Wet! Waterpark.">
+<link id="favicon" rel="icon" type="image/png" href="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Konsep: warna merah logo IDCA di atas putih kapur. Hero merah penuh dengan garis yard lapangan.
+   Merah hanya untuk identitas dan aksi; sisanya netral hangat. */
+:root{
+  --bg:#fbf6f5;
+  --fg:#211314;
+  --muted:#6b5557;
+  --surface:#ffffff;
+  --line:#ead8d8;
+  --accent:#d4000e;      /* teks/garis merah di atas latar terang */
+  --btn:#d4000e;         /* latar tombol utama */
+  --btn-ink:#ffffff;
+  --hero:#d4000e;
+  --hero-ink:#ffffff;
+  --hero-btn:#ffffff;
+  --hero-btn-ink:#b8000c;
+  --good:#1c7a49;
+  --font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --font-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#130a0b;
+    --fg:#f6ecec;
+    --muted:#b79c9e;
+    --surface:#1d1112;
+    --line:#3a2224;
+    --accent:#ff5a61;
+    --btn:#d8101c;
+    --hero:#a40811;
+    --hero-btn-ink:#a40811;
+    --good:#58c98a;
+    color-scheme:dark;
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:1rem}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 var(--font-body);-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.01em;line-height:1;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hero :focus-visible{outline-color:#fff}
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* tombol */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.75rem;padding:.55rem 1.15rem;border:2px solid transparent;border-radius:4px;font:600 .95rem/1.2 var(--font-body);text-decoration:none;text-align:center;cursor:pointer;transition:transform .12s ease,filter .12s ease,background-color .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn-red{background:var(--btn);color:var(--btn-ink)}
+.btn-red:hover{filter:brightness(1.1)}
+.btn-white{background:var(--hero-btn);color:var(--hero-btn-ink)}
+.btn-white:hover{filter:brightness(.94)}
+.btn-ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-out{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn-out:hover{border-color:var(--accent);color:var(--accent)}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;pointer-events:none}
+.btn-sm{min-height:2.25rem;padding:.3rem .75rem;font-size:.85rem}
+
+/* header + hero */
+.topbar{background:var(--surface);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:.75rem}
+.brand{display:block;line-height:0}
+.brand img{height:3.1rem;width:auto;max-width:100%}
+.nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.92rem;font-weight:500}
+.nav a{text-decoration:none;padding:.4rem 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--accent)}
+
+.hero{background:var(--hero);color:var(--hero-ink)}
+.hero-body{padding-block:clamp(2.25rem,6vw,4.5rem) clamp(1.75rem,4vw,3rem)}
+.eyebrow{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.9;margin-bottom:1rem}
+.hero h1{font-weight:900;font-size:clamp(4.2rem,21vw,12rem);line-height:.86;letter-spacing:.005em}
+.hero h1 .seven{color:var(--hero-ink);-webkit-text-fill-color:transparent;-webkit-text-stroke:clamp(2px,.7vw,5px) var(--hero-ink);margin-left:.04em}
+.tagline{margin-top:.9rem;font-family:var(--font-mono);font-size:clamp(.78rem,2.8vw,1rem);text-transform:uppercase;letter-spacing:.14em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:1rem 2rem;margin:2rem 0 0;padding:1.25rem 0 0;border-top:2px solid rgba(255,255,255,.55)}
+.facts div{min-width:0}
+.facts dt{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.85}
+.facts dd{margin:.2rem 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.05;text-transform:uppercase}
+.count{display:inline-block;margin-top:.5rem;padding:.2rem .6rem;border:1px solid rgba(255,255,255,.7);border-radius:99px;font-family:var(--font-mono);font-size:.78rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.yard{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));border-top:2px solid rgba(255,255,255,.5);border-right:2px solid rgba(255,255,255,.5)}
+.yard span{border-left:2px solid rgba(255,255,255,.5);padding:0 .35rem .5rem;font-family:var(--font-mono);font-size:clamp(.7rem,2.6vw,1rem);opacity:.85}
+.yard span::before{content:"";display:block;height:.55rem;margin-bottom:.4rem;background:repeating-linear-gradient(90deg,transparent 0 calc(20% - 1px),rgba(255,255,255,.5) calc(20% - 1px) 20%)}
+
+/* seksi */
+section{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:.75rem 2rem;margin-bottom:1.75rem}
+.sec-head h2{font-size:clamp(2rem,6vw,3.25rem);font-weight:800}
+.sec-head h2::after{content:"";display:block;width:3.2rem;height:.3rem;margin-top:.55rem;background:var(--accent)}
+.sec-head p{max-width:30rem;color:var(--muted)}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+
+/* event */
+.event-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem}
+.info-list{margin:0;display:grid;gap:0}
+.info-list div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.75rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.info-list div:last-child{border-bottom:1px solid var(--line)}
+.info-list dt{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:.2rem}
+.info-list dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.cats{display:grid;gap:.75rem;align-content:start}
+.cat{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.alt .cat{background:var(--bg)}
+.cat b{font-family:var(--font-display);font-weight:800;font-size:1.7rem;text-transform:uppercase;line-height:1}
+.cat span{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.cats h3{font-size:1.2rem;color:var(--muted);letter-spacing:.06em}
+
+/* pendaftaran */
+.reg{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:start}
+.qr{padding:.75rem;background:#fff;border:1px solid var(--line);border-radius:6px;width:100%;max-width:15rem}
+.qr img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.qr-cap{margin-top:.5rem;font-size:.82rem;color:var(--muted)}
+.reg h3{font-size:1.7rem;margin-bottom:.6rem}
+.reg p{color:var(--muted);max-width:34rem}
+.reg .btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.1rem}
+.panitia{margin-top:1.5rem;display:grid;gap:.5rem;max-width:34rem}
+.person{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;justify-content:space-between;padding:.7rem .9rem;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.person strong{display:block;line-height:1.2}
+.person span{font-family:var(--font-mono);font-size:.85rem;color:var(--muted)}
+
+/* denah */
+.venue{display:grid;grid-template-columns:minmax(0,24rem) minmax(0,1fr);gap:2rem;align-items:start}
+.venue-img{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#000;cursor:zoom-in}
+.venue-img img{display:block;width:100%;height:auto}
+.legend{margin:0;padding:0;list-style:none;display:grid;gap:0}
+.legend li{display:flex;gap:1rem;align-items:baseline;padding:.65rem 0;border-top:1px solid var(--line)}
+.legend li:last-child{border-bottom:1px solid var(--line)}
+.legend b{flex:none;width:1.8rem;font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--accent);line-height:1}
+.legend em{font-style:normal;color:var(--muted);font-size:.9rem}
+.flow{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.flow span{padding:.25rem .65rem;border:1px solid var(--line);border-radius:99px;font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* dukungan */
+.sample{margin-bottom:1.25rem;padding:.7rem .9rem;border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);font-size:.9rem}
+.board-top{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:baseline;margin-bottom:1rem;padding-bottom:1rem;border-bottom:2px solid var(--fg)}
+.board-top div{min-width:0}
+.board-top .num{font-family:var(--font-display);font-weight:800;font-size:2.6rem;line-height:1}
+.board-top .lbl{font-size:.82rem;color:var(--muted)}
+.board{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.row{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr) auto;grid-template-areas:"rank info act";align-items:center;gap:.25rem .75rem;padding:.8rem .9rem .8rem 0;background:var(--bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.row::before{content:"";position:absolute;inset:0 auto 0 0;width:var(--w,0%);background:color-mix(in srgb,var(--accent) 13%,transparent);pointer-events:none}
+.row>*{position:relative}
+.rank{grid-area:rank;text-align:center;font-family:var(--font-display);font-weight:800;font-size:1.9rem}
+.row:nth-child(1) .rank{color:var(--accent)}
+.info{grid-area:info;min-width:0}
+.info strong{display:block;font-size:1.05rem;overflow-wrap:anywhere}
+.info span{font-size:.88rem;color:var(--muted)}
+.votes{display:block;margin-top:.15rem;font-family:var(--font-mono);font-size:.9rem}
+.act{grid-area:act}
+.note{margin-top:1rem;font-size:.85rem;color:var(--muted)}
+
+/* cara kerja */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1rem;counter-reset:s}
+.steps li{counter-increment:s;min-width:0;padding-top:1rem;border-top:2px solid var(--fg)}
+.steps li::before{content:counter(s);display:block;font-family:var(--font-display);font-weight:800;font-size:2.6rem;line-height:1;color:var(--accent);margin-bottom:.4rem}
+.steps h3{font-size:1.35rem;margin-bottom:.35rem}
+.steps p{font-size:.95rem;color:var(--muted)}
+.terms{margin-top:2.5rem;display:grid;gap:.5rem;max-width:44rem}
+.terms h3{font-size:1.5rem;margin-bottom:.5rem}
+.terms ul{margin:0;padding-left:1.2rem;display:grid;gap:.4rem;color:var(--muted)}
+
+/* kontak */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem 1.5rem;margin:0}
+.contact div{min-width:0;padding:1rem 0;border-top:1px solid var(--line)}
+.contact dt{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.contact dd{margin:.25rem 0 0;font-weight:600;overflow-wrap:anywhere}
+.contact a{text-decoration-color:var(--accent);text-underline-offset:3px}
+footer{background:var(--hero);color:var(--hero-ink);padding-block:1.5rem;font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
+
+/* dialog */
+dialog{width:min(34rem,calc(100% - 2rem));max-height:calc(100% - 2rem);overflow:auto;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+dialog::backdrop{background:rgba(20,5,6,.65)}
+dialog.big{width:min(46rem,calc(100% - 2rem))}
+.dlg{padding:1.25rem}
+.dlg-head{display:flex;justify-content:space-between;gap:1rem;align-items:start;margin-bottom:1rem}
+.dlg-head h3{font-size:1.9rem;font-weight:800}
+.dlg-head p{font-size:.9rem;color:var(--muted);margin-top:.25rem}
+.x{flex:none;width:2.5rem;height:2.5rem;border:1px solid var(--line);border-radius:4px;background:transparent;color:inherit;font-size:1.3rem;cursor:pointer}
+.field{display:grid;gap:.35rem;margin-bottom:1rem}
+.field>label,.field>span.l{font-size:.88rem;font-weight:600}
+input[type=text],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem .7rem;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);font:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{min-height:2.75rem;min-width:3.5rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);font:600 .95rem var(--font-mono);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.sum{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;margin-bottom:1rem;border-block:2px solid var(--fg)}
+.sum .t{font-family:var(--font-display);font-weight:800;font-size:2.2rem;line-height:1}
+.small{font-size:.85rem;color:var(--muted)}
+.stack{display:grid;gap:.6rem}
+.zoom{display:block;width:100%;height:auto;border-radius:4px}
+.qr-pay-wrap{display:grid;gap:1.25rem;text-align:center}
+.qr-canvas{display:flex;justify-content:center;align-items:center;padding:.85rem;background:#fff;border:1px solid var(--line);border-radius:6px;margin:0 auto;width:230px;min-height:230px}
+.qr-canvas img{display:block;margin:0 auto;max-width:100%;height:auto}
+.pay-amount-box{padding:.85rem;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px dashed var(--accent);border-radius:6px;display:grid;gap:.25rem}
+.pay-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+.pay-nominal{font-size:1.9rem;font-weight:800;font-family:var(--font-display);color:var(--accent);line-height:1.1}
+.pay-hint{font-size:.78rem;color:var(--muted);line-height:1.4}
+.pay-timer{display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border:1px solid var(--line);border-radius:4px;font-size:.88rem}
+.pay-timer strong{color:var(--accent);font-size:1.05rem}
+.pay-actions{display:grid;gap:.5rem}
+.success-box{text-align:center;padding:.75rem 0}
+
+@media (max-width:760px){
+  .event-grid,.reg,.venue{grid-template-columns:minmax(0,1fr)}
+  .venue-img{max-width:26rem}
+}
+@media (max-width:520px){
+  .row{grid-template-columns:2.6rem minmax(0,1fr);grid-template-areas:"rank info" ". act";padding-right:.9rem}
+  .act .btn{width:100%}
+  .rank{font-size:1.6rem}
+  .info-list div{grid-template-columns:minmax(0,1fr)}
+  .info-list dt{padding-top:0}
+  .brand img{height:2.6rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn{transition:none}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat" width="640" height="382"></a>
+    <nav class="nav" aria-label="Menu utama">
+      <a href="#event">Event</a>
+      <a href="#daftar">Daftar</a>
+      <a href="#denah">Denah</a>
+      <a href="#dukung">Dukung Tim</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="beranda">
+  <div class="wrap">
+    <div class="hero-body">
+      <p class="eyebrow">Lomba marching band &middot; IDCA Kabupaten Bekasi</p>
+      <h1>Smesta <span class="seven">7</span></h1>
+      <p class="tagline">Sound of Music Ensemble Talent</p>
+      <dl class="facts">
+        <div><dt>Tanggal</dt><dd>Minggu, 22 November 2026</dd><span class="count mono" id="countdown"></span></div>
+        <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
+        <div><dt>Kategori</dt><dd>Kindergarten &middot; Junior &middot; Senior</dd></div>
+      </dl>
+      <div class="cta">
+        <a class="btn btn-white" href="#daftar">Daftarkan tim</a>
+        <a class="btn btn-ghost" href="#dukung">Dukung tim favorit</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="yard" aria-hidden="true"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>40</span><span>30</span><span>20</span><span>10</span></div>
+  </div>
+</header>
+
+<main>
+  <section id="event">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Tentang event</h2>
+        <p>SMESTA 7 diselenggarakan oleh IDCA Kabupaten Bekasi. Tiga kelas lomba berjalan di arena yang sama.</p>
+      </div>
+      <div class="event-grid">
+        <dl class="info-list">
+          <div><dt>Event</dt><dd>SMESTA 7, Sound of Music Ensemble Talent</dd></div>
+          <div><dt>Tanggal</dt><dd>Minggu, 22 November 2026</dd></div>
+          <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
+          <div><dt>Penyelenggara</dt><dd>IDCA Kabupaten Bekasi</dd></div>
+          <div><dt>Pendaftaran</dt><dd>Lewat QR atau tautan di bagian Daftar</dd></div>
+        </dl>
+        <div class="cats">
+          <h3>Kategori lomba</h3>
+          <div class="cat"><b>Kindergarten Class</b></div>
+          <div class="cat"><b>Junior Class</b></div>
+          <div class="cat"><b>Senior Class</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="daftar" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Daftar tim</h2>
+        <p>Pindai QR dengan kamera ponsel, atau buka tautan pendaftaran di bawah.</p>
+      </div>
+      <div class="reg">
+        <div>
+          <div class="qr"><img id="qrImg" alt="QR code pendaftaran SMESTA 7" width="568" height="568"></div>
+          <p class="qr-cap">QR pendaftaran SMESTA 7</p>
+        </div>
+        <div>
+          <h3>Pendaftaran peserta</h3>
+          <p>Isi formulir pendaftaran untuk tim yang akan tampil di kategori Kindergarten, Junior, atau Senior Class. Jika ada pertanyaan, hubungi panitia.</p>
+          <div class="btn-row">
+            <a class="btn btn-red" id="regLink" href="#" target="_blank" rel="noopener">Buka formulir pendaftaran</a>
+          </div>
+          <div class="panitia" id="panitiaReg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="denah">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Denah lokasi</h2>
+        <p>Tata letak area lomba di Go Wet! Waterpark. Ketuk gambar untuk memperbesar.</p>
+      </div>
+      <div class="venue">
+        <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" alt="Venue guide SMESTA 7 di Go Wet! Waterpark: panggung, arena lomba, area pengunjung, tenan, serta jalur load in, march in, march out, dan load out" width="900" height="1345"></button>
+        <div>
+          <ol class="legend" aria-label="Keterangan denah">
+            <li><b>1</b><span>FO<br><em>Front office dan meja panitia.</em></span></li>
+            <li><b>2</b><span>Panggung dan Piala</span></li>
+            <li><b>3</b><span>Pengunjung<br><em>Dua area tempat duduk penonton.</em></span></li>
+            <li><b>5</b><span>Arena lomba</span></li>
+            <li><b>6</b><span>Tenan</span></li>
+          </ol>
+          <div class="flow" aria-label="Jalur tim">
+            <span>Load in</span><span>March in</span><span>March out</span><span>Load out</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dukung" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Dukung tim</h2>
+        <p id="voteIntro"></p>
+      </div>
+      <p class="sample" id="sampleNote" hidden>Nama tim dan angka dukungan di bawah masih contoh. Panitia mengganti dengan tim peserta SMESTA 7 yang sebenarnya.</p>
+      <div class="board-top">
+        <div><div class="num mono" id="totalVotes">0</div><div class="lbl">total dukungan</div></div>
+        <div><div class="num mono" id="totalTeams">0</div><div class="lbl">tim peserta</div></div>
+        <div><div class="num mono" id="priceShown">Rp 0</div><div class="lbl">per 1 dukungan</div></div>
+      </div>
+      <ol class="board" id="board"></ol>
+      <p class="note" id="boardNote"></p>
+    </div>
+  </section>
+
+  <section id="cara">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cara mendukung</h2>
+        <p>Dukungan masuk secara otomatis setelah pembayaran QRIS terverifikasi sistem.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Pilih tim</h3><p>Tekan tombol Dukung pada tim yang ingin kamu bantu.</p></li>
+        <li><h3>Tentukan jumlah</h3><p>Pilih paket atau isi jumlah sendiri, lalu lanjut ke pembayaran.</p></li>
+        <li><h3>Bayar via QRIS</h3><p>Scan QRIS dan selesaikan pembayaran melalui halaman resmi Qiospay.</p></li>
+        <li><h3>Dukungan masuk</h3><p>Sistem memverifikasi pembayaran otomatis dan memperbarui papan peringkat secara real-time.</p></li>
+      </ol>
+      <div class="terms">
+        <h3>Ketentuan</h3>
+        <ul>
+          <li>Pembayaran dilakukan melalui sistem resmi Qiospay dengan nominal otomatis sesuai pilihan.</li>
+          <li>Pembayaran dapat menggunakan aplikasi m-Banking atau e-Wallet apa saja yang mendukung QRIS.</li>
+          <li>Dukungan yang sudah dibayarkan tidak dapat dibatalkan atau dipindahkan ke tim lain.</li>
+          <li>Jika mengalami kendala pembayaran, hubungi panitia melalui tombol WhatsApp yang tersedia.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Kontak panitia</h2>
+        <p>Untuk pendaftaran tim, pembayaran dukungan, dan informasi lomba.</p>
+      </div>
+      <dl class="contact" id="contact"></dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> IDCA Kabupaten Bekasi</span>
+    <span>SMESTA 7 &middot; 22 November 2026 &middot; Go Wet! Waterpark</span>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="dlg">
+    <div id="step1">
+      <div class="dlg-head">
+        <div>
+          <h3 id="dlgTitle">Dukung tim</h3>
+          <p id="dlgSub"></p>
+        </div>
+        <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
+      </div>
+      <form id="form" novalidate>
+        <div class="field">
+          <label for="nama">Nama kamu</label>
+          <input type="text" id="nama" autocomplete="name" placeholder="Nama pendukung" required>
+        </div>
+        <div class="field">
+          <span class="l" id="lblJumlah">Jumlah dukungan</span>
+          <div class="chips" id="chips" role="group" aria-labelledby="lblJumlah"></div>
+        </div>
+        <div class="field">
+          <label for="jumlah">Atau isi jumlah sendiri</label>
+          <input type="number" id="jumlah" min="1" max="10000" step="1" inputmode="numeric">
+        </div>
+        <div class="sum">
+          <span>Total bayar</span>
+          <span class="t mono" id="total">Rp 0</span>
+        </div>
+        <p class="small" id="formError" role="alert" hidden></p>
+        <button class="btn btn-red" type="submit" style="width:100%">Lanjut ke pembayaran</button>
+      </form>
+    </div>
+
+    <div id="step2" hidden>
+      <div class="dlg-head">
+        <div>
+          <h3>Scan QRIS Dinamis</h3>
+          <p id="step2Sub">Dukungan untuk tim</p>
+        </div>
+        <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
+      </div>
+      <div class="qr-pay-wrap">
+        <div id="qrisContainer" class="qr-canvas"></div>
+        <div class="pay-detail">
+          <div class="pay-amount-box">
+            <span class="pay-label">Total Pembayaran (Termasuk Kode Unik)</span>
+            <span class="pay-nominal mono" id="payNominal">Rp 0</span>
+            <small class="pay-hint">Nominal otomatis terkunci di aplikasi m-Banking / e-Wallet Anda. Mohon jangan ubah nominal agar verifikasi instan berhasil.</small>
+          </div>
+          <div class="pay-timer">
+            <span>Batas waktu pembayaran:</span>
+            <strong class="mono" id="payTimer">15:00</strong>
+          </div>
+        </div>
+        <div class="pay-actions">
+          <button class="btn btn-red" type="button" id="btnCheckStatus" style="width:100%">Cek Status Pembayaran</button>
+          <button class="btn btn-out btn-sm" type="button" id="btnBackStep" style="width:100%">Kembali / Ganti Jumlah</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="step3" hidden>
+      <div class="dlg-head">
+        <div>
+          <h3 style="color:var(--good)">Pembayaran Berhasil!</h3>
+          <p id="step3Sub">Terima kasih atas dukunganmu.</p>
+        </div>
+        <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
+      </div>
+      <div class="success-box">
+        <div style="font-size:3.2rem;line-height:1;margin-bottom:.75rem">🎉</div>
+        <p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem" id="step3Msg">Dukungan Berhasil Masuk!</p>
+        <p class="small" style="color:var(--muted);margin-bottom:1.5rem">Papan peringkat tim telah otomatis diperbarui secara real-time.</p>
+        <button class="btn btn-red" type="button" data-close style="width:100%">Selesai</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="mapDlg" class="big" aria-label="Denah lokasi lomba">
+  <div class="dlg">
+    <div class="dlg-head">
+      <div><h3>Denah lokasi</h3><p>Go Wet! Waterpark</p></div>
+      <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
+    </div>
+    <img class="zoom" id="venueZoom" alt="Denah lokasi lomba SMESTA 7 diperbesar">
+  </div>
+</dialog>
+
+<script>
+/* ==========================================================
+   KONFIGURASI: data resmi dari Supabase dan event SMESTA 7
+   ========================================================== */
+const SUPABASE_URL = "https://zdgmskqimgxypihmrywf.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkZ21za3FpbWd4eXBpaG1yeXdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzMDA5MzEsImV4cCI6MjEwODg3NjkzMX0.DJM3ZLe8R4zZ_i9VogGJJoA0hNFhD_4K2jB2nOTp9lY";
+
+const isSupabaseConfigured = Boolean(
+  window.supabase &&
+  SUPABASE_URL &&
+  SUPABASE_URL.startsWith("http") &&
+  SUPABASE_ANON_KEY
+);
+
+const supabaseClient = isSupabaseConfigured
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+
+const CONTACTS = [
+  { name: "Ka Tere",  phone: "+62 857-7121-2779" },
+  { name: "Ka Aning", phone: "+62 896-9121-9728" },
+  { name: "Ka Yoga",  phone: "+62 812-7886-7221" }
+];
+const SOCIAL = {
+  instagram: "marco.community",
+  email: "smestabekasi@gmail.com"
+};
+const REGISTRATION_URL = "https://smestajilid7.netlify.app";
+const EVENT_DATE = "2026-11-22T00:00:00+07:00";
+
+const CONFIG = {
+  demoTeams: false,
+  pricePerVote: 5000,
+  packages: [1, 5, 10, 20, 50],
+  votingOpen: true,
+  votingEvent: "SMESTA 7",
+  votingDeadline: "Batas waktu dukungan diumumkan panitia",
+  lastUpdate: "Real-time Otomatis"
+};
+
+let teams = [
+  { id: 1, name: "Tim Contoh 1", origin: "Sekolah / komunitas asal", total_votes: 240 },
+  { id: 2, name: "Tim Contoh 2", origin: "Sekolah / komunitas asal", total_votes: 185 },
+  { id: 3, name: "Tim Contoh 3", origin: "Sekolah / komunitas asal", total_votes: 130 },
+  { id: 4, name: "Tim Contoh 4", origin: "Sekolah / komunitas asal", total_votes: 95 },
+  { id: 5, name: "Tim Contoh 5", origin: "Sekolah / komunitas asal", total_votes: 40 }
+];
+
+const $ = id => document.getElementById(id);
+const rupiah = n => "Rp " + new Intl.NumberFormat("id-ID").format(n);
+const num = n => new Intl.NumberFormat("id-ID").format(n);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const digits = p => p.replace(/\D/g, "");
+const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
+
+function renderStatic(){
+  $("year").textContent = new Date().getFullYear();
+  $("regLink").href = REGISTRATION_URL;
+  $("sampleNote").hidden = !CONFIG.demoTeams;
+  $("priceShown").textContent = rupiah(CONFIG.pricePerVote);
+  $("voteIntro").textContent = CONFIG.votingOpen
+    ? CONFIG.votingEvent + ". " + CONFIG.votingDeadline + "."
+    : "Dukungan untuk event ini sudah ditutup.";
+
+  $("panitiaReg").innerHTML = CONTACTS.map(c => `
+    <div class="person">
+      <div><strong>${esc(c.name)}</strong><span>${esc(c.phone)}</span></div>
+      <a class="btn btn-out btn-sm" href="${esc(waUrl(c.phone, "Halo " + c.name + ", saya ingin bertanya tentang pendaftaran SMESTA 7."))}" target="_blank" rel="noopener">Chat WhatsApp</a>
+    </div>`).join("");
+
+  const wa = CONTACTS.map(c =>
+    `<div><dt>WhatsApp ${esc(c.name)}</dt><dd><a href="${esc(waUrl(c.phone))}" target="_blank" rel="noopener">${esc(c.phone)}</a></dd></div>`).join("");
+  $("contact").innerHTML = wa +
+    `<div><dt>Instagram</dt><dd><a href="https://www.instagram.com/${esc(SOCIAL.instagram)}/" target="_blank" rel="noopener">@${esc(SOCIAL.instagram)}</a></dd></div>` +
+    `<div><dt>Email</dt><dd><a href="mailto:${esc(SOCIAL.email)}">${esc(SOCIAL.email)}</a></dd></div>`;
+
+  const days = Math.ceil((new Date(EVENT_DATE) - new Date()) / 86400000);
+  $("countdown").textContent = days > 1 ? days + " hari lagi" : days === 1 ? "Besok" : days === 0 ? "Hari ini" : "Sudah berlangsung";
+}
+
+function getVotes(t){
+  return typeof t.total_votes === "number" ? t.total_votes : (t.votes || 0);
+}
+
+function renderBoard(){
+  const sorted = [...teams].sort((a, b) => getVotes(b) - getVotes(a));
+  const max = Math.max(1, ...sorted.map(t => getVotes(t)));
+  const total = sorted.reduce((s, t) => s + getVotes(t), 0);
+  $("totalVotes").textContent = num(total);
+  $("totalTeams").textContent = sorted.length;
+  $("board").innerHTML = sorted.map((t, i) => `
+    <li class="row" style="--w:${Math.round(getVotes(t) / max * 100)}%">
+      <span class="rank mono">${i + 1}</span>
+      <div class="info"><strong>${esc(t.name)}</strong><span>${esc(t.origin || "")}</span><span class="votes">${num(getVotes(t))} dukungan</span></div>
+      <div class="act"><button class="btn btn-red" type="button" data-team-id="${esc(t.id)}" data-team="${esc(t.name)}" ${CONFIG.votingOpen ? "" : "disabled"}>${CONFIG.votingOpen ? "Dukung" : "Ditutup"}</button></div>
+    </li>`).join("");
+  $("boardNote").textContent = "Status Papan Peringkat: " + CONFIG.lastUpdate + ". Angka dukungan bertambah otomatis setelah pembayaran Qiospay berhasil.";
+}
+
+async function fetchTeamsFromSupabase(){
+  if(!supabaseClient) return;
+  try{
+    const { data, error } = await supabaseClient
+      .from("teams")
+      .select("*")
+      .order("total_votes", { ascending: false });
+    if(error) throw error;
+    if(data && data.length > 0){
+      teams = data;
+      $("sampleNote").hidden = true;
+      renderBoard();
+    }
+  }catch(e){
+    console.error("Gagal memuat data tim dari Supabase:", e.message);
+  }
+}
+
+function subscribeRealtimeVotes(){
+  if(!supabaseClient) return;
+  supabaseClient
+    .channel("public:teams")
+    .on("postgres_changes", { event: "*", schema: "public", table: "teams" }, () => {
+      fetchTeamsFromSupabase();
+    })
+    .subscribe();
+}
+
+const dlg = $("dlg");
+let activeTeam = "", activeTeamId = null, qty = 0;
+
+function setQty(n){
+  qty = Math.max(0, Math.min(10000, Math.floor(n) || 0));
+  $("total").textContent = rupiah(qty * CONFIG.pricePerVote);
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(Number(c.dataset.q) === qty)));
+}
+
+function buildChips(){
+  $("chips").innerHTML = CONFIG.packages.map(p => `<button type="button" class="chip" data-q="${p}" aria-pressed="false">${p}</button>`).join("");
+}
+
+function openModal(d){
+  if(typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+}
+
+let currentOrderId = null;
+let timerInterval = null;
+let pollInterval = null;
+let qrInstance = null;
+
+function showStep(step){
+  $("step1").hidden = (step !== 1);
+  $("step2").hidden = (step !== 2);
+  $("step3").hidden = (step !== 3);
+}
+
+function openDialog(teamId, teamName){
+  activeTeamId = teamId;
+  activeTeam = teamName;
+  $("dlgSub").textContent = teamName;
+  $("form").reset();
+  $("formError").hidden = true;
+  const submitBtn = $("form").querySelector("button[type=submit]");
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Lanjut ke pembayaran";
+  setQty(CONFIG.packages[1] || CONFIG.packages[0] || 1);
+  stopPaymentWatchers();
+  showStep(1);
+  openModal(dlg);
+}
+
+function stopPaymentWatchers(){
+  if(timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  if(pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+}
+
+function startTimer(expiresAt){
+  if(timerInterval) clearInterval(timerInterval);
+  const target = new Date(expiresAt).getTime();
+
+  function update(){
+    const now = Date.now();
+    const diff = Math.max(0, Math.floor((target - now) / 1000));
+    const m = Math.floor(diff / 60).toString().padStart(2, '0');
+    const s = (diff % 60).toString().padStart(2, '0');
+    $("payTimer").textContent = m + ":" + s;
+    if(diff <= 0){
+      clearInterval(timerInterval);
+      $("payTimer").textContent = "Kedaluwarsa";
+      $("btnCheckStatus").disabled = true;
+      $("btnCheckStatus").textContent = "Waktu Habis";
+    }
+  }
+  update();
+  timerInterval = setInterval(update, 1000);
+}
+
+async function checkPaymentStatus(orderId, silent = false){
+  if(!orderId) return;
+  const btn = $("btnCheckStatus");
+  if(!silent && btn){
+    btn.disabled = true;
+    btn.textContent = "Memeriksa status...";
+  }
+
+  try {
+    if(supabaseClient){
+      const { data, error } = await supabaseClient
+        .from("transactions")
+        .select("status, votes_count, voter_name, team_id")
+        .eq("order_id", orderId)
+        .maybeSingle();
+
+      if(!error && data && data.status === "PAID"){
+        handlePaymentSuccess(data);
+        return;
+      }
+    }
+    if(!silent && btn){
+      btn.disabled = false;
+      btn.textContent = "Belum Terdeteksi, Cek Lagi";
+    }
+  } catch(e) {
+    console.error("Gagal periksa status:", e);
+    if(!silent && btn){
+      btn.disabled = false;
+      btn.textContent = "Cek Status Pembayaran";
+    }
+  }
+}
+
+function handlePaymentSuccess(trx){
+  stopPaymentWatchers();
+  showStep(3);
+  $("step3Msg").textContent = "+" + num(trx.votes_count || qty) + " Suara untuk " + activeTeam;
+  fetchTeamsFromSupabase();
+}
+
+function startPollingStatus(orderId){
+  if(pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(() => {
+    checkPaymentStatus(orderId, true);
+  }, 3500);
+
+  // Dengarkan realtime perubahan tabel transactions jika Supabase aktif
+  if(supabaseClient){
+    supabaseClient
+      .channel('trx-' + orderId)
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'transactions',
+        filter: 'order_id=eq.' + orderId
+      }, payload => {
+        if(payload.new && payload.new.status === 'PAID'){
+          handlePaymentSuccess(payload.new);
+        }
+      })
+      .subscribe();
+  }
+}
+
+async function submitForm(ev){
+  ev.preventDefault();
+  const nama = $("nama").value.trim();
+  const err = $("formError");
+  const submitBtn = $("form").querySelector("button[type=submit]");
+
+  if(!nama){ err.textContent = "Isi nama kamu dulu."; err.hidden = false; $("nama").focus(); return; }
+  if(qty < 1){ err.textContent = "Pilih atau isi jumlah dukungan minimal 1."; err.hidden = false; return; }
+  err.hidden = true;
+
+  const baseAmount = qty * CONFIG.pricePerVote;
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Membuat QRIS Dinamis...";
+
+  try {
+    const endpoint = window.location.hostname.includes("netlify")
+      ? "/.netlify/functions/create-payment"
+      : "/api/create-payment";
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        team_id: activeTeamId,
+        voter_name: nama,
+        votes_count: qty,
+        amount: baseAmount
+      })
+    });
+
+    const data = await response.json();
+    if(data.error) throw new Error(data.error);
+
+    currentOrderId = data.order_id;
+    $("step2Sub").textContent = qty + " dukungan untuk " + activeTeam;
+    $("payNominal").textContent = rupiah(data.amount);
+
+    // Render QR Code Dinamis
+    const qrisContainer = $("qrisContainer");
+    qrisContainer.innerHTML = "";
+    if(data.qr_image_url){
+      qrisContainer.innerHTML = '<img src="' + data.qr_image_url + '" alt="QRIS Dinamis Qiospay" style="max-width:210px;height:auto;display:block;margin:0 auto">';
+    } else if((data.qris_content || data.qris_string) && window.QRCode){
+      qrInstance = new QRCode(qrisContainer, {
+        text: data.qris_content || data.qris_string,
+        width: 210,
+        height: 210,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } else {
+      qrisContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=' + encodeURIComponent(data.qris_string) + '" alt="QRIS Dinamis">';
+    }
+
+    startTimer(data.expires_at || Date.now() + 15 * 60 * 1000);
+    startPollingStatus(currentOrderId);
+
+    showStep(2);
+
+  } catch (err) {
+    console.error(err);
+    err.textContent = "Gagal membuat pembayaran: " + (err.message || "Periksa koneksi internet.");
+    err.hidden = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Lanjut ke pembayaran";
+  }
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button");
+  if(!t) return;
+  if(t.dataset.team !== undefined) openDialog(t.dataset.teamId, t.dataset.team);
+  else if(t.dataset.q !== undefined){ $("jumlah").value = ""; setQty(Number(t.dataset.q)); }
+  else if(t.hasAttribute("data-close")) t.closest("dialog").close();
+  else if(t.id === "mapBtn") openModal($("mapDlg"));
+});
+
+$("jumlah").addEventListener("input", e => setQty(Number(e.target.value)));
+$("form").addEventListener("submit", submitForm);
+$("btnBackStep").addEventListener("click", () => { stopPaymentWatchers(); showStep(1); });
+$("btnCheckStatus").addEventListener("click", () => checkPaymentStatus(currentOrderId, false));
+dlg.addEventListener("close", () => stopPaymentWatchers());
+[dlg, $("mapDlg")].forEach(d => d.addEventListener("click", e => { if(e.target === d) d.close(); }));
+
+renderStatic();
+buildChips();
+renderBoard();
+fetchTeamsFromSupabase();
+subscribeRealtimeVotes();
+</script>
+</body>
+</html>
