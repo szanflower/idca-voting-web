@@ -163,6 +163,11 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
 
 .alert-box {background:#eaf2fb; color:#254a78; border:1px solid #bce0fd; padding:1rem; border-radius:6px; margin-bottom:1.5rem; font-weight:600; font-size:0.9rem;}
 
+/* Kotak Sukses / Cadangan WhatsApp */
+.success-box {display:none; background:#eef9f2; border:1px solid #c8e6c9; padding:1.5rem; border-radius:8px; text-align:center; margin-top:1rem;}
+.success-box h4 {color:#1c7a49; font-size:1.4rem; margin-bottom:0.5rem;}
+.success-box p {font-size:0.9rem; color:#333; margin-bottom:1rem;}
+
 /* kontak & sponsor */
 .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem 1.5rem;margin:0}
 .contact div{min-width:0;padding:1rem 0;border-top:1px solid var(--line)}
@@ -354,6 +359,14 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
 
           <button type="submit" class="btn btn-red" id="btnSubmitTiket" style="width:100%">Kirim Data & Lanjut ke WhatsApp</button>
         </form>
+
+        <!-- KOTAK CADANGAN JIKA POP-UP DI BLOKIR -->
+        <div id="successBox" class="success-box">
+          <h4>Data Berhasil Disimpan!</h4>
+          <p>Jika aplikasi WhatsApp Anda tidak terbuka otomatis karena diblokir browser, silakan klik tombol di bawah ini:</p>
+          <a id="whatsappBtn" href="#" target="_blank" class="btn btn-red" style="background:#25D366; color:#fff; width:100%;">Buka WhatsApp Ka Aning Sekarang</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -556,13 +569,16 @@ formTiket.addEventListener("submit", async (e) => {
     const WA_KA_ANING = "+6289691219728";
     const textMsg = `Halo Ka Aning, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
     
-    alert("Data berhasil terkirim ke sistem kami!\n\nSelanjutnya WhatsApp akan otomatis terbuka. JANGAN LUPA untuk melampirkan foto bukti transfer Anda sekali lagi ke chat Ka Aning agar tiket bisa diverifikasi.");
+    // Coba buka WhatsApp secara otomatis (pop-up)
+    const finalWaUrl = waUrl(WA_KA_ANING, textMsg);
+    window.open(finalWaUrl, "_blank");
     
-    window.open(waUrl(WA_KA_ANING, textMsg), "_blank");
+    // Tampilkan kotak sukses & tombol manual di dalam web jika pop-up diblokir
+    $("whatsappBtn").href = finalWaUrl;
+    $("successBox").style.display = "block";
     
-    formTiket.reset();
-    btnSubmitTiket.textContent = "Kirim Data & Lanjut ke WhatsApp";
-    btnSubmitTiket.disabled = false;
+    // Sembunyikan form agar pembeli tahu datanya sudah terkirim dan tidak isi ulang
+    formTiket.style.display = "none";
   };
   
   reader.readAsDataURL(file);
