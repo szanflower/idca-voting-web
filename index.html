@@ -73,7 +73,21 @@ a{color:inherit}
 .topbar{background:var(--surface);border-bottom:1px solid var(--line)}
 .topbar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:.75rem}
 .brand{display:block;line-height:0}
-.brand img{height:3.1rem;width:auto;max-width:100%}
+.brand img{
+  height:3.1rem;
+  width:auto;
+  max-width:100%;
+  mix-blend-mode: multiply;
+}
+@media (prefers-color-scheme: dark) {
+  .brand img {
+    mix-blend-mode: normal;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 2px;
+  }
+}
+
 .nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.92rem;font-weight:500}
 .nav a{text-decoration:none;padding:.4rem 0;border-bottom:2px solid transparent}
 .nav a:hover{border-color:var(--accent)}
@@ -111,6 +125,9 @@ section{padding-block:clamp(2.5rem,6vw,4.5rem)}
 .alt .cat{background:var(--bg)}
 .cat b{font-family:var(--font-display);font-weight:800;font-size:1.7rem;text-transform:uppercase;line-height:1}
 
+.prize-list {margin:0; padding-left:1.2rem; display:grid; gap:0.5rem; font-size:0.95rem;}
+.prize-list li b {color:var(--accent);}
+
 /* pendaftaran & tiket */
 .reg{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:start}
 .qr{padding:.75rem;background:#fff;border:1px solid var(--line);border-radius:6px;width:100%;max-width:15rem}
@@ -144,12 +161,28 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
 .qris-img{max-width:14rem;margin:0 auto 1rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;background:#fff}
 .qris-img img{width:100%;height:auto}
 
-/* kontak */
+.alert-box {background:#fff3f3; color:#d4000e; border:1px solid #ffcdd2; padding:1rem; border-radius:6px; margin-bottom:1.5rem; font-weight:600; font-size:0.9rem;}
+
+/* kontak & sponsor */
 .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem 1.5rem;margin:0}
 .contact div{min-width:0;padding:1rem 0;border-top:1px solid var(--line)}
 .contact dt{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 .contact dd{margin:.25rem 0 0;font-weight:600;overflow-wrap:anywhere}
 .contact a{text-decoration-color:var(--accent);text-underline-offset:3px}
+.sponsors {display:flex; flex-direction:column; align-items:flex-start; gap:2rem; margin-top:1rem;}
+.sponsor-item {text-align:left; width: 100%;}
+.sponsor-item p {font-family:var(--font-mono); font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; border-bottom:1px solid var(--line); padding-bottom:0.5rem; display:inline-block;}
+.sponsor-logos {display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center;}
+.sponsor-logos img {max-height:80px; width:auto; mix-blend-mode:multiply;}
+@media (prefers-color-scheme: dark) {
+  .sponsor-logos img {
+    mix-blend-mode: normal;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 2px;
+  }
+}
+
 footer{background:var(--hero);color:var(--hero-ink);padding-block:1.5rem;font-size:.88rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
 
@@ -174,7 +207,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
 
 <div class="topbar">
   <div class="wrap">
-    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" src="logo idca.jpg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat" width="640" height="382"></a>
+    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" src="logo idca.jpg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat"></a>
     <nav class="nav" aria-label="Menu utama">
       <a href="#event">Event</a>
       <a href="#daftar">Daftar Lomba</a>
@@ -220,7 +253,14 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
           <div><dt>Penyelenggara</dt><dd>IDCA Kabupaten Bekasi</dd></div>
         </dl>
         <div class="cats">
-          <h3>Kategori lomba</h3>
+          <h3 style="font-size:1.2rem; color:var(--muted); letter-spacing:.06em; margin-bottom:0.5rem;">Penghargaan / Piala</h3>
+          <ul class="prize-list">
+            <li><b>JUARA I:</b> Piala Bergilir Gubernur Jawa Barat &amp; Piala Bupati Kabupaten Bekasi</li>
+            <li><b>JUARA II:</b> Piala Dispora Kabupaten Bekasi</li>
+            <li><b>JUARA III:</b> Piala Kormi Kabupaten Bekasi</li>
+          </ul>
+          
+          <h3 style="font-size:1.2rem; color:var(--muted); letter-spacing:.06em; margin-top:1.5rem; margin-bottom:0.5rem;">Kategori lomba</h3>
           <div class="cat"><b>Kindergarten Class</b></div>
           <div class="cat"><b>Junior Class</b></div>
           <div class="cat"><b>Senior Class</b></div>
@@ -238,6 +278,11 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       </div>
       
       <div class="ticket-box">
+        <!-- PERINGATAN TIKET GO WET -->
+        <div class="alert-box">
+          ⚠️ PERHATIAN: Membeli tiket pengunjung langsung di loket Go Wet! Waterpark TIDAK DAPAT digunakan untuk masuk ke arena perlombaan atau menonton lomba secara langsung. Tiket resmi penonton lomba HANYA dijual melalui formulir di bawah ini.
+        </div>
+      
         <h4>Formulir Pembelian Tiket</h4>
         <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">Harga per tiket adalah <b>Rp 85.000</b> dan formulir ini khusus untuk pembelian <b>1 tiket per orang</b>. Jika ingin membeli tiket lagi, silakan ulangi mengisi form.</p>
         
@@ -342,12 +387,45 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
     </div>
   </section>
 
-  <!-- KONTAK -->
+  <!-- KONTAK & SPONSOR -->
   <section id="kontak">
     <div class="wrap">
-      <div class="sec-head">
-        <h2>Kontak panitia</h2>
+      <div class="sec-head" style="margin-bottom:0.5rem;">
+        <h2>Kontak & Sponsor</h2>
       </div>
+      
+      <div class="sponsors" style="margin-bottom:3rem; padding-bottom:2rem; border-bottom:1px solid var(--line);">
+        
+        <!-- BAGIAN SPONSOR -->
+        <div class="sponsor-item">
+          <p>Disponsori Oleh</p>
+          <div class="sponsor-logos">
+            <img src="sponsor-1.png" alt="Sponsor 1">
+            <img src="sponsor-2.png" alt="Sponsor 2">
+            <img src="sponsor-3.png" alt="Sponsor 3">
+            <img src="sponsor-4.png" alt="Sponsor 4">
+            <img src="sponsor-5.png" alt="Sponsor 5">
+            <img src="sponsor-6.png" alt="Sponsor 6">
+            <img src="sponsor-7.png" alt="Sponsor 7">
+          </div>
+        </div>
+
+        <!-- BAGIAN SUPPORT -->
+        <div class="sponsor-item">
+          <p>Didukung Oleh</p>
+          <div class="sponsor-logos">
+            <img src="support-1.png" alt="Support 1">
+            <img src="support-2.png" alt="Support 2">
+            <img src="support-3.png" alt="Support 3">
+            <img src="support-4.png" alt="Support 4">
+            <img src="support-5.png" alt="Support 5">
+            <img src="support-6.png" alt="Support 6">
+            <img src="support-7.png" alt="Support 7">
+          </div>
+        </div>
+
+      </div>
+      
       <dl class="contact" id="contact"></dl>
     </div>
   </section>
@@ -438,7 +516,6 @@ formTiket.addEventListener("submit", async (e) => {
     const unit = $("unitPembeli").value.trim();
     const catatan = $("catatanTambahan").value.trim();
 
-    // Siapkan data untuk dikirim ke Web App (Google Sheets)
     const formData = new URLSearchParams();
     formData.append("nama", nama);
     formData.append("whatsapp", whatsapp);
