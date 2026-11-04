@@ -52,4 +52,443 @@ p{margin:0}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .hero :focus-visible{outline-color:#fff}
-.wrap{max-width:68rem;
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* tombol */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.75rem;padding:.55rem 1.15rem;border:2px solid transparent;border-radius:4px;font:600 .95rem/1.2 var(--font-body);text-decoration:none;text-align:center;cursor:pointer;transition:transform .12s ease,filter .12s ease,background-color .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn-red{background:var(--btn);color:var(--btn-ink)}
+.btn-red:hover{filter:brightness(1.1)}
+.btn-white{background:var(--hero-btn);color:var(--hero-btn-ink)}
+.btn-white:hover{filter:brightness(.94)}
+.btn-ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-out{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn-out:hover{border-color:var(--accent);color:var(--accent)}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;pointer-events:none}
+.btn-sm{min-height:2.25rem;padding:.3rem .75rem;font-size:.85rem}
+
+/* header + hero */
+.topbar{background:var(--surface);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:.75rem}
+.brand{display:block;line-height:0}
+.brand img{height:3.1rem;width:auto;max-width:100%}
+.nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.92rem;font-weight:500}
+.nav a{text-decoration:none;padding:.4rem 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--accent)}
+
+.hero{background:var(--hero);color:var(--hero-ink)}
+.hero-body{padding-block:clamp(2.25rem,6vw,4.5rem) clamp(1.75rem,4vw,3rem)}
+.eyebrow{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.9;margin-bottom:1rem}
+.hero h1{font-weight:900;font-size:clamp(4.2rem,21vw,12rem);line-height:.86;letter-spacing:.005em}
+.hero h1 .seven{color:var(--hero-ink);-webkit-text-fill-color:transparent;-webkit-text-stroke:clamp(2px,.7vw,5px) var(--hero-ink);margin-left:.04em}
+.tagline{margin-top:.9rem;font-family:var(--font-mono);font-size:clamp(.78rem,2.8vw,1rem);text-transform:uppercase;letter-spacing:.14em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:1rem 2rem;margin:2rem 0 0;padding:1.25rem 0 0;border-top:2px solid rgba(255,255,255,.55)}
+.facts div{min-width:0}
+.facts dt{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.85}
+.facts dd{margin:.2rem 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.05;text-transform:uppercase}
+.count{display:inline-block;margin-top:.5rem;padding:.2rem .6rem;border:1px solid rgba(255,255,255,.7);border-radius:99px;font-family:var(--font-mono);font-size:.78rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+
+/* seksi */
+section{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:.75rem 2rem;margin-bottom:1.75rem}
+.sec-head h2{font-size:clamp(2rem,6vw,3.25rem);font-weight:800}
+.sec-head h2::after{content:"";display:block;width:3.2rem;height:.3rem;margin-top:.55rem;background:var(--accent)}
+.sec-head p{max-width:30rem;color:var(--muted)}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+
+/* event */
+.event-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem}
+.info-list{margin:0;display:grid;gap:0}
+.info-list div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.75rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.info-list div:last-child{border-bottom:1px solid var(--line)}
+.info-list dt{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:.2rem}
+.info-list dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.cats{display:grid;gap:.75rem;align-content:start}
+.cat{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.alt .cat{background:var(--bg)}
+.cat b{font-family:var(--font-display);font-weight:800;font-size:1.7rem;text-transform:uppercase;line-height:1}
+
+/* pendaftaran & tiket */
+.reg{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:start}
+.qr{padding:.75rem;background:#fff;border:1px solid var(--line);border-radius:6px;width:100%;max-width:15rem}
+.qr img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.qr-cap{margin-top:.5rem;font-size:.82rem;color:var(--muted)}
+.reg h3{font-size:1.7rem;margin-bottom:.6rem}
+.panitia{margin-top:1.5rem;display:grid;gap:.5rem;max-width:34rem}
+.person{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;justify-content:space-between;padding:.7rem .9rem;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.person strong{display:block;line-height:1.2}
+.person span{font-family:var(--font-mono);font-size:.85rem;color:var(--muted)}
+
+/* denah */
+.venue{display:grid;grid-template-columns:minmax(0,24rem) minmax(0,1fr);gap:2rem;align-items:start}
+.venue-img{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#000;cursor:zoom-in}
+.venue-img img{display:block;width:100%;height:auto}
+.legend{margin:0;padding:0;list-style:none;display:grid;gap:0}
+.legend li{display:flex;gap:1rem;align-items:baseline;padding:.65rem 0;border-top:1px solid var(--line)}
+.legend li:last-child{border-bottom:1px solid var(--line)}
+.legend b{flex:none;width:1.8rem;font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--accent);line-height:1}
+.legend em{font-style:normal;color:var(--muted);font-size:.9rem}
+
+/* tiket form */
+.ticket-box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.5rem;max-width:30rem;margin-top:1.5rem}
+.ticket-box h4{font-size:1.3rem;margin-bottom:.25rem}
+.field{display:grid;gap:.35rem;margin-bottom:1rem}
+.field>label{font-size:.88rem;font-weight:600}
+input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem .7rem;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);font:inherit}
+.sum{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;margin-bottom:1rem;border-block:2px solid var(--fg)}
+.sum .t{font-family:var(--font-display);font-weight:800;font-size:2.2rem;line-height:1;color:var(--accent)}
+.qris-pay{text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px dashed var(--line)}
+.qris-img{max-width:14rem;margin:0 auto 1rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;background:#fff}
+.qris-img img{width:100%;height:auto}
+
+/* kontak */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem 1.5rem;margin:0}
+.contact div{min-width:0;padding:1rem 0;border-top:1px solid var(--line)}
+.contact dt{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.contact dd{margin:.25rem 0 0;font-weight:600;overflow-wrap:anywhere}
+.contact a{text-decoration-color:var(--accent);text-underline-offset:3px}
+footer{background:var(--hero);color:var(--hero-ink);padding-block:1.5rem;font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
+
+/* dialog */
+dialog{width:min(34rem,calc(100% - 2rem));max-height:calc(100% - 2rem);overflow:auto;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+dialog::backdrop{background:rgba(20,5,6,.65)}
+dialog.big{width:min(46rem,calc(100% - 2rem))}
+.dlg{padding:1.25rem}
+.dlg-head{display:flex;justify-content:space-between;gap:1rem;align-items:start;margin-bottom:1rem}
+.dlg-head h3{font-size:1.9rem;font-weight:800}
+.dlg-head p{font-size:.9rem;color:var(--muted);margin-top:.25rem}
+.x{flex:none;width:2.5rem;height:2.5rem;border:1px solid var(--line);border-radius:4px;background:transparent;color:inherit;font-size:1.3rem;cursor:pointer}
+.zoom{display:block;width:100%;height:auto;border-radius:4px}
+
+@media (max-width:760px){
+  .event-grid,.reg,.venue{grid-template-columns:minmax(0,1fr)}
+  .venue-img{max-width:26rem}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat" width="640" height="382"></a>
+    <nav class="nav" aria-label="Menu utama">
+      <a href="#event">Event</a>
+      <a href="#daftar">Daftar Lomba</a>
+      <a href="#tiket">Beli Tiket</a>
+      <a href="#denah">Denah</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="beranda">
+  <div class="wrap">
+    <div class="hero-body">
+      <p class="eyebrow">Lomba marching band &middot; IDCA Kabupaten Bekasi</p>
+      <h1>Smesta <span class="seven">7</span></h1>
+      <p class="tagline">Sound of Music Ensemble Talent</p>
+      <dl class="facts">
+        <div><dt>Tanggal</dt><dd>Minggu, 22 November 2026</dd><span class="count mono" id="countdown"></span></div>
+        <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
+        <div><dt>Kategori</dt><dd>Kindergarten &middot; Junior &middot; Senior</dd></div>
+      </dl>
+      <div class="cta">
+        <a class="btn btn-white" href="#tiket">Beli Tiket Penonton</a>
+        <a class="btn btn-ghost" href="#daftar">Daftarkan Tim</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- EVENT -->
+  <section id="event">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Tentang event</h2>
+        <p>SMESTA 7 diselenggarakan oleh IDCA Kabupaten Bekasi. Tiga kelas lomba berjalan di arena yang sama.</p>
+      </div>
+      <div class="event-grid">
+        <dl class="info-list">
+          <div><dt>Event</dt><dd>SMESTA 7, Sound of Music Ensemble Talent</dd></div>
+          <div><dt>Tanggal</dt><dd>Minggu, 22 November 2026</dd></div>
+          <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
+          <div><dt>Penyelenggara</dt><dd>IDCA Kabupaten Bekasi</dd></div>
+        </dl>
+        <div class="cats">
+          <h3>Kategori lomba</h3>
+          <div class="cat"><b>Kindergarten Class</b></div>
+          <div class="cat"><b>Junior Class</b></div>
+          <div class="cat"><b>Senior Class</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIKET -->
+  <section id="tiket" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Tiket Penonton</h2>
+        <p>Beli tiket penonton SMESTA 7. Bayar menggunakan QRIS Statis dan konfirmasi via WhatsApp Ka Tere.</p>
+      </div>
+      
+      <div class="ticket-box">
+        <h4>Formulir Pembelian Tiket</h4>
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">Harga per tiket adalah <b>Rp 85.000</b> dan formulir ini khusus untuk pembelian <b>1 tiket per orang</b>. Jika ingin membeli tiket lagi, silakan ulangi mengisi form.</p>
+        
+        <form id="ticketForm">
+          <div class="field">
+            <label for="namaPembeli">1. Nama Lengkap</label>
+            <input type="text" id="namaPembeli" placeholder="Sesuai identitas" required>
+          </div>
+          <div class="field">
+            <label for="waPembeli">2. Nomor WhatsApp</label>
+            <input type="tel" id="waPembeli" placeholder="08xxxxxxxxxx" required>
+          </div>
+          <div class="field">
+            <label for="unitPembeli">3. Nama Unit Band / Sekolah</label>
+            <input type="text" id="unitPembeli" required>
+          </div>
+          <div class="field">
+            <label>4. Jenis Tiket</label>
+            <div style="display:flex; gap:1.5rem; align-items:center; margin-top:0.35rem;">
+              <label style="font-weight:normal; cursor:pointer;"><input type="radio" name="jenisTiket" value="Tiket Peserta" required> Tiket Peserta</label>
+              <label style="font-weight:normal; cursor:pointer;"><input type="radio" name="jenisTiket" value="Tiket Pendamping"> Tiket Pendamping</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="jumlahTiket">5. Jumlah Tiket</label>
+            <input type="number" id="jumlahTiket" value="1" readonly style="background:#f4f4f4; cursor:not-allowed; color:#666;">
+          </div>
+          <div class="field">
+            <label>6. Metode Pembayaran</label>
+            <input type="text" value="QRIS Statis" readonly style="background:#f4f4f4; cursor:not-allowed; color:#666;">
+            <p style="font-size:0.75rem; color:var(--muted); margin-top:0.35rem;">Jika ingin menggunakan metode pembayaran lain, silakan hubungi Panitia di menu Kontak.</p>
+          </div>
+
+          <div class="qris-pay" id="qrisSection">
+            <p style="margin-bottom: 0.5rem; font-weight: 600; text-align:center;">Scan QRIS Untuk Membayar Rp 85.000</p>
+            <div class="qris-img">
+              <!-- GAMBAR QRIS IDCA -->
+              <img src="qris-idca.jpg" alt="QRIS IDCA Pembayaran Tiket" id="imgQris" style="width: 100%; border-radius: 8px;">
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:1.5rem;">
+            <label for="buktiTransfer">7. Upload Bukti Transfer</label>
+            <input type="file" id="buktiTransfer" accept="image/*" style="padding:0.4rem;" required>
+          </div>
+          <div class="field">
+            <label for="catatanTambahan">8. Catatan Tambahan (Opsional)</label>
+            <textarea id="catatanTambahan" rows="2" style="width:100%; padding:.5rem .7rem; border:1px solid var(--line); border-radius:4px; font-family:inherit;"></textarea>
+          </div>
+          
+          <div class="sum">
+            <span>Total Bayar</span>
+            <span class="t mono">Rp 85.000</span>
+          </div>
+
+          <button type="submit" class="btn btn-red" id="btnSubmitTiket" style="width:100%">Kirim Data & Lanjut ke WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAFTAR -->
+  <section id="daftar">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Daftar tim lomba</h2>
+        <p>Khusus untuk peserta lomba, buka tautan pendaftaran di bawah.</p>
+      </div>
+      <div class="reg">
+        <div>
+          <div class="qr"><img id="qrImg" alt="QR code pendaftaran SMESTA 7" width="568" height="568"></div>
+          <p class="qr-cap">QR pendaftaran Peserta Lomba</p>
+        </div>
+        <div>
+          <div class="btn-row">
+            <a class="btn btn-red" id="regLink" href="#" target="_blank" rel="noopener">Buka formulir pendaftaran</a>
+          </div>
+          <div class="panitia" id="panitiaReg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DENAH -->
+  <section id="denah" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Denah lokasi</h2>
+        <p>Tata letak area lomba di Go Wet! Waterpark. Ketuk gambar untuk memperbesar.</p>
+      </div>
+      <div class="venue">
+        <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" alt="Venue guide SMESTA 7" width="900" height="1345"></button>
+        <div>
+          <ol class="legend" aria-label="Keterangan denah">
+            <li><b>1</b><span>FO<br><em>Front office dan meja panitia.</em></span></li>
+            <li><b>2</b><span>Panggung dan Piala</span></li>
+            <li><b>3</b><span>Pengunjung</span></li>
+            <li><b>5</b><span>Arena lomba</span></li>
+            <li><b>6</b><span>Tenan</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="kontak">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Kontak panitia</h2>
+      </div>
+      <dl class="contact" id="contact"></dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> IDCA Kabupaten Bekasi</span>
+    <span>SMESTA 7 &middot; 22 November 2026 &middot; Go Wet! Waterpark</span>
+  </div>
+</footer>
+
+<dialog id="mapDlg" class="big" aria-label="Denah lokasi lomba">
+  <div class="dlg">
+    <div class="dlg-head">
+      <div><h3>Denah lokasi</h3><p>Go Wet! Waterpark</p></div>
+      <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
+    </div>
+    <img class="zoom" id="venueZoom" alt="Denah lokasi lomba SMESTA 7 diperbesar">
+  </div>
+</dialog>
+
+<script>
+const CONTACTS = [
+  { name: "Ka Tere",  phone: "+62 857-7121-2779" },
+  { name: "Ka Aning", phone: "+62 896-9121-9728" },
+  { name: "Ka Yoga",  phone: "+62 812-7886-7221" }
+];
+const SOCIAL = { instagram: "marco.community", email: "smestabekasi@gmail.com" };
+const REGISTRATION_URL = "https://smestajilid7.netlify.app";
+const EVENT_DATE = "2026-11-22T00:00:00+07:00";
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const digits = p => p.replace(/\D/g, "");
+const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
+
+function renderStatic(){
+  $("year").textContent = new Date().getFullYear();
+  $("regLink").href = REGISTRATION_URL;
+
+  $("panitiaReg").innerHTML = CONTACTS.map(c => `
+    <div class="person">
+      <div><strong>${esc(c.name)}</strong><span>${esc(c.phone)}</span></div>
+      <a class="btn btn-out btn-sm" href="${esc(waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya..."))}" target="_blank">Chat WA</a>
+    </div>`).join("");
+
+  const wa = CONTACTS.map(c =>
+    `<div><dt>WhatsApp ${esc(c.name)}</dt><dd><a href="${esc(waUrl(c.phone))}" target="_blank">${esc(c.phone)}</a></dd></div>`).join("");
+  $("contact").innerHTML = wa +
+    `<div><dt>Instagram</dt><dd><a href="https://www.instagram.com/${esc(SOCIAL.instagram)}/" target="_blank">@${esc(SOCIAL.instagram)}</a></dd></div>` +
+    `<div><dt>Email</dt><dd><a href="mailto:${esc(SOCIAL.email)}">${esc(SOCIAL.email)}</a></dd></div>`;
+
+  const days = Math.ceil((new Date(EVENT_DATE) - new Date()) / 86400000);
+  $("countdown").textContent = days > 1 ? days + " hari lagi" : days === 1 ? "Besok" : days === 0 ? "Hari ini" : "Sudah berlalu";
+}
+
+/* ==========================================================
+   LOGIKA PENGIRIMAN TIKET (KE SHEETS & WHATSAPP)
+   ========================================================== */
+const formTiket = $("ticketForm");
+const btnSubmitTiket = $("btnSubmitTiket");
+const fileInput = $("buktiTransfer");
+
+formTiket.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const file = fileInput.files[0];
+  if (!file) {
+    alert("Silakan upload foto bukti transfer terlebih dahulu.");
+    return;
+  }
+  if (file.size > 3 * 1024 * 1024) { 
+    alert("Ukuran gambar maksimal 3MB.");
+    return;
+  }
+
+  btnSubmitTiket.textContent = "Mengunggah data... Mohon tunggu sebentar";
+  btnSubmitTiket.disabled = true;
+
+  // Membaca file sebagai Base64
+  const reader = new FileReader();
+  reader.onload = async function() {
+    const base64Data = reader.result;
+    const jenisTiket = document.querySelector('input[name="jenisTiket"]:checked').value;
+    const nama = $("namaPembeli").value.trim();
+    const whatsapp = $("waPembeli").value.trim();
+    const unit = $("unitPembeli").value.trim();
+    const catatan = $("catatanTambahan").value.trim();
+
+    // Siapkan data untuk dikirim ke Web App (Google Sheets)
+    const formData = new URLSearchParams();
+    formData.append("nama", nama);
+    formData.append("whatsapp", whatsapp);
+    formData.append("unit", unit);
+    formData.append("jenisTiket", jenisTiket);
+    formData.append("metode", "QRIS Statis");
+    formData.append("catatan", catatan);
+    formData.append("fileData", base64Data);
+    formData.append("fileName", file.name);
+
+    // MASUKKAN LINK WEB APP GOOGLE APPS SCRIPT ANDA DI SINI!
+    const scriptURL = "URL_SCRIPT_ANDA_DISINI";
+
+    try {
+      await fetch(scriptURL, { 
+        method: "POST", 
+        body: formData, 
+        headers: { "Content-Type": "application/x-www-form-urlencoded" } 
+      });
+    } catch (error) {
+      console.error("Gagal mengirim ke Sheets:", error);
+    }
+
+    // Arahkan ke WhatsApp Ka Tere
+    const WA_KA_TERE = "+6285771212779";
+    const textMsg = `Halo Ka Tere, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jenis Tiket: ${jenisTiket}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
+    
+    alert("Data berhasil terkirim ke sistem kami!\n\nSelanjutnya WhatsApp akan otomatis terbuka. JANGAN LUPA untuk melampirkan foto bukti transfer Anda sekali lagi ke chat Ka Tere agar tiket bisa diverifikasi.");
+    
+    window.open(waUrl(WA_KA_TERE, textMsg), "_blank");
+    
+    formTiket.reset();
+    btnSubmitTiket.textContent = "Kirim Data & Lanjut ke WhatsApp";
+    btnSubmitTiket.disabled = false;
+  };
+  
+  reader.readAsDataURL(file);
+});
+
+function openModal(d){ if(typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", ""); }
+document.addEventListener("click", e => {
+  const t = e.target.closest("button");
+  if(!t) return;
+  if(t.hasAttribute("data-close")) t.closest("dialog").close();
+  else if(t.id === "mapBtn") openModal($("mapDlg"));
+});
+$("mapDlg").addEventListener("click", e => { if(e.target === $("mapDlg")) $("mapDlg").close(); });
+
+renderStatic();
+</script>
+</body>
+</html>
