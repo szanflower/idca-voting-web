@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SMESTA 7 - IDCA Kabupaten Bekasi</title>
 <meta name="description" content="SMESTA 7, lomba marching band IDCA Kabupaten Bekasi, 22 November 2026 di Go Wet! Waterpark.">
-<link id="favicon" rel="icon" type="image/png" href="">
+<!-- FAVICON MENGGUNAKAN LOGO BARU -->
+<link id="favicon" rel="icon" type="image/jpeg" href="logo idca.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -174,7 +175,8 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
 
 <div class="topbar">
   <div class="wrap">
-    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat" width="640" height="382"></a>
+    <!-- NAMA FILE LOGO BARU -->
+    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" src="logo idca.jpg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat" width="640" height="382"></a>
     <nav class="nav" aria-label="Menu utama">
       <a href="#event">Event</a>
       <a href="#daftar">Daftar Lomba</a>
@@ -274,7 +276,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
           <div class="qris-pay" id="qrisSection">
             <p style="margin-bottom: 0.5rem; font-weight: 600; text-align:center;">Scan QRIS Untuk Membayar Rp 85.000</p>
             <div class="qris-img">
-              <!-- GAMBAR QRIS IDCA -->
+              <!-- GAMBAR QRIS TIKET -->
               <img src="qris-idca.jpg" alt="QRIS IDCA Pembayaran Tiket" id="imgQris" style="width: 100%; border-radius: 8px;">
             </div>
           </div>
@@ -308,7 +310,8 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       </div>
       <div class="reg">
         <div>
-          <div class="qr"><img id="qrImg" alt="QR code pendaftaran SMESTA 7" width="568" height="568"></div>
+          <!-- NAMA FILE QR PENDAFTARAN BARU -->
+          <div class="qr"><img id="qrImg" src="qr pendaftaran.jpg" alt="QR code pendaftaran Peserta Lomba" width="568" height="568"></div>
           <p class="qr-cap">QR pendaftaran Peserta Lomba</p>
         </div>
         <div>
@@ -329,7 +332,8 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
         <p>Tata letak area lomba di Go Wet! Waterpark. Ketuk gambar untuk memperbesar.</p>
       </div>
       <div class="venue">
-        <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" alt="Venue guide SMESTA 7" width="900" height="1345"></button>
+        <!-- NAMA FILE DENAH LOKASI BARU -->
+        <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" src="denah lokasi.jpg" alt="Venue guide SMESTA 7" width="900" height="1345"></button>
         <div>
           <ol class="legend" aria-label="Keterangan denah">
             <li><b>1</b><span>FO<br><em>Front office dan meja panitia.</em></span></li>
@@ -367,7 +371,8 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       <div><h3>Denah lokasi</h3><p>Go Wet! Waterpark</p></div>
       <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
     </div>
-    <img class="zoom" id="venueZoom" alt="Denah lokasi lomba SMESTA 7 diperbesar">
+    <!-- NAMA FILE DENAH LOKASI BARU (ZOOM) -->
+    <img class="zoom" id="venueZoom" src="denah lokasi.jpg" alt="Denah lokasi lomba SMESTA 7 diperbesar">
   </div>
 </dialog>
 
@@ -450,7 +455,7 @@ formTiket.addEventListener("submit", async (e) => {
     formData.append("fileData", base64Data);
     formData.append("fileName", file.name);
 
-    // MASUKKAN LINK WEB APP GOOGLE APPS SCRIPT ANDA DI SINI!
+    // PASTIKAN LINK INI SUDAH DIGANTI DENGAN LINK GOOGLE APPS SCRIPT ANDA!
     const scriptURL = "URL_SCRIPT_ANDA_DISINI";
 
     try {
