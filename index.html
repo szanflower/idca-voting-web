@@ -38,7 +38,7 @@
     --accent:#5b8ee6;
     --btn:#386CAF;
     --hero:#254a78;
-    --hero-btn-ink:#ffffff;
+    --hero-btn-ink:#ffffff; /* Tombol putih di mode gelap agar teksnya biru tua/jelas */
     --good:#58c98a;
     color-scheme:dark;
   }
@@ -195,18 +195,29 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
   mix-blend-mode: multiply; 
 }
 
+/* Memperbaiki logo putih agar terlihat jelas di mode terang maupun gelap */
 .logo-putih {
   filter: invert(1) brightness(0.2); 
   mix-blend-mode: multiply !important;
 }
 
+/* Penyesuaian khusus untuk Mode Gelap (Dark Mode) agar logo sponsor 4 & 6 dan tombol terlihat jelas */
 @media (prefers-color-scheme: dark) {
   .sponsor-logos img {
     mix-blend-mode: normal !important;
     filter: none !important;
     background-color: #ffffff;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 6px;
+  }
+  
+  /* Tombol beli tiket penonton di hero agar kontras di mode gelap */
+  .hero .btn-white {
+    background-color: #ffffff !important;
+    color: #121a24 !important;
+  }
+  .hero .btn-white:hover {
+    background-color: #e8f0fe !important;
   }
 }
 
