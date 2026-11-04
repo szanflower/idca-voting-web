@@ -173,6 +173,8 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
 .sponsors {display:flex; flex-direction:column; align-items:flex-start; gap:2.5rem; margin-top:1rem;}
 .sponsor-item {text-align:left; width: 100%;}
 .sponsor-item p {font-family:var(--font-mono); font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.2rem; border-bottom:1px solid var(--line); padding-bottom:0.5rem; display:inline-block;}
+
+/* Pengaturan Ukuran Logo Agar Seragam */
 .sponsor-logos {
   display:flex; 
   flex-wrap:wrap; 
@@ -181,16 +183,23 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
   justify-content:flex-start;
 }
 .sponsor-logos img {
-  max-height: 60px; /* Batas tinggi agar proporsional */
-  max-width: 140px; /* Batas lebar agar logo memanjang tidak raksasa */
+  height: 65px;      /* Kunci tinggi semua logo agar proporsional */
   width: auto;
-  height: auto;
-  object-fit: contain; /* Menjaga proporsi logo tanpa merusaknya */
+  max-width: 180px;  /* Batas maksimal lebar agar logo memanjang tidak raksasa */
+  object-fit: contain; 
   mix-blend-mode: multiply; /* Menghilangkan background putih */
 }
+
+/* KELAS KHUSUS LOGO PUTIH YANG HILANG */
+.logo-putih {
+  filter: invert(1) brightness(0.2); /* Membalik warna putih menjadi hitam/gelap */
+  mix-blend-mode: multiply !important;
+}
+
 @media (prefers-color-scheme: dark) {
   .sponsor-logos img {
-    mix-blend-mode: normal;
+    mix-blend-mode: normal !important;
+    filter: none !important;
     background-color: #ffffff;
     border-radius: 4px;
     padding: 6px;
@@ -417,9 +426,9 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
             <img src="sponsor-1.png" alt="Sponsor 1">
             <img src="sponsor-2.png" alt="Sponsor 2">
             <img src="sponsor-3.png" alt="Sponsor 3">
-            <img src="sponsor-4.png" alt="Sponsor 4">
+            <img src="sponsor-4.png" alt="Sponsor 4" class="logo-putih">
             <img src="sponsor-5.png" alt="Sponsor 5">
-            <img src="sponsor-6.png" alt="Sponsor 6">
+            <img src="sponsor-6.png" alt="Sponsor 6" class="logo-putih">
             <img src="sponsor-7.png" alt="Sponsor 7">
           </div>
         </div>
