@@ -11,18 +11,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fbf6f5;
-  --fg:#211314;
-  --muted:#6b5557;
+  --bg:#f4f7fb;
+  --fg:#121a24;
+  --muted:#54657b;
   --surface:#ffffff;
-  --line:#ead8d8;
-  --accent:#d4000e;      
-  --btn:#d4000e;         
+  --line:#d3e1f2;
+  --accent:#386CAF;      
+  --btn:#386CAF;         
   --btn-ink:#ffffff;
-  --hero:#d4000e;
+  --hero:#386CAF;
   --hero-ink:#ffffff;
   --hero-btn:#ffffff;
-  --hero-btn-ink:#b8000c;
+  --hero-btn-ink:#254a78;
   --good:#1c7a49;
   --font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --font-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -30,15 +30,15 @@
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#130a0b;
-    --fg:#f6ecec;
-    --muted:#b79c9e;
-    --surface:#1d1112;
-    --line:#3a2224;
-    --accent:#ff5a61;
-    --btn:#d8101c;
-    --hero:#a40811;
-    --hero-btn-ink:#a40811;
+    --bg:#0b1118;
+    --fg:#e8f0fe;
+    --muted:#93a8c4;
+    --surface:#152233;
+    --line:#223650;
+    --accent:#5b8ee6;
+    --btn:#386CAF;
+    --hero:#254a78;
+    --hero-btn-ink:#ffffff;
     --good:#58c98a;
     color-scheme:dark;
   }
@@ -161,7 +161,7 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
 .qris-img{max-width:14rem;margin:0 auto 1rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;background:#fff}
 .qris-img img{width:100%;height:auto}
 
-.alert-box {background:#fff3f3; color:#d4000e; border:1px solid #ffcdd2; padding:1rem; border-radius:6px; margin-bottom:1.5rem; font-weight:600; font-size:0.9rem;}
+.alert-box {background:#eaf2fb; color:#254a78; border:1px solid #bce0fd; padding:1rem; border-radius:6px; margin-bottom:1.5rem; font-weight:600; font-size:0.9rem;}
 
 /* kontak & sponsor */
 .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem 1.5rem;margin:0}
@@ -210,7 +210,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem
 
 /* dialog */
 dialog{width:min(34rem,calc(100% - 2rem));max-height:calc(100% - 2rem);overflow:auto;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
-dialog::backdrop{background:rgba(20,5,6,.65)}
+dialog::backdrop{background:rgba(11,17,24,.65)}
 dialog.big{width:min(46rem,calc(100% - 2rem))}
 .dlg{padding:1.25rem}
 .dlg-head{display:flex;justify-content:space-between;gap:1rem;align-items:start;margin-bottom:1rem}
