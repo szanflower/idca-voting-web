@@ -183,16 +183,15 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
   justify-content:flex-start;
 }
 .sponsor-logos img {
-  height: 65px;      /* Kunci tinggi semua logo agar proporsional */
+  height: 65px;      
   width: auto;
-  max-width: 180px;  /* Batas maksimal lebar agar logo memanjang tidak raksasa */
+  max-width: 180px;  
   object-fit: contain; 
-  mix-blend-mode: multiply; /* Menghilangkan background putih */
+  mix-blend-mode: multiply; 
 }
 
-/* KELAS KHUSUS LOGO PUTIH YANG HILANG */
 .logo-putih {
-  filter: invert(1) brightness(0.2); /* Membalik warna putih menjadi hitam/gelap */
+  filter: invert(1) brightness(0.2); 
   mix-blend-mode: multiply !important;
 }
 
@@ -323,18 +322,11 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
             <input type="text" id="unitPembeli" required>
           </div>
           <div class="field">
-            <label>4. Jenis Tiket</label>
-            <div style="display:flex; gap:1.5rem; align-items:center; margin-top:0.35rem;">
-              <label style="font-weight:normal; cursor:pointer;"><input type="radio" name="jenisTiket" value="Tiket Peserta" required> Tiket Peserta</label>
-              <label style="font-weight:normal; cursor:pointer;"><input type="radio" name="jenisTiket" value="Tiket Pendamping"> Tiket Pendamping</label>
-            </div>
-          </div>
-          <div class="field">
-            <label for="jumlahTiket">5. Jumlah Tiket</label>
+            <label for="jumlahTiket">4. Jumlah Tiket</label>
             <input type="number" id="jumlahTiket" value="1" readonly style="background:#f4f4f4; cursor:not-allowed; color:#666;">
           </div>
           <div class="field">
-            <label>6. Metode Pembayaran</label>
+            <label>5. Metode Pembayaran</label>
             <input type="text" value="QRIS Statis" readonly style="background:#f4f4f4; cursor:not-allowed; color:#666;">
             <p style="font-size:0.75rem; color:var(--muted); margin-top:0.35rem;">Jika ingin menggunakan metode pembayaran lain, silakan hubungi Panitia di menu Kontak.</p>
           </div>
@@ -347,11 +339,11 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
           </div>
 
           <div class="field" style="margin-top:1.5rem;">
-            <label for="buktiTransfer">7. Upload Bukti Transfer</label>
+            <label for="buktiTransfer">6. Upload Bukti Transfer</label>
             <input type="file" id="buktiTransfer" accept="image/*" style="padding:0.4rem;" required>
           </div>
           <div class="field">
-            <label for="catatanTambahan">8. Catatan Tambahan (Opsional)</label>
+            <label for="catatanTambahan">7. Catatan Tambahan (Opsional)</label>
             <textarea id="catatanTambahan" rows="2" style="width:100%; padding:.5rem .7rem; border:1px solid var(--line); border-radius:4px; font-family:inherit;"></textarea>
           </div>
           
@@ -533,7 +525,6 @@ formTiket.addEventListener("submit", async (e) => {
   const reader = new FileReader();
   reader.onload = async function() {
     const base64Data = reader.result;
-    const jenisTiket = document.querySelector('input[name="jenisTiket"]:checked').value;
     const nama = $("namaPembeli").value.trim();
     const whatsapp = $("waPembeli").value.trim();
     const unit = $("unitPembeli").value.trim();
@@ -543,7 +534,6 @@ formTiket.addEventListener("submit", async (e) => {
     formData.append("nama", nama);
     formData.append("whatsapp", whatsapp);
     formData.append("unit", unit);
-    formData.append("jenisTiket", jenisTiket);
     formData.append("metode", "QRIS Statis");
     formData.append("catatan", catatan);
     formData.append("fileData", base64Data);
@@ -564,7 +554,7 @@ formTiket.addEventListener("submit", async (e) => {
 
     // Arahkan ke WhatsApp Ka Tere
     const WA_KA_TERE = "+6285771212779";
-    const textMsg = `Halo Ka Tere, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jenis Tiket: ${jenisTiket}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
+    const textMsg = `Halo Ka Tere, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
     
     alert("Data berhasil terkirim ke sistem kami!\n\nSelanjutnya WhatsApp akan otomatis terbuka. JANGAN LUPA untuk melampirkan foto bukti transfer Anda sekali lagi ke chat Ka Tere agar tiket bisa diverifikasi.");
     
