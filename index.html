@@ -403,7 +403,6 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
         <div>
           <div class="btn-row" style="display:flex; flex-wrap:wrap; gap:.75rem;">
             <a class="btn btn-red" id="regLink" href="#" target="_blank" rel="noopener">Buka formulir pendaftaran</a>
-            <!-- LINK FILE JUKLAK SUDAH DISESUAIKAN -->
             <a class="btn btn-out" href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" rel="noopener">📄 Download Juklak &amp; Juknis (PDF)</a>
           </div>
           <div class="panitia" id="panitiaReg"></div>
@@ -433,7 +432,16 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
 
         <div>
           <ol class="legend" aria-label="Keterangan denah">
-            <li><b>1</b><span>FO<br><em>Front office dan meja panitia.</em></span></li>
+            <li>
+              <b>1</b>
+              <span>
+                FOH &amp; Broadcast Control<br>
+                <em>Pusat audio sistem venue dan live streaming kamera perlombaan.</em><br>
+                <a href="https://www.youtube.com/@SmestaBekasi" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.35rem; margin-top:0.4rem; font-size:0.85rem; font-weight:600; color:var(--accent);">
+                  ▶ Tonton Live Streaming di YouTube
+                </a>
+              </span>
+            </li>
             <li><b>2</b><span>Panggung dan Piala</span></li>
             <li><b>3</b><span>Pengunjung</span></li>
             <li><b>5</b><span>Arena lomba</span></li>
@@ -521,7 +529,14 @@ const CONTACTS = [
   { name: "Ka Aning", phone: "+62 896-9121-9728" },
   { name: "Ka Yoga",  phone: "+62 812-7886-7221" }
 ];
-const SOCIAL = { instagram: "marco.community", email: "smestabekasi@gmail.com" };
+const SOCIAL = { 
+  instagram: "marco.community", 
+  tiktok: "marc.community",
+  youtube: "SmestaBekasi",
+  youtubeUrl: "https://www.youtube.com/@SmestaBekasi",
+  tiktokUrl: "https://www.tiktok.com/@marc.community",
+  email: "smestabekasi@gmail.com" 
+};
 const REGISTRATION_URL = "https://smestajilid7.netlify.app";
 const EVENT_DATE = "2026-11-22T00:00:00+07:00";
 
@@ -544,6 +559,8 @@ function renderStatic(){
     `<div><dt>WhatsApp ${esc(c.name)}</dt><dd><a href="${esc(waUrl(c.phone))}" target="_blank">${esc(c.phone)}</a></dd></div>`).join("");
   $("contact").innerHTML = wa +
     `<div><dt>Instagram</dt><dd><a href="https://www.instagram.com/${esc(SOCIAL.instagram)}/" target="_blank">@${esc(SOCIAL.instagram)}</a></dd></div>` +
+    `<div><dt>TikTok</dt><dd><a href="${esc(SOCIAL.tiktokUrl)}" target="_blank">@${esc(SOCIAL.tiktok)}</a></dd></div>` +
+    `<div><dt>YouTube</dt><dd><a href="${esc(SOCIAL.youtubeUrl)}" target="_blank">@${esc(SOCIAL.youtube)}</a></dd></div>` +
     `<div><dt>Email</dt><dd><a href="mailto:${esc(SOCIAL.email)}">${esc(SOCIAL.email)}</a></dd></div>`;
 
   const days = Math.ceil((new Date(EVENT_DATE) - new Date()) / 86400000);
