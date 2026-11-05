@@ -38,7 +38,7 @@
     --accent:#5b8ee6;
     --btn:#386CAF;
     --hero:#254a78;
-    --hero-btn-ink:#ffffff; /* Tombol putih di mode gelap agar teksnya biru tua/jelas */
+    --hero-btn-ink:#ffffff;
     --good:#58c98a;
     color-scheme:dark;
   }
@@ -150,7 +150,7 @@ section{padding-block:clamp(2.5rem,6vw,4.5rem)}
 .legend em{font-style:normal;color:var(--muted);font-size:.9rem}
 
 /* tiket form */
-.ticket-box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.5rem;max-width:30rem;margin-top:1.5rem}
+.ticket-box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.5rem;max-width:32rem;margin-top:1.5rem}
 .ticket-box h4{font-size:1.3rem;margin-bottom:.25rem}
 .field{display:grid;gap:.35rem;margin-bottom:1rem}
 .field>label{font-size:.88rem;font-weight:600}
@@ -161,9 +161,13 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
 .qris-img{max-width:14rem;margin:0 auto 1rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;background:#fff}
 .qris-img img{width:100%;height:auto}
 
-.alert-box {background:#eaf2fb; color:#254a78; border:1px solid #bce0fd; padding:1rem; border-radius:6px; margin-bottom:1.5rem; font-weight:600; font-size:0.9rem;}
+/* Notifikasi & Panduan */
+.alert-box {background:#eaf2fb; color:#1f3f66; border:1px solid #bce0fd; padding:1.1rem; border-radius:6px; margin-bottom:1.5rem; font-size:0.92rem; line-height:1.5}
+.alert-box b {color:var(--accent)}
+.rules-card {background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1rem; margin-top:1.2rem}
+.rules-card h4 {font-size:1.1rem; margin-bottom:.4rem; color:var(--accent)}
+.rules-card ul {margin:0; padding-left:1.2rem; font-size:.9rem; display:grid; gap:.35rem}
 
-/* Kotak Sukses / Cadangan WhatsApp */
 .success-box {display:none; background:#eef9f2; border:1px solid #c8e6c9; padding:1.5rem; border-radius:8px; text-align:center; margin-top:1rem;}
 .success-box h4 {color:#1c7a49; font-size:1.4rem; margin-bottom:0.5rem;}
 .success-box p {font-size:0.9rem; color:#333; margin-bottom:1rem;}
@@ -179,7 +183,6 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
 .sponsor-item {text-align:left; width: 100%;}
 .sponsor-item p {font-family:var(--font-mono); font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.2rem; border-bottom:1px solid var(--line); padding-bottom:0.5rem; display:inline-block;}
 
-/* Pengaturan Ukuran Logo Agar Seragam */
 .sponsor-logos {
   display:flex; 
   flex-wrap:wrap; 
@@ -195,13 +198,11 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
   mix-blend-mode: multiply; 
 }
 
-/* Memperbaiki logo putih agar terlihat jelas di mode terang maupun gelap */
 .logo-putih {
   filter: invert(1) brightness(0.2); 
   mix-blend-mode: multiply !important;
 }
 
-/* Penyesuaian khusus untuk Mode Gelap (Dark Mode) agar logo sponsor 4 & 6 dan tombol terlihat jelas */
 @media (prefers-color-scheme: dark) {
   .sponsor-logos img {
     mix-blend-mode: normal !important;
@@ -210,8 +211,6 @@ input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75re
     border-radius: 6px;
     padding: 6px;
   }
-  
-  /* Tombol beli tiket penonton di hero agar kontras di mode gelap */
   .hero .btn-white {
     background-color: #ffffff !important;
     color: #121a24 !important;
@@ -250,7 +249,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       <a href="#event">Event</a>
       <a href="#daftar">Daftar Lomba</a>
       <a href="#tiket">Beli Tiket</a>
-      <a href="#denah">Denah</a>
+      <a href="#denah">Denah & Venue</a>
       <a href="#kontak">Kontak</a>
     </nav>
   </div>
@@ -312,17 +311,24 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
     <div class="wrap">
       <div class="sec-head">
         <h2>Tiket Penonton</h2>
-        <p>Beli tiket penonton SMESTA 7. Bayar menggunakan QRIS Statis dan konfirmasi via WhatsApp Ka Aning.</p>
+        <p>Beli tiket resmi penonton SMESTA 7. Tersedia pemesanan via formulir online maupun pembelian langsung (On The Spot) di lokasi.</p>
       </div>
       
       <div class="ticket-box">
-        <!-- PERINGATAN TIKET GO WET -->
+        <!-- PEMBERITAHUAN TIKET GO WET -->
         <div class="alert-box">
-          ⚠️ PERHATIAN: Membeli tiket pengunjung langsung di loket Go Wet! Waterpark TIDAK DAPAT digunakan untuk masuk ke arena perlombaan atau menonton lomba secara langsung. Tiket resmi penonton lomba HANYA dijual melalui formulir di bawah ini.
+          <p>🎟️ <b>Keuntungan Tiket Resmi Rp 85.000:</b><br>
+          Pembelian tiket melalui website / panitia resmi SMESTA 7 <b>sudah termasuk akses berenang dan izin memasuki arena perlombaan marching band</b>.</p>
+          <hr style="border:0; border-top:1px solid #bce0fd; margin:.7rem 0">
+          <p>⚠️ <b>Peringatan Tiket Reguler Go Wet!:</b><br>
+          Jika Anda membeli tiket langsung di loket kolam renang Go Wet! atau via tiket online Go Wet!, tiket tersebut <b>HANYA berlaku untuk wahana kolam renang dan TIDAK DAPAT digunakan untuk menonton atau memasuki arena perlombaan</b>.</p>
+          <hr style="border:0; border-top:1px solid #bce0fd; margin:.7rem 0">
+          <p>📍 <b>Pembelian Langsung (On The Spot / OTS):</b><br>
+          Bagi pengunjung yang belum sempat membeli online, tiket resmi lomba tetap bisa dibeli langsung di pintu masuk/meja registrasi panitia SMESTA 7 pada hari-H.</p>
         </div>
       
-        <h4>Formulir Pembelian Tiket</h4>
-        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">Harga per tiket adalah <b>Rp 85.000</b> dan formulir ini khusus untuk pembelian <b>1 tiket per orang</b>. Jika ingin membeli tiket lagi, silakan ulangi mengisi form.</p>
+        <h4>Formulir Pembelian Tiket Online</h4>
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">Harga tiket <b>Rp 85.000</b> (1 tiket per pengisian). Jika ingin membeli lebih dari 1 tiket, silakan ulangi mengisi form.</p>
         
         <form id="ticketForm">
           <div class="field">
@@ -387,7 +393,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
     <div class="wrap">
       <div class="sec-head">
         <h2>Daftar tim lomba</h2>
-        <p>Khusus untuk peserta lomba, buka tautan pendaftaran di bawah.</p>
+        <p>Khusus pendaftaran peserta unit marching band serta dokumen juklak lomba.</p>
       </div>
       <div class="reg">
         <div>
@@ -395,8 +401,10 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
           <p class="qr-cap">QR pendaftaran Peserta Lomba</p>
         </div>
         <div>
-          <div class="btn-row">
+          <div class="btn-row" style="display:flex; flex-wrap:wrap; gap:.75rem;">
             <a class="btn btn-red" id="regLink" href="#" target="_blank" rel="noopener">Buka formulir pendaftaran</a>
+            <!-- LINK FILE JUKLAK SUDAH DISESUAIKAN -->
+            <a class="btn btn-out" href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" rel="noopener">📄 Download Juklak &amp; Juknis (PDF)</a>
           </div>
           <div class="panitia" id="panitiaReg"></div>
         </div>
@@ -404,15 +412,25 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
     </div>
   </section>
 
-  <!-- DENAH -->
+  <!-- DENAH & VENUE -->
   <section id="denah" class="alt">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Denah lokasi</h2>
-        <p>Tata letak area lomba di Go Wet! Waterpark. Ketuk gambar untuk memperbesar.</p>
+        <h2>Denah &amp; Panduan Venue</h2>
+        <p>Tata letak area perlombaan dan ketentuan operasional di Go Wet! Waterpark.</p>
       </div>
       <div class="venue">
-        <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" src="denah lokasi.jpg" alt="Venue guide SMESTA 7" width="900" height="1345"></button>
+        <div>
+          <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" src="denah lokasi.jpg" alt="Venue guide SMESTA 7" width="900" height="1345"></button>
+          
+          <!-- TOMBOL GOOGLE MAPS -->
+          <div style="margin-top:1rem;">
+            <a class="btn btn-red" href="https://maps.app.goo.gl/gp3Cd1wvnh8mhHZM8" target="_blank" rel="noopener" style="width:100%;">
+              📍 Buka Rute Go Wet! Waterpark di Google Maps
+            </a>
+          </div>
+        </div>
+
         <div>
           <ol class="legend" aria-label="Keterangan denah">
             <li><b>1</b><span>FO<br><em>Front office dan meja panitia.</em></span></li>
@@ -421,6 +439,16 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
             <li><b>5</b><span>Arena lomba</span></li>
             <li><b>6</b><span>Tenan</span></li>
           </ol>
+
+          <!-- TATA TERTIB VENUE & TRANSIT ALAT -->
+          <div class="rules-card">
+            <h4>📋 Tata Tertib Venue &amp; Transit Alat</h4>
+            <ul>
+              <li><b>Transit Alat:</b> Jalur dan area bongkar muat alat kontingen mengikuti area <b>Load In &amp; Load Out</b> yang tertera pada denah lokasi.</li>
+              <li><b>Makanan dari Luar:</b> Dilarang keras membawa makanan dari luar ke dalam area Go Wet! Waterpark.</li>
+              <li><b>Ketentuan Minuman:</b> Pengunjung dan kontingen diperbolehkan membawa minuman sendiri dengan <b>wajib menggunakan tumbler</b> atau botol isi ulang (dilarang menggunakan botol plastik sekali pakai).</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -430,7 +458,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
   <section id="kontak">
     <div class="wrap">
       <div class="sec-head" style="margin-bottom:0.5rem;">
-        <h2>Kontak & Sponsor</h2>
+        <h2>Kontak &amp; Sponsor</h2>
       </div>
       
       <div class="sponsors" style="margin-bottom:3rem; padding-bottom:2rem; border-bottom:1px solid var(--line);">
@@ -545,7 +573,6 @@ formTiket.addEventListener("submit", async (e) => {
   btnSubmitTiket.textContent = "Mengunggah data... Mohon tunggu sebentar";
   btnSubmitTiket.disabled = true;
 
-  // Membaca file sebagai Base64
   const reader = new FileReader();
   reader.onload = async function() {
     const base64Data = reader.result;
@@ -563,7 +590,7 @@ formTiket.addEventListener("submit", async (e) => {
     formData.append("fileData", base64Data);
     formData.append("fileName", file.name);
 
-    // URL APPS SCRIPT TERBARU ANDA
+    // URL APPS SCRIPT TERBARU
     const scriptURL = "https://script.google.com/macros/s/AKfycbylTilqil7caucGkGi7rhqyob3fDdKp30NsSsjyTu1jlGOLhR3OndAy5NgrEfbUFQod/exec";
 
     try {
@@ -580,15 +607,11 @@ formTiket.addEventListener("submit", async (e) => {
     const WA_KA_ANING = "+6289691219728";
     const textMsg = `Halo Ka Aning, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
     
-    // Coba buka WhatsApp secara otomatis (pop-up)
     const finalWaUrl = waUrl(WA_KA_ANING, textMsg);
     window.open(finalWaUrl, "_blank");
     
-    // Tampilkan kotak sukses & tombol manual di dalam web jika pop-up diblokir
     $("whatsappBtn").href = finalWaUrl;
     $("successBox").style.display = "block";
-    
-    // Sembunyikan form agar pembeli tahu datanya sudah terkirim dan tidak isi ulang
     formTiket.style.display = "none";
   };
   
