@@ -98,10 +98,10 @@ a{color:inherit}
 .hero h1{font-weight:900;font-size:clamp(4.2rem,21vw,12rem);line-height:.86;letter-spacing:.005em}
 .hero h1 .seven{color:var(--hero-ink);-webkit-text-fill-color:transparent;-webkit-text-stroke:clamp(2px,.7vw,5px) var(--hero-ink);margin-left:.04em}
 .tagline{margin-top:.9rem;font-family:var(--font-mono);font-size:clamp(.78rem,2.8vw,1rem);text-transform:uppercase;letter-spacing:.14em}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:1rem 2rem;margin:2rem 0 0;padding:1.25rem 0 0;border-top:2px solid rgba(255,255,255,.55)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:1rem 2rem;margin:2rem 0 0;padding:1.25rem 0 0;border-top:2px solid rgba(255,255,255,.55)}
 .facts div{min-width:0}
 .facts dt{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.85}
-.facts dd{margin:.2rem 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.05;text-transform:uppercase}
+.facts dd{margin:.2rem 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,4.5vw,1.9rem);line-height:1.05;text-transform:uppercase}
 .count{display:inline-block;margin-top:.5rem;padding:.2rem .6rem;border:1px solid rgba(255,255,255,.7);border-radius:99px;font-family:var(--font-mono);font-size:.78rem}
 .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
 
@@ -262,7 +262,8 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       <h1>Smesta <span class="seven">7</span></h1>
       <p class="tagline">Sound of Music Ensemble Talent</p>
       <dl class="facts">
-        <div><dt>Tanggal</dt><dd>Minggu, 22 November 2026</dd><span class="count mono" id="countdown"></span></div>
+        <div><dt>Hari H Event</dt><dd>Minggu, 22 Nov 2026</dd><span class="count mono" id="countdown"></span></div>
+        <div><dt>Technical Meeting</dt><dd>05 Nov 2026 &middot; 13:00</dd><span class="count mono" id="countdownTM"></span></div>
         <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
         <div><dt>Kategori</dt><dd>Kindergarten &middot; Junior &middot; Senior</dd></div>
       </dl>
@@ -285,7 +286,8 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       <div class="event-grid">
         <dl class="info-list">
           <div><dt>Event</dt><dd>SMESTA 7, Sound of Music Ensemble Talent</dd></div>
-          <div><dt>Tanggal</dt><dd>Minggu, 22 November 2026</dd></div>
+          <div><dt>Technical Meeting</dt><dd>Minggu, 05 November 2026 &middot; Pukul 13.00 WIB</dd></div>
+          <div><dt>Hari H Lomba</dt><dd>Minggu, 22 November 2026</dd></div>
           <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
           <div><dt>Penyelenggara</dt><dd>IDCA Kabupaten Bekasi</dd></div>
         </dl>
@@ -539,11 +541,37 @@ const SOCIAL = {
 };
 const REGISTRATION_URL = "https://smestajilid7.netlify.app";
 const EVENT_DATE = "2026-11-22T00:00:00+07:00";
+const TM_DATE = "2026-11-05T13:00:00+07:00";
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const digits = p => p.replace(/\D/g, "");
 const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
+
+function updateCountdowns() {
+  const now = new Date();
+  
+  // Hitung countdown Event Lomba
+  const diffEvent = new Date(EVENT_DATE) - now;
+  const daysEvent = Math.ceil(diffEvent / 86400000);
+  $("countdown").textContent = daysEvent > 1 ? daysEvent + " hari lagi" : daysEvent === 1 ? "Besok" : daysEvent === 0 ? "Hari ini" : "Selesai";
+
+  // Hitung countdown Technical Meeting secara real-time
+  const diffTM = new Date(TM_DATE) - now;
+  if (diffTM <= 0) {
+    $("countdownTM").textContent = "Sedang/Sudah Berlangsung";
+  } else {
+    const daysTM = Math.floor(diffTM / (1000 * 60 * 60 * 24));
+    const hoursTM = Math.floor((diffTM % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minsTM = Math.floor((diffTM % (1000 * 60 * 60)) / (1000 * 60));
+    
+    if (daysTM > 0) {
+      $("countdownTM").textContent = `${daysTM} hari ${hoursTM} jam lagi`;
+    } else {
+      $("countdownTM").textContent = `${hoursTM} jam ${minsTM} mnt lagi`;
+    }
+  }
+}
 
 function renderStatic(){
   $("year").textContent = new Date().getFullYear();
@@ -563,8 +591,8 @@ function renderStatic(){
     `<div><dt>YouTube</dt><dd><a href="${esc(SOCIAL.youtubeUrl)}" target="_blank">@${esc(SOCIAL.youtube)}</a></dd></div>` +
     `<div><dt>Email</dt><dd><a href="mailto:${esc(SOCIAL.email)}">${esc(SOCIAL.email)}</a></dd></div>`;
 
-  const days = Math.ceil((new Date(EVENT_DATE) - new Date()) / 86400000);
-  $("countdown").textContent = days > 1 ? days + " hari lagi" : days === 1 ? "Besok" : days === 0 ? "Hari ini" : "Sudah berlalu";
+  updateCountdowns();
+  setInterval(updateCountdowns, 60000); // Perbarui perhitungan tiap menit
 }
 
 /* ==========================================================
