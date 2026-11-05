@@ -263,7 +263,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       <p class="tagline">Sound of Music Ensemble Talent</p>
       <dl class="facts">
         <div><dt>Hari H Event</dt><dd>Minggu, 22 Nov 2026</dd><span class="count mono" id="countdown"></span></div>
-        <div><dt>Technical Meeting</dt><dd>05 Nov 2026 &middot; 13:00</dd><span class="count mono" id="countdownTM"></span></div>
+        <div><dt>Technical Meeting</dt><dd>08 Nov 2026 &middot; 13:00</dd><span class="count mono" id="countdownTM"></span></div>
         <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
         <div><dt>Kategori</dt><dd>Kindergarten &middot; Junior &middot; Senior</dd></div>
       </dl>
@@ -286,7 +286,7 @@ dialog.big{width:min(46rem,calc(100% - 2rem))}
       <div class="event-grid">
         <dl class="info-list">
           <div><dt>Event</dt><dd>SMESTA 7, Sound of Music Ensemble Talent</dd></div>
-          <div><dt>Technical Meeting</dt><dd>Minggu, 05 November 2026 &middot; Pukul 13.00 WIB</dd></div>
+          <div><dt>Technical Meeting</dt><dd>Minggu, 08 November 2026 &middot; Pukul 13.00 WIB s/d Selesai</dd></div>
           <div><dt>Hari H Lomba</dt><dd>Minggu, 22 November 2026</dd></div>
           <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
           <div><dt>Penyelenggara</dt><dd>IDCA Kabupaten Bekasi</dd></div>
@@ -541,7 +541,7 @@ const SOCIAL = {
 };
 const REGISTRATION_URL = "https://smestajilid7.netlify.app";
 const EVENT_DATE = "2026-11-22T00:00:00+07:00";
-const TM_DATE = "2026-11-05T13:00:00+07:00";
+const TM_DATE = "2026-11-08T13:00:00+07:00";
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -556,7 +556,7 @@ function updateCountdowns() {
   const daysEvent = Math.ceil(diffEvent / 86400000);
   $("countdown").textContent = daysEvent > 1 ? daysEvent + " hari lagi" : daysEvent === 1 ? "Besok" : daysEvent === 0 ? "Hari ini" : "Selesai";
 
-  // Hitung countdown Technical Meeting secara real-time
+  // Hitung countdown Technical Meeting
   const diffTM = new Date(TM_DATE) - now;
   if (diffTM <= 0) {
     $("countdownTM").textContent = "Sedang/Sudah Berlangsung";
@@ -592,7 +592,7 @@ function renderStatic(){
     `<div><dt>Email</dt><dd><a href="mailto:${esc(SOCIAL.email)}">${esc(SOCIAL.email)}</a></dd></div>`;
 
   updateCountdowns();
-  setInterval(updateCountdowns, 60000); // Perbarui perhitungan tiap menit
+  setInterval(updateCountdowns, 60000);
 }
 
 /* ==========================================================
