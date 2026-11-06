@@ -1,678 +1,762 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SMESTA 7 - IDCA Kabupaten Bekasi</title>
-<meta name="description" content="SMESTA 7, lomba marching band IDCA Kabupaten Bekasi, 22 November 2026 di Go Wet! Waterpark.">
-<link id="favicon" rel="icon" type="image/jpeg" href="logo idca.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#f4f7fb;
-  --fg:#121a24;
-  --muted:#54657b;
-  --surface:#ffffff;
-  --line:#d3e1f2;
-  --accent:#386CAF;      
-  --btn:#386CAF;         
-  --btn-ink:#ffffff;
-  --hero:#386CAF;
-  --hero-ink:#ffffff;
-  --hero-btn:#ffffff;
-  --hero-btn-ink:#254a78;
-  --good:#1c7a49;
-  --font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --font-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0b1118;
-    --fg:#e8f0fe;
-    --muted:#93a8c4;
-    --surface:#152233;
-    --line:#223650;
-    --accent:#5b8ee6;
-    --btn:#386CAF;
-    --hero:#254a78;
-    --hero-btn-ink:#ffffff;
-    --good:#58c98a;
-    color-scheme:dark;
-  }
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMESTA 7 - IDCA Kabupaten Bekasi</title>
+  <meta name="description" content="SMESTA 7, Sound of Music Ensemble Talent. Lomba marching band IDCA Kabupaten Bekasi, 22 November 2026 di Go Wet! Waterpark.">
+  <link id="favicon" rel="icon" type="image/jpeg" href="logo idca.jpg">
 
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:1rem}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 var(--font-body);-webkit-text-size-adjust:100%}
-h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.01em;line-height:1;margin:0;text-wrap:balance}
-p{margin:0}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.hero :focus-visible{outline-color:#fff}
-.wrap{max-width:68rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-
-/* tombol */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.75rem;padding:.55rem 1.15rem;border:2px solid transparent;border-radius:4px;font:600 .95rem/1.2 var(--font-body);text-decoration:none;text-align:center;cursor:pointer;transition:transform .12s ease,filter .12s ease,background-color .12s ease}
-.btn:active{transform:translateY(1px)}
-.btn-red{background:var(--btn);color:var(--btn-ink)}
-.btn-red:hover{filter:brightness(1.1)}
-.btn-white{background:var(--hero-btn);color:var(--hero-btn-ink)}
-.btn-white:hover{filter:brightness(.94)}
-.btn-ghost{background:transparent;color:inherit;border-color:currentColor}
-.btn-ghost:hover{background:rgba(255,255,255,.12)}
-.btn-out{background:transparent;color:var(--fg);border-color:var(--line)}
-.btn-out:hover{border-color:var(--accent);color:var(--accent)}
-.btn[disabled],.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;pointer-events:none}
-.btn-sm{min-height:2.25rem;padding:.3rem .75rem;font-size:.85rem}
-
-/* header + hero */
-.topbar{background:var(--surface);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:.75rem}
-.brand{display:block;line-height:0}
-.brand img{
-  height:3.1rem;
-  width:auto;
-  max-width:100%;
-  mix-blend-mode: multiply;
-}
-@media (prefers-color-scheme: dark) {
-  .brand img {
-    mix-blend-mode: normal;
-    background-color: #ffffff;
-    border-radius: 4px;
-    padding: 2px;
-  }
-}
-
-.nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.92rem;font-weight:500}
-.nav a{text-decoration:none;padding:.4rem 0;border-bottom:2px solid transparent}
-.nav a:hover{border-color:var(--accent)}
-
-.hero{background:var(--hero);color:var(--hero-ink)}
-.hero-body{padding-block:clamp(2.25rem,6vw,4.5rem) clamp(1.75rem,4vw,3rem)}
-.eyebrow{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.9;margin-bottom:1rem}
-.hero h1{font-weight:900;font-size:clamp(4.2rem,21vw,12rem);line-height:.86;letter-spacing:.005em}
-.hero h1 .seven{color:var(--hero-ink);-webkit-text-fill-color:transparent;-webkit-text-stroke:clamp(2px,.7vw,5px) var(--hero-ink);margin-left:.04em}
-.tagline{margin-top:.9rem;font-family:var(--font-mono);font-size:clamp(.78rem,2.8vw,1rem);text-transform:uppercase;letter-spacing:.14em}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:1rem 2rem;margin:2rem 0 0;padding:1.25rem 0 0;border-top:2px solid rgba(255,255,255,.55)}
-.facts div{min-width:0}
-.facts dt{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.85}
-.facts dd{margin:.2rem 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,4.5vw,1.9rem);line-height:1.05;text-transform:uppercase}
-.count{display:inline-block;margin-top:.5rem;padding:.2rem .6rem;border:1px solid rgba(255,255,255,.7);border-radius:99px;font-family:var(--font-mono);font-size:.78rem}
-.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
-
-/* seksi */
-section{padding-block:clamp(2.5rem,6vw,4.5rem)}
-.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:.75rem 2rem;margin-bottom:1.75rem}
-.sec-head h2{font-size:clamp(2rem,6vw,3.25rem);font-weight:800}
-.sec-head h2::after{content:"";display:block;width:3.2rem;height:.3rem;margin-top:.55rem;background:var(--accent)}
-.sec-head p{max-width:30rem;color:var(--muted)}
-.alt{background:var(--surface);border-block:1px solid var(--line)}
-
-/* event */
-.event-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem}
-.info-list{margin:0;display:grid;gap:0}
-.info-list div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.75rem;padding:.8rem 0;border-top:1px solid var(--line)}
-.info-list div:last-child{border-bottom:1px solid var(--line)}
-.info-list dt{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:.2rem}
-.info-list dd{margin:0;font-weight:600;overflow-wrap:anywhere}
-.cats{display:grid;gap:.75rem;align-content:start}
-.cat{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--line);border-radius:6px}
-.alt .cat{background:var(--bg)}
-.cat b{font-family:var(--font-display);font-weight:800;font-size:1.7rem;text-transform:uppercase;line-height:1}
-
-.prize-list {margin:0; padding-left:1.2rem; display:grid; gap:0.5rem; font-size:0.95rem;}
-.prize-list li b {color:var(--accent);}
-
-/* pendaftaran & tiket */
-.reg{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:start}
-.qr{padding:.75rem;background:#fff;border:1px solid var(--line);border-radius:6px;width:100%;max-width:15rem}
-.qr img{display:block;width:100%;height:auto;image-rendering:pixelated}
-.qr-cap{margin-top:.5rem;font-size:.82rem;color:var(--muted)}
-.reg h3{font-size:1.7rem;margin-bottom:.6rem}
-.panitia{margin-top:1.5rem;display:grid;gap:.5rem;max-width:34rem}
-.person{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;justify-content:space-between;padding:.7rem .9rem;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
-.person strong{display:block;line-height:1.2}
-.person span{font-family:var(--font-mono);font-size:.85rem;color:var(--muted)}
-
-/* denah */
-.venue{display:grid;grid-template-columns:minmax(0,24rem) minmax(0,1fr);gap:2rem;align-items:start}
-.venue-img{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#000;cursor:zoom-in}
-.venue-img img{display:block;width:100%;height:auto}
-.legend{margin:0;padding:0;list-style:none;display:grid;gap:0}
-.legend li{display:flex;gap:1rem;align-items:baseline;padding:.65rem 0;border-top:1px solid var(--line)}
-.legend li:last-child{border-bottom:1px solid var(--line)}
-.legend b{flex:none;width:1.8rem;font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--accent);line-height:1}
-.legend em{font-style:normal;color:var(--muted);font-size:.9rem}
-
-/* tiket form */
-.ticket-box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.5rem;max-width:32rem;margin-top:1.5rem}
-.ticket-box h4{font-size:1.3rem;margin-bottom:.25rem}
-.field{display:grid;gap:.35rem;margin-bottom:1rem}
-.field>label{font-size:.88rem;font-weight:600}
-input[type=text],input[type=tel],input[type=number]{width:100%;min-height:2.75rem;padding:.5rem .7rem;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);font:inherit}
-.sum{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;margin-bottom:1rem;border-block:2px solid var(--fg)}
-.sum .t{font-family:var(--font-display);font-weight:800;font-size:2.2rem;line-height:1;color:var(--accent)}
-.qris-pay{text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px dashed var(--line)}
-.qris-img{max-width:14rem;margin:0 auto 1rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;background:#fff}
-.qris-img img{width:100%;height:auto}
-
-/* Notifikasi & Panduan */
-.alert-box {background:#eaf2fb; color:#1f3f66; border:1px solid #bce0fd; padding:1.1rem; border-radius:6px; margin-bottom:1.5rem; font-size:0.92rem; line-height:1.5}
-.alert-box b {color:var(--accent)}
-.rules-card {background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1rem; margin-top:1.2rem}
-.rules-card h4 {font-size:1.1rem; margin-bottom:.4rem; color:var(--accent)}
-.rules-card ul {margin:0; padding-left:1.2rem; font-size:.9rem; display:grid; gap:.35rem}
-
-.success-box {display:none; background:#eef9f2; border:1px solid #c8e6c9; padding:1.5rem; border-radius:8px; text-align:center; margin-top:1rem;}
-.success-box h4 {color:#1c7a49; font-size:1.4rem; margin-bottom:0.5rem;}
-.success-box p {font-size:0.9rem; color:#333; margin-bottom:1rem;}
-
-/* kontak & sponsor */
-.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem 1.5rem;margin:0}
-.contact div{min-width:0;padding:1rem 0;border-top:1px solid var(--line)}
-.contact dt{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.contact dd{margin:.25rem 0 0;font-weight:600;overflow-wrap:anywhere}
-.contact a{text-decoration-color:var(--accent);text-underline-offset:3px}
-
-.sponsors {display:flex; flex-direction:column; align-items:flex-start; gap:2.5rem; margin-top:1rem;}
-.sponsor-item {text-align:left; width: 100%;}
-.sponsor-item p {font-family:var(--font-mono); font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.2rem; border-bottom:1px solid var(--line); padding-bottom:0.5rem; display:inline-block;}
-
-.sponsor-logos {
-  display:flex; 
-  flex-wrap:wrap; 
-  gap:1.5rem 2.5rem; 
-  align-items:center;
-  justify-content:flex-start;
-}
-.sponsor-logos img {
-  height: 65px;      
-  width: auto;
-  max-width: 180px;  
-  object-fit: contain; 
-  mix-blend-mode: multiply; 
-}
-
-.logo-putih {
-  filter: invert(1) brightness(0.2); 
-  mix-blend-mode: multiply !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .sponsor-logos img {
-    mix-blend-mode: normal !important;
-    filter: none !important;
-    background-color: #ffffff;
-    border-radius: 6px;
-    padding: 6px;
-  }
-  .hero .btn-white {
-    background-color: #ffffff !important;
-    color: #121a24 !important;
-  }
-  .hero .btn-white:hover {
-    background-color: #e8f0fe !important;
-  }
-}
-
-footer{background:var(--hero);color:var(--hero-ink);padding-block:1.5rem;font-size:.88rem}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
-
-/* dialog */
-dialog{width:min(34rem,calc(100% - 2rem));max-height:calc(100% - 2rem);overflow:auto;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
-dialog::backdrop{background:rgba(11,17,24,.65)}
-dialog.big{width:min(46rem,calc(100% - 2rem))}
-.dlg{padding:1.25rem}
-.dlg-head{display:flex;justify-content:space-between;gap:1rem;align-items:start;margin-bottom:1rem}
-.dlg-head h3{font-size:1.9rem;font-weight:800}
-.dlg-head p{font-size:.9rem;color:var(--muted);margin-top:.25rem}
-.x{flex:none;width:2.5rem;height:2.5rem;border:1px solid var(--line);border-radius:4px;background:transparent;color:inherit;font-size:1.3rem;cursor:pointer}
-.zoom{display:block;width:100%;height:auto;border-radius:4px}
-
-@media (max-width:760px){
-  .event-grid,.reg,.venue{grid-template-columns:minmax(0,1fr)}
-  .venue-img{max-width:26rem}
-}
-</style>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#386CAF',
+              dark: '#254a78',
+              light: '#5384c7',
+              subtle: '#eef4fb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .sponsor-logo {
+      height: 55px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .logo-putih {
+      filter: invert(1) brightness(0.2);
+    }
+    @media (prefers-color-scheme: dark) {
+      .sponsor-logo {
+        mix-blend-mode: normal !important;
+        filter: none !important;
+        background-color: #ffffff;
+        border-radius: 6px;
+        padding: 6px;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
-<div class="topbar">
-  <div class="wrap">
-    <a class="brand" href="#beranda" aria-label="IDCA Kabupaten Bekasi, ke awal halaman"><img id="logoImg" src="logo idca.jpg" alt="Logo IDCA Indonesia Drum Corps Association Kabupaten Bekasi, Jawa Barat"></a>
-    <nav class="nav" aria-label="Menu utama">
-      <a href="#event">Event</a>
-      <a href="#daftar">Daftar Lomba</a>
-      <a href="#tiket">Beli Tiket</a>
-      <a href="#denah">Denah & Venue</a>
-      <a href="#kontak">Kontak</a>
-    </nav>
-  </div>
-</div>
-
-<header class="hero" id="beranda">
-  <div class="wrap">
-    <div class="hero-body">
-      <p class="eyebrow">Lomba marching band &middot; IDCA Kabupaten Bekasi</p>
-      <h1>Smesta <span class="seven">7</span></h1>
-      <p class="tagline">Sound of Music Ensemble Talent</p>
-      <dl class="facts">
-        <div><dt>Hari H Event</dt><dd>Minggu, 22 Nov 2026</dd><span class="count mono" id="countdown"></span></div>
-        <div><dt>Technical Meeting</dt><dd>08 Nov 2026 &middot; 13:00</dd><span class="count mono" id="countdownTM"></span></div>
-        <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
-        <div><dt>Kategori</dt><dd>Kindergarten &middot; Junior &middot; Senior</dd></div>
-      </dl>
-      <div class="cta">
-        <a class="btn btn-white" href="#tiket">Beli Tiket Penonton</a>
-        <a class="btn btn-ghost" href="#daftar">Daftarkan Tim</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main>
-  <!-- EVENT -->
-  <section id="event">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Tentang event</h2>
-        <p>SMESTA 7 diselenggarakan oleh IDCA Kabupaten Bekasi. Tiga kelas lomba berjalan di arena yang sama.</p>
-      </div>
-      <div class="event-grid">
-        <dl class="info-list">
-          <div><dt>Event</dt><dd>SMESTA 7, Sound of Music Ensemble Talent</dd></div>
-          <div><dt>Technical Meeting</dt><dd>Minggu, 08 November 2026 &middot; Pukul 13.00 WIB s/d Selesai</dd></div>
-          <div><dt>Hari H Lomba</dt><dd>Minggu, 22 November 2026</dd></div>
-          <div><dt>Lokasi</dt><dd>Go Wet! Waterpark</dd></div>
-          <div><dt>Penyelenggara</dt><dd>IDCA Kabupaten Bekasi</dd></div>
-        </dl>
-        <div class="cats">
-          <h3 style="font-size:1.2rem; color:var(--muted); letter-spacing:.06em; margin-bottom:0.5rem;">Penghargaan / Piala</h3>
-          <ul class="prize-list">
-            <li><b>JUARA I:</b> Piala Bergilir Gubernur Jawa Barat &amp; Piala Bupati Kabupaten Bekasi</li>
-            <li><b>JUARA II:</b> Piala Dispora Kabupaten Bekasi</li>
-            <li><b>JUARA III:</b> Piala Kormi Kabupaten Bekasi</li>
-          </ul>
-          
-          <h3 style="font-size:1.2rem; color:var(--muted); letter-spacing:.06em; margin-top:1.5rem; margin-bottom:0.5rem;">Kategori lomba</h3>
-          <div class="cat"><b>Kindergarten Class</b></div>
-          <div class="cat"><b>Junior Class</b></div>
-          <div class="cat"><b>Senior Class</b></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIKET -->
-  <section id="tiket" class="alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Tiket Penonton</h2>
-        <p>Beli tiket resmi penonton SMESTA 7. Tersedia pemesanan via formulir online maupun pembelian langsung (On The Spot) di lokasi.</p>
-      </div>
-      
-      <div class="ticket-box">
-        <!-- PEMBERITAHUAN TIKET GO WET -->
-        <div class="alert-box">
-          <p>🎟️ <b>Keuntungan Tiket Resmi Rp 85.000:</b><br>
-          Pembelian tiket melalui website / panitia resmi SMESTA 7 <b>sudah termasuk akses berenang dan izin memasuki arena perlombaan marching band</b>.</p>
-          <hr style="border:0; border-top:1px solid #bce0fd; margin:.7rem 0">
-          <p>⚠️ <b>Peringatan Tiket Reguler Go Wet!:</b><br>
-          Jika Anda membeli tiket langsung di loket kolam renang Go Wet! atau via tiket online Go Wet!, tiket tersebut <b>HANYA berlaku untuk wahana kolam renang dan TIDAK DAPAT digunakan untuk menonton atau memasuki arena perlombaan</b>.</p>
-          <hr style="border:0; border-top:1px solid #bce0fd; margin:.7rem 0">
-          <p>📍 <b>Pembelian Langsung (On The Spot / OTS):</b><br>
-          Bagi pengunjung yang belum sempat membeli online, tiket resmi lomba tetap bisa dibeli langsung di pintu masuk/meja registrasi panitia SMESTA 7 pada hari-H.</p>
-        </div>
-      
-        <h4>Formulir Pembelian Tiket Online</h4>
-        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">Harga tiket <b>Rp 85.000</b> (1 tiket per pengisian). Jika ingin membeli lebih dari 1 tiket, silakan ulangi mengisi form.</p>
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
         
-        <form id="ticketForm">
-          <div class="field">
-            <label for="namaPembeli">1. Nama Lengkap</label>
-            <input type="text" id="namaPembeli" placeholder="Sesuai identitas" required>
+        <!-- Logo Brand -->
+        <a href="#beranda" class="flex items-center gap-3">
+          <img src="logo idca.jpg" alt="Logo IDCA Kabupaten Bekasi" class="h-12 w-auto object-contain rounded-lg">
+          <div>
+            <span class="block text-lg font-black text-slate-900 tracking-tight uppercase leading-none">SMESTA 7</span>
+            <span class="text-xs text-brand font-semibold tracking-wider uppercase">IDCA Kabupaten Bekasi</span>
           </div>
-          <div class="field">
-            <label for="waPembeli">2. Nomor WhatsApp</label>
-            <input type="tel" id="waPembeli" placeholder="08xxxxxxxxxx" required>
-          </div>
-          <div class="field">
-            <label for="unitPembeli">3. Nama Unit Band / Sekolah</label>
-            <input type="text" id="unitPembeli" required>
-          </div>
-          <div class="field">
-            <label for="jumlahTiket">4. Jumlah Tiket</label>
-            <input type="number" id="jumlahTiket" value="1" readonly style="background:#f4f4f4; cursor:not-allowed; color:#666;">
-          </div>
-          <div class="field">
-            <label>5. Metode Pembayaran</label>
-            <input type="text" value="QRIS Statis" readonly style="background:#f4f4f4; cursor:not-allowed; color:#666;">
-            <p style="font-size:0.75rem; color:var(--muted); margin-top:0.35rem;">Jika ingin menggunakan metode pembayaran lain, silakan hubungi Panitia di menu Kontak.</p>
-          </div>
+        </a>
 
-          <div class="qris-pay" id="qrisSection">
-            <p style="margin-bottom: 0.5rem; font-weight: 600; text-align:center;">Scan QRIS Untuk Membayar Rp 85.000</p>
-            <div class="qris-img">
-              <img src="qris-idca.jpg" alt="QRIS IDCA Pembayaran Tiket" id="imgQris" style="width: 100%; border-radius: 8px;">
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-7 font-medium text-sm text-slate-600">
+          <a href="#event" class="hover:text-brand transition-colors">Tentang Event</a>
+          <a href="#countdown" class="hover:text-brand transition-colors">Jadwal</a>
+          <a href="#tiket" class="hover:text-brand transition-colors">Tiket Penonton</a>
+          <a href="#daftar" class="hover:text-brand transition-colors">Pendaftaran Tim</a>
+          <a href="#denah" class="hover:text-brand transition-colors">Denah & Venue</a>
+          <a href="#kontak" class="hover:text-brand transition-colors">Kontak</a>
+        </nav>
+
+        <!-- CTA Action -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-brand transition-colors flex items-center gap-2">
+            <i class="fa-solid fa-file-pdf text-brand"></i> Juklak
+          </a>
+          <a href="#tiket" class="px-5 py-2.5 rounded-xl bg-brand hover:bg-brand-dark text-white text-sm font-semibold shadow-md shadow-brand/20 transition-all transform active:scale-95">
+            Beli Tiket
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative bg-gradient-to-b from-brand-subtle/70 via-white to-slate-50 pt-16 pb-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-xs font-bold tracking-wide uppercase mb-6">
+          <i class="fa-solid fa-trophy text-xs"></i> Kejuaraan Marching Band Resmi IDCA Kab. Bekasi
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
+          SMESTA <span class="text-brand">7</span>
+        </h1>
+        <p class="mt-2 text-sm sm:text-base font-bold uppercase tracking-widest text-slate-500">
+          Sound of Music Ensemble Talent
+        </p>
+
+        <p class="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+          Minggu, 22 November 2026 di <b>Go Wet! Waterpark Grand Wisata</b>. Arena unjuk kebolehan, musikalitas, dan sportivitas ensemble terbaik.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="#tiket" class="px-7 py-3.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold shadow-lg shadow-brand/25 transition-all transform active:scale-95 flex items-center gap-2">
+            <i class="fa-solid fa-ticket"></i> Beli Tiket Penonton
+          </a>
+          <a href="https://smestajilid7.netlify.app" target="_blank" rel="noopener" class="px-7 py-3.5 rounded-xl bg-white border border-slate-200 hover:border-brand text-slate-700 font-semibold shadow-sm transition-all flex items-center gap-2">
+            <i class="fa-solid fa-users text-brand"></i> Daftarkan Tim
+          </a>
+        </div>
+
+        <!-- DIVIDER BADGES (KATEGORI KELAS) -->
+        <div id="kategori" class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto">
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center justify-center gap-3">
+            <i class="fa-solid fa-child text-brand text-lg"></i>
+            <span class="text-sm font-bold text-slate-800 uppercase">Kindergarten Class</span>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center justify-center gap-3">
+            <i class="fa-solid fa-graduation-cap text-brand text-lg"></i>
+            <span class="text-sm font-bold text-slate-800 uppercase">Junior Class</span>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center justify-center gap-3">
+            <i class="fa-solid fa-award text-brand text-lg"></i>
+            <span class="text-sm font-bold text-slate-800 uppercase">Senior Class</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COUNTDOWN SECTION -->
+    <section id="countdown" class="py-14 bg-white border-y border-slate-100">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        
+        <!-- Countdown Hari H -->
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Hitung Mundur</h2>
+        <p class="text-xl sm:text-2xl font-black text-slate-900 mb-6">Menuju Pelaksanaan SMESTA 7 (22 Nov 2026)</p>
+
+        <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-2xl mx-auto mb-10">
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+            <span id="days" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
+            <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Hari</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+            <span id="hours" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
+            <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Jam</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+            <span id="minutes" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
+            <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Menit</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+            <span id="seconds" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
+            <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Detik</span>
+          </div>
+        </div>
+
+        <!-- Box Banner Technical Meeting -->
+        <div class="max-w-xl mx-auto p-4 rounded-xl bg-brand-subtle border border-brand/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center text-lg flex-shrink-0">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-brand uppercase tracking-wider">Technical Meeting</p>
+              <p class="text-sm font-extrabold text-slate-800">Minggu, 08 Nov 2026 &middot; 13:00 WIB s/d Selesai</p>
+            </div>
+          </div>
+          <span id="countdownTM" class="px-3 py-1.5 rounded-lg bg-white border border-brand/30 text-xs font-bold text-brand whitespace-nowrap">
+            Memuat...
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TENTANG EVENT & PIALA -->
+    <section id="event" class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Informasi Kompetisi</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Perebutan Trofi Bergengsi</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          <!-- Rincian Acara -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+            <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-brand"></i> Detail Pelaksanaan
+            </h3>
+            <dl class="divide-y divide-slate-100 text-sm">
+              <div class="py-3.5 flex justify-between gap-4">
+                <dt class="text-slate-500 font-medium">Nama Event</dt>
+                <dd class="font-bold text-slate-900 text-right">SMESTA 7 (Sound of Music Ensemble Talent)</dd>
+              </div>
+              <div class="py-3.5 flex justify-between gap-4">
+                <dt class="text-slate-500 font-medium">Hari & Tanggal Lomba</dt>
+                <dd class="font-bold text-slate-900 text-right">Minggu, 22 November 2026</dd>
+              </div>
+              <div class="py-3.5 flex justify-between gap-4">
+                <dt class="text-slate-500 font-medium">Lokasi Venue</dt>
+                <dd class="font-bold text-slate-900 text-right">Go! Wet Waterpark Grand Wisata Bekasi</dd>
+              </div>
+              <div class="py-3.5 flex justify-between gap-4">
+                <dt class="text-slate-500 font-medium">Penyelenggara</dt>
+                <dd class="font-bold text-slate-900 text-right">IDCA Kabupaten Bekasi</dd>
+              </div>
+            </dl>
+            <div class="mt-6 pt-4 border-t border-slate-100">
+              <a href="https://maps.app.goo.gl/gp3Cd1wvnh8mhHZM8" target="_blank" rel="noopener" class="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot"></i> Buka Petunjuk Arah Google Maps
+              </a>
             </div>
           </div>
 
-          <div class="field" style="margin-top:1.5rem;">
-            <label for="buktiTransfer">6. Upload Bukti Transfer</label>
-            <input type="file" id="buktiTransfer" accept="image/*" style="padding:0.4rem;" required>
+          <!-- Rincian Piala -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-trophy text-amber-500"></i> Penghargaan & Trofi Kejuaraan
+            </h3>
+            <p class="text-xs text-slate-500 mb-6">Piala resmi yang diperebutkan oleh unit-unit terbaik se-Jawa Barat:</p>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-200/70 flex items-start gap-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500 text-white font-black text-sm flex items-center justify-center flex-shrink-0">1</span>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">JUARA I</h4>
+                  <p class="text-xs text-slate-600 mt-0.5">Piala Bergilir Gubernur Jawa Barat & Piala Bupati Kabupaten Bekasi</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span class="w-8 h-8 rounded-lg bg-slate-400 text-white font-black text-sm flex items-center justify-center flex-shrink-0">2</span>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">JUARA II</h4>
+                  <p class="text-xs text-slate-600 mt-0.5">Piala Dispora Kabupaten Bekasi</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-amber-900/5 border border-amber-900/10 flex items-start gap-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-700 text-white font-black text-sm flex items-center justify-center flex-shrink-0">3</span>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">JUARA III</h4>
+                  <p class="text-xs text-slate-600 mt-0.5">Piala KORMI Kabupaten Bekasi</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="field">
-            <label for="catatanTambahan">7. Catatan Tambahan (Opsional)</label>
-            <textarea id="catatanTambahan" rows="2" style="width:100%; padding:.5rem .7rem; border:1px solid var(--line); border-radius:4px; font-family:inherit;"></textarea>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PUSAT DOKUMEN & BERKAS -->
+    <section id="dokumen" class="py-16 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Pusat Unduhan</h2>
+            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dokumen Regulasi & Berkas</p>
           </div>
+          <p class="text-sm text-slate-500 mt-2 sm:mt-0 max-w-sm">
+            Unduh petunjuk teknis pelaksanaan dan ketentuan lomba resmi SMESTA 7.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          <!-- Card Juklak -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 leading-snug">Petunjuk Pelaksanaan (Juklak) Resmi</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                Pedoman kategori lomba, durasi penampilan, kriteria penilaian dewan juri, serta ketentuan teknis arena.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-400 uppercase">PDF Resmi</span>
+              <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="inline-flex items-center text-sm font-bold text-brand hover:text-brand-dark">
+                Unduh Berkas <i class="fa-solid fa-arrow-down-to-bracket ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card Pendaftaran Unit -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-file-pen"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 leading-snug">Portal Pendaftaran Tim Peserta</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                Formulir pendaftaran digital unit marching band, verifikasi roster pemain, dan kelengkapan administrasi kontingen.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-400 uppercase">Formulir Online</span>
+              <a href="https://smestajilid7.netlify.app" target="_blank" rel="noopener" class="inline-flex items-center text-sm font-bold text-brand hover:text-brand-dark">
+                Buka Pendaftaran <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORM PEMBELIAN TIKET -->
+    <section id="tiket" class="py-16 bg-slate-50 border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Tiket Masuk</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Beli Tiket Penonton Resmi</p>
+          <p class="text-sm text-slate-500 mt-2">Pemesanan online melalui QRIS Statis atau pembelian langsung di lokasi (On The Spot).</p>
+        </div>
+
+        <div class="max-w-xl mx-auto">
           
-          <div class="sum">
-            <span>Total Bayar</span>
-            <span class="t mono">Rp 85.000</span>
+          <!-- Box Peringatan Tiket -->
+          <div class="mb-6 p-5 rounded-2xl bg-brand-subtle border border-brand/20 text-xs sm:text-sm text-slate-700 space-y-3">
+            <p>
+              🎟️ <b>Keuntungan Tiket Resmi Rp 85.000:</b><br>
+              Tiket yang dibeli melalui website / panitia resmi SMESTA 7 <b>sudah termasuk akses berenang di Go Wet! Waterpark dan izin menonton di arena perlombaan</b>.
+            </p>
+            <div class="border-t border-brand/20 pt-2 text-rose-700">
+              ⚠️ <b>Peringatan Tiket Reguler Go Wet:</b> Tiket yang dibeli di loket kolam renang biasa atau tiket online Go Wet <b>TIDAK BISA</b> digunakan untuk menonton kejuaraan lomba.
+            </div>
+            <div class="border-t border-brand/20 pt-2 text-slate-600">
+              📍 <b>Bisa Beli On The Spot (OTS):</b> Penonton yang belum beli online dapat membeli langsung di loket meja registrasi panitia saat hari-H.
+            </div>
           </div>
 
-          <button type="submit" class="btn btn-red" id="btnSubmitTiket" style="width:100%">Kirim Data & Lanjut ke WhatsApp</button>
-        </form>
+          <!-- Box Form Tiket -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Formulir Pemesanan Tiket</h3>
+            <p class="text-xs text-slate-500 mb-6">Harga tiket: <b>Rp 85.000</b> (1 tiket per pengisian. Ulangi pengisian untuk tiket berikutnya).</p>
 
-        <!-- KOTAK CADANGAN JIKA POP-UP DI BLOKIR -->
-        <div id="successBox" class="success-box">
-          <h4>Data Berhasil Disimpan!</h4>
-          <p>Jika aplikasi WhatsApp Anda tidak terbuka otomatis karena diblokir browser, silakan klik tombol di bawah ini:</p>
-          <a id="whatsappBtn" href="#" target="_blank" class="btn btn-red" style="background:#25D366; color:#fff; width:100%;">Buka WhatsApp Ka Aning Sekarang</a>
-        </div>
+            <form id="ticketForm" class="space-y-4">
+              <div>
+                <label for="namaPembeli" class="block text-xs font-bold uppercase text-slate-700 mb-1">1. Nama Lengkap</label>
+                <input type="text" id="namaPembeli" placeholder="Sesuai kartu identitas" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand">
+              </div>
 
-      </div>
-    </div>
-  </section>
+              <div>
+                <label for="waPembeli" class="block text-xs font-bold uppercase text-slate-700 mb-1">2. Nomor WhatsApp</label>
+                <input type="tel" id="waPembeli" placeholder="08xxxxxxxxxx" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand">
+              </div>
 
-  <!-- DAFTAR -->
-  <section id="daftar">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Daftar tim lomba</h2>
-        <p>Khusus pendaftaran peserta unit marching band serta dokumen juklak lomba.</p>
-      </div>
-      <div class="reg">
-        <div>
-          <div class="qr"><img id="qrImg" src="qr pendaftaran.jpg" alt="QR code pendaftaran Peserta Lomba" width="568" height="568"></div>
-          <p class="qr-cap">QR pendaftaran Peserta Lomba</p>
-        </div>
-        <div>
-          <div class="btn-row" style="display:flex; flex-wrap:wrap; gap:.75rem;">
-            <a class="btn btn-red" id="regLink" href="#" target="_blank" rel="noopener">Buka formulir pendaftaran</a>
-            <a class="btn btn-out" href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" rel="noopener">📄 Download Juklak &amp; Juknis (PDF)</a>
+              <div>
+                <label for="unitPembeli" class="block text-xs font-bold uppercase text-slate-700 mb-1">3. Nama Unit Band / Sekolah / Umum</label>
+                <input type="text" id="unitPembeli" placeholder="Nama sekolah / unit yang didukung" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-700 mb-1">4. Jumlah Tiket</label>
+                  <input type="number" value="1" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm font-bold cursor-not-allowed">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-700 mb-1">5. Metode Pembayaran</label>
+                  <input type="text" value="QRIS Statis" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm font-bold cursor-not-allowed">
+                </div>
+              </div>
+
+              <!-- Section QRIS -->
+              <div class="pt-3 border-t border-slate-100 text-center">
+                <p class="text-xs font-bold text-slate-700 mb-2">Scan QRIS Resmi Pembayaran (Rp 85.000)</p>
+                <div class="max-w-[190px] mx-auto p-2.5 rounded-xl border border-slate-200 bg-white shadow-sm mb-3">
+                  <img src="qris-idca.jpg" alt="QRIS IDCA Kabupaten Bekasi" class="w-full h-auto rounded-lg">
+                </div>
+              </div>
+
+              <div>
+                <label for="buktiTransfer" class="block text-xs font-bold uppercase text-slate-700 mb-1">6. Unggah Bukti Transfer (Maks. 3MB)</label>
+                <input type="file" id="buktiTransfer" accept="image/*" required class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-subtle file:text-brand hover:file:bg-brand/20">
+              </div>
+
+              <div>
+                <label for="catatanTambahan" class="block text-xs font-bold uppercase text-slate-700 mb-1">7. Catatan Tambahan (Opsional)</label>
+                <textarea id="catatanTambahan" rows="2" placeholder="Catatan untuk panitia (opsional)" class="w-full px-4 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand"></textarea>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-600 uppercase">Total Pembayaran</span>
+                <span class="text-2xl font-black text-brand">Rp 85.000</span>
+              </div>
+
+              <button type="submit" id="btnSubmitTiket" class="w-full py-3.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold text-sm shadow-lg shadow-brand/25 transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Kirim Data & Konfirmasi WhatsApp
+              </button>
+            </form>
+
+            <!-- Box Fallback WhatsApp jika pop-up terblokir -->
+            <div id="successBox" class="hidden mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2 text-lg">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <h4 class="text-base font-bold text-emerald-900 mb-1">Data Anda Berhasil Dicatat!</h4>
+              <p class="text-xs text-emerald-700 mb-4">Jika aplikasi WhatsApp tidak otomatis terbuka, silakan klik tombol di bawah ini untuk mengirim bukti ke Ka Aning:</p>
+              <a id="whatsappBtn" href="#" target="_blank" class="w-full py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm shadow-md transition-all inline-flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Buka WhatsApp Ka Aning Sekarang
+              </a>
+            </div>
+
           </div>
-          <div class="panitia" id="panitiaReg"></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- DENAH & VENUE -->
-  <section id="denah" class="alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Denah &amp; Panduan Venue</h2>
-        <p>Tata letak area perlombaan dan ketentuan operasional di Go Wet! Waterpark.</p>
+        </div>
+
       </div>
-      <div class="venue">
-        <div>
-          <button class="venue-img" type="button" id="mapBtn" aria-label="Perbesar denah lokasi lomba"><img id="venueImg" src="denah lokasi.jpg" alt="Venue guide SMESTA 7" width="900" height="1345"></button>
+    </section>
+
+    <!-- DENAH & VENUE GUIDE -->
+    <section id="denah" class="py-16 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Denah Lokasi</h2>
+            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Area Lomba & Tata Tertib</p>
+          </div>
+          <a href="https://maps.app.goo.gl/gp3Cd1wvnh8mhHZM8" target="_blank" rel="noopener" class="mt-3 sm:mt-0 px-4 py-2 rounded-xl bg-brand/10 hover:bg-brand/20 text-brand text-xs font-bold tracking-wide transition-colors inline-flex items-center gap-2">
+            <i class="fa-solid fa-map-location-dot"></i> Rute Go Wet! di Google Maps
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          <!-- TOMBOL GOOGLE MAPS -->
-          <div style="margin-top:1rem;">
-            <a class="btn btn-red" href="https://maps.app.goo.gl/gp3Cd1wvnh8mhHZM8" target="_blank" rel="noopener" style="width:100%;">
-              📍 Buka Rute Go Wet! Waterpark di Google Maps
+          <!-- Gambar Denah -->
+          <div class="lg:col-span-5 bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
+            <button type="button" id="mapBtn" class="w-full block relative cursor-zoom-in" aria-label="Perbesar Denah">
+              <img src="denah lokasi.jpg" alt="Denah Lokasi SMESTA 7" class="w-full h-auto object-cover group-hover:opacity-95 transition-opacity">
+              <div class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-black/70 backdrop-blur-sm text-white text-xs font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> Ketuk untuk perbesar
+              </div>
+            </button>
+          </div>
+
+          <!-- Keterangan Denah & Aturan -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80">
+              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700 mb-4">Keterangan Titik Area</h3>
+              <ul class="divide-y divide-slate-200/60 text-sm">
+                <li class="py-3 flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-brand text-white font-black text-xs flex items-center justify-center flex-shrink-0">1</span>
+                  <div>
+                    <p class="font-bold text-slate-900">FOH & Broadcast Control</p>
+                    <p class="text-xs text-slate-500">Pusat audio sistem venue dan live streaming kamera perlombaan.</p>
+                    <a href="https://www.youtube.com/@SmestaBekasi" target="_blank" rel="noopener" class="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1 mt-1">
+                      <i class="fa-brands fa-youtube"></i> Tonton Live Streaming YouTube
+                    </a>
+                  </div>
+                </li>
+                <li class="py-3 flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-brand text-white font-black text-xs flex items-center justify-center flex-shrink-0">2</span>
+                  <div>
+                    <p class="font-bold text-slate-900">Panggung dan Piala</p>
+                    <p class="text-xs text-slate-500">Panggung pengumuman pemenang dan serah terima trofi.</p>
+                  </div>
+                </li>
+                <li class="py-3 flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-brand text-white font-black text-xs flex items-center justify-center flex-shrink-0">3</span>
+                  <div>
+                    <p class="font-bold text-slate-900">Area Pengunjung / Penonton</p>
+                    <p class="text-xs text-slate-500">Tribun dan tempat menonton penampilan unit.</p>
+                  </div>
+                </li>
+                <li class="py-3 flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-brand text-white font-black text-xs flex items-center justify-center flex-shrink-0">5</span>
+                  <div>
+                    <p class="font-bold text-slate-900">Arena Perlombaan Utama</p>
+                    <p class="text-xs text-slate-500">Area performa unit drum band & marching band.</p>
+                  </div>
+                </li>
+                <li class="py-3 flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-brand text-white font-black text-xs flex items-center justify-center flex-shrink-0">6</span>
+                  <div>
+                    <p class="font-bold text-slate-900">Tenan Bazaar & Konsumsi</p>
+                    <p class="text-xs text-slate-500">Area kuliner resmi di dalam venue Go Wet! Waterpark.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tata Tertib Venue -->
+            <div class="bg-amber-50/60 rounded-2xl p-6 border border-amber-200/70 text-xs sm:text-sm text-slate-700">
+              <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Tata Tertib Venue & Transit Alat
+              </h4>
+              <ul class="list-disc list-inside space-y-1.5 text-slate-600">
+                <li><b>Transit Alat:</b> Jalur bongkar muat alat kontingen mengikuti titik <b>Load In & Load Out</b> di denah.</li>
+                <li><b>Makanan Luar:</b> Dilarang keras membawa makanan dari luar ke area Go Wet! Waterpark.</li>
+                <li><b>Minuman:</b> Pengunjung dan kontingen wajib menggunakan <b>tumbler / botol minum isi ulang</b> (dilarang botol plastik sekali pakai).</li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MITRA & SPONSOR -->
+    <section id="mitra" class="py-16 bg-slate-50 border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Dukungan Sponsor</p>
+          <p class="text-xl sm:text-2xl font-extrabold text-slate-800">Sponsor & Mitra Penyelenggara</p>
+        </div>
+
+        <div class="space-y-10">
+          <!-- Disponsori -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 text-center sm:text-left">Disponsori Oleh</p>
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
+              <img src="sponsor-1.png" alt="Sponsor 1" class="sponsor-logo">
+              <img src="sponsor-2.png" alt="Sponsor 2" class="sponsor-logo">
+              <img src="sponsor-3.png" alt="Sponsor 3" class="sponsor-logo">
+              <img src="sponsor-4.png" alt="Sponsor 4" class="sponsor-logo logo-putih">
+              <img src="sponsor-5.png" alt="Sponsor 5" class="sponsor-logo">
+              <img src="sponsor-6.png" alt="Sponsor 6" class="sponsor-logo logo-putih">
+              <img src="sponsor-7.png" alt="Sponsor 7" class="sponsor-logo">
+            </div>
+          </div>
+
+          <!-- Didukung -->
+          <div class="pt-8 border-t border-slate-200/60">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 text-center sm:text-left">Didukung Oleh</p>
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
+              <img src="support-1.png" alt="Support 1" class="sponsor-logo">
+              <img src="support-2.png" alt="Support 2" class="sponsor-logo">
+              <img src="support-3.png" alt="Support 3" class="sponsor-logo">
+              <img src="support-4.png" alt="Support 4" class="sponsor-logo">
+              <img src="support-5.png" alt="Support 5" class="sponsor-logo">
+              <img src="support-6.png" alt="Support 6" class="sponsor-logo">
+              <img src="support-7.png" alt="Support 7" class="sponsor-logo">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KONTAK & PANITIA -->
+    <section id="kontak" class="py-16 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-xl mb-10">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Hubungi Kami</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Panitia & Media Sosial</p>
+          <p class="text-sm text-slate-500 mt-1">Layanan konfirmasi tiket dan informasi pendaftaran lomba.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="panitiaList">
+          <!-- Diisi otomatis oleh JavaScript -->
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-600">
+          <div class="flex items-center gap-6">
+            <a href="https://www.instagram.com/marco.community/" target="_blank" rel="noopener" class="hover:text-brand flex items-center gap-2">
+              <i class="fa-brands fa-instagram text-brand text-lg"></i> @marco.community
+            </a>
+            <a href="https://www.tiktok.com/@marc.community" target="_blank" rel="noopener" class="hover:text-brand flex items-center gap-2">
+              <i class="fa-brands fa-tiktok text-brand text-lg"></i> @marc.community
+            </a>
+            <a href="https://www.youtube.com/@SmestaBekasi" target="_blank" rel="noopener" class="hover:text-brand flex items-center gap-2">
+              <i class="fa-brands fa-youtube text-brand text-lg"></i> @SmestaBekasi
+            </a>
+          </div>
+          <div>
+            <a href="mailto:smestabekasi@gmail.com" class="hover:text-brand flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-brand"></i> smestabekasi@gmail.com
             </a>
           </div>
         </div>
 
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-sm py-10 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-bold text-white text-base">SMESTA 7 &middot; IDCA Kabupaten Bekasi</p>
+        <p class="text-xs text-slate-500 mt-0.5">Minggu, 22 November 2026 &middot; Go! Wet Waterpark Grand Wisata Bekasi</p>
+      </div>
+      <p class="text-xs text-slate-500">
+        &copy; <span id="year"></span> IDCA Kabupaten Bekasi. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- MODAL ZOOM DENAH -->
+  <dialog id="mapDlg" class="rounded-2xl p-0 backdrop:bg-slate-900/70 border border-slate-200 max-w-4xl w-[calc(100%-2rem)] max-h-[90vh] overflow-hidden">
+    <div class="p-4 bg-white border-b border-slate-100 flex items-center justify-between">
+      <h3 class="text-base font-bold text-slate-900">Denah Lokasi Go! Wet Waterpark</h3>
+      <button type="button" id="closeDlg" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center font-bold text-lg">
+        &times;
+      </button>
+    </div>
+    <div class="p-4 overflow-auto max-h-[calc(90vh-70px)] bg-slate-950 flex justify-center">
+      <img src="denah lokasi.jpg" alt="Denah Lokasi SMESTA 7" class="max-w-full h-auto rounded-lg">
+    </div>
+  </dialog>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const CONTACTS = [
+      { name: "Ka Tere",  role: "Informasi Lomba", phone: "+62 857-7121-2779" },
+      { name: "Ka Aning", role: "Verifikasi Tiket", phone: "+62 896-9121-9728" },
+      { name: "Ka Yoga",  role: "Koordinator Lapangan", phone: "+62 812-7886-7221" }
+    ];
+    
+    const EVENT_DATE = new Date(2026, 10, 22, 7, 0, 0).getTime(); // 22 Nov 2026
+    const TM_DATE = new Date(2026, 10, 8, 13, 0, 0).getTime();    // 08 Nov 2026 13:00 WIB
+
+    const digits = p => p.replace(/\D/g, "");
+    const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
+
+    // 1. Inisialisasi Data Dinamis
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    const panitiaList = document.getElementById("panitiaList");
+    panitiaList.innerHTML = CONTACTS.map(c => `
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
         <div>
-          <ol class="legend" aria-label="Keterangan denah">
-            <li>
-              <b>1</b>
-              <span>
-                FOH &amp; Broadcast Control<br>
-                <em>Pusat audio sistem venue dan live streaming kamera perlombaan.</em><br>
-                <a href="https://www.youtube.com/@SmestaBekasi" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.35rem; margin-top:0.4rem; font-size:0.85rem; font-weight:600; color:var(--accent);">
-                  ▶ Tonton Live Streaming di YouTube
-                </a>
-              </span>
-            </li>
-            <li><b>2</b><span>Panggung dan Piala</span></li>
-            <li><b>3</b><span>Pengunjung</span></li>
-            <li><b>5</b><span>Arena lomba</span></li>
-            <li><b>6</b><span>Tenan</span></li>
-          </ol>
-
-          <!-- TATA TERTIB VENUE & TRANSIT ALAT -->
-          <div class="rules-card">
-            <h4>📋 Tata Tertib Venue &amp; Transit Alat</h4>
-            <ul>
-              <li><b>Transit Alat:</b> Jalur dan area bongkar muat alat kontingen mengikuti area <b>Load In &amp; Load Out</b> yang tertera pada denah lokasi.</li>
-              <li><b>Makanan dari Luar:</b> Dilarang keras membawa makanan dari luar ke dalam area Go Wet! Waterpark.</li>
-              <li><b>Ketentuan Minuman:</b> Pengunjung dan kontingen diperbolehkan membawa minuman sendiri dengan <b>wajib menggunakan tumbler</b> atau botol isi ulang (dilarang menggunakan botol plastik sekali pakai).</li>
-            </ul>
-          </div>
+          <span class="text-[11px] font-bold text-brand uppercase tracking-wider">${c.role}</span>
+          <p class="font-bold text-slate-900 text-base mt-0.5">${c.name}</p>
+          <p class="text-xs text-slate-500 font-mono mt-1">${c.phone}</p>
         </div>
+        <a href="${waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya seputar event SMESTA 7...")}" target="_blank" class="mt-4 px-3 py-2 rounded-lg bg-white border border-slate-200 hover:border-brand text-slate-700 text-xs font-bold text-center transition-colors flex items-center justify-center gap-1.5">
+          <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Chat WhatsApp
+        </a>
       </div>
-    </div>
-  </section>
+    `).join("");
 
-  <!-- KONTAK & SPONSOR -->
-  <section id="kontak">
-    <div class="wrap">
-      <div class="sec-head" style="margin-bottom:0.5rem;">
-        <h2>Kontak &amp; Sponsor</h2>
-      </div>
-      
-      <div class="sponsors" style="margin-bottom:3rem; padding-bottom:2rem; border-bottom:1px solid var(--line);">
-        
-        <!-- BAGIAN SPONSOR -->
-        <div class="sponsor-item">
-          <p>Disponsori Oleh</p>
-          <div class="sponsor-logos">
-            <img src="sponsor-1.png" alt="Sponsor 1">
-            <img src="sponsor-2.png" alt="Sponsor 2">
-            <img src="sponsor-3.png" alt="Sponsor 3">
-            <img src="sponsor-4.png" alt="Sponsor 4" class="logo-putih">
-            <img src="sponsor-5.png" alt="Sponsor 5">
-            <img src="sponsor-6.png" alt="Sponsor 6" class="logo-putih">
-            <img src="sponsor-7.png" alt="Sponsor 7">
-          </div>
-        </div>
+    // 2. Countdown Real-Time Hari H & TM
+    function updateCountdown() {
+      const now = new Date().getTime();
 
-        <!-- BAGIAN SUPPORT -->
-        <div class="sponsor-item">
-          <p>Didukung Oleh</p>
-          <div class="sponsor-logos">
-            <img src="support-1.png" alt="Support 1">
-            <img src="support-2.png" alt="Support 2">
-            <img src="support-3.png" alt="Support 3">
-            <img src="support-4.png" alt="Support 4">
-            <img src="support-5.png" alt="Support 5">
-            <img src="support-6.png" alt="Support 6">
-            <img src="support-7.png" alt="Support 7">
-          </div>
-        </div>
+      // Countdown Lomba
+      const diffEvent = EVENT_DATE - now;
+      if (diffEvent <= 0) {
+        document.getElementById('days').innerText = "00";
+        document.getElementById('hours').innerText = "00";
+        document.getElementById('minutes').innerText = "00";
+        document.getElementById('seconds').innerText = "00";
+      } else {
+        const d = Math.floor(diffEvent / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diffEvent % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diffEvent % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diffEvent % (1000 * 60)) / 1000);
 
-      </div>
-      
-      <dl class="contact" id="contact"></dl>
-    </div>
-  </section>
-</main>
+        document.getElementById('days').innerText = String(d).padStart(2, '0');
+        document.getElementById('hours').innerText = String(h).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+      }
 
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="year"></span> IDCA Kabupaten Bekasi</span>
-    <span>SMESTA 7 &middot; 22 November 2026 &middot; Go Wet! Waterpark</span>
-  </div>
-</footer>
-
-<dialog id="mapDlg" class="big" aria-label="Denah lokasi lomba">
-  <div class="dlg">
-    <div class="dlg-head">
-      <div><h3>Denah lokasi</h3><p>Go Wet! Waterpark</p></div>
-      <button class="x" type="button" data-close aria-label="Tutup">&times;</button>
-    </div>
-    <img class="zoom" id="venueZoom" src="denah lokasi.jpg" alt="Denah lokasi lomba SMESTA 7 diperbesar">
-  </div>
-</dialog>
-
-<script>
-const CONTACTS = [
-  { name: "Ka Tere",  phone: "+62 857-7121-2779" },
-  { name: "Ka Aning", phone: "+62 896-9121-9728" },
-  { name: "Ka Yoga",  phone: "+62 812-7886-7221" }
-];
-const SOCIAL = { 
-  instagram: "marco.community", 
-  tiktok: "marc.community",
-  youtube: "SmestaBekasi",
-  youtubeUrl: "https://www.youtube.com/@SmestaBekasi",
-  tiktokUrl: "https://www.tiktok.com/@marc.community",
-  email: "smestabekasi@gmail.com" 
-};
-const REGISTRATION_URL = "https://smestajilid7.netlify.app";
-const EVENT_DATE = "2026-11-22T00:00:00+07:00";
-const TM_DATE = "2026-11-08T13:00:00+07:00";
-
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const digits = p => p.replace(/\D/g, "");
-const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
-
-function updateCountdowns() {
-  const now = new Date();
-  
-  // Hitung countdown Event Lomba
-  const diffEvent = new Date(EVENT_DATE) - now;
-  const daysEvent = Math.ceil(diffEvent / 86400000);
-  $("countdown").textContent = daysEvent > 1 ? daysEvent + " hari lagi" : daysEvent === 1 ? "Besok" : daysEvent === 0 ? "Hari ini" : "Selesai";
-
-  // Hitung countdown Technical Meeting
-  const diffTM = new Date(TM_DATE) - now;
-  if (diffTM <= 0) {
-    $("countdownTM").textContent = "Sedang/Sudah Berlangsung";
-  } else {
-    const daysTM = Math.floor(diffTM / (1000 * 60 * 60 * 24));
-    const hoursTM = Math.floor((diffTM % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minsTM = Math.floor((diffTM % (1000 * 60 * 60)) / (1000 * 60));
-    
-    if (daysTM > 0) {
-      $("countdownTM").textContent = `${daysTM} hari ${hoursTM} jam lagi`;
-    } else {
-      $("countdownTM").textContent = `${hoursTM} jam ${minsTM} mnt lagi`;
+      // Countdown TM
+      const diffTM = TM_DATE - now;
+      const elTM = document.getElementById("countdownTM");
+      if (diffTM <= 0) {
+        elTM.innerText = "Sudah Berlangsung";
+      } else {
+        const dTM = Math.floor(diffTM / (1000 * 60 * 60 * 24));
+        const hTM = Math.floor((diffTM % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        elTM.innerText = dTM > 0 ? `${dTM} hari ${hTM} jam lagi` : `${hTM} jam lagi`;
+      }
     }
-  }
-}
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-function renderStatic(){
-  $("year").textContent = new Date().getFullYear();
-  $("regLink").href = REGISTRATION_URL;
+    // 3. Form Pembelian Tiket & Integrasi Google Apps Script
+    const formTiket = document.getElementById("ticketForm");
+    const btnSubmitTiket = document.getElementById("btnSubmitTiket");
+    const fileInput = document.getElementById("buktiTransfer");
 
-  $("panitiaReg").innerHTML = CONTACTS.map(c => `
-    <div class="person">
-      <div><strong>${esc(c.name)}</strong><span>${esc(c.phone)}</span></div>
-      <a class="btn btn-out btn-sm" href="${esc(waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya..."))}" target="_blank">Chat WA</a>
-    </div>`).join("");
+    formTiket.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  const wa = CONTACTS.map(c =>
-    `<div><dt>WhatsApp ${esc(c.name)}</dt><dd><a href="${esc(waUrl(c.phone))}" target="_blank">${esc(c.phone)}</a></dd></div>`).join("");
-  $("contact").innerHTML = wa +
-    `<div><dt>Instagram</dt><dd><a href="https://www.instagram.com/${esc(SOCIAL.instagram)}/" target="_blank">@${esc(SOCIAL.instagram)}</a></dd></div>` +
-    `<div><dt>TikTok</dt><dd><a href="${esc(SOCIAL.tiktokUrl)}" target="_blank">@${esc(SOCIAL.tiktok)}</a></dd></div>` +
-    `<div><dt>YouTube</dt><dd><a href="${esc(SOCIAL.youtubeUrl)}" target="_blank">@${esc(SOCIAL.youtube)}</a></dd></div>` +
-    `<div><dt>Email</dt><dd><a href="mailto:${esc(SOCIAL.email)}">${esc(SOCIAL.email)}</a></dd></div>`;
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Silakan unggah foto bukti transfer terlebih dahulu.");
+        return;
+      }
+      if (file.size > 3 * 1024 * 1024) {
+        alert("Ukuran gambar maksimal 3MB.");
+        return;
+      }
 
-  updateCountdowns();
-  setInterval(updateCountdowns, 60000);
-}
+      btnSubmitTiket.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengunggah data...';
+      btnSubmitTiket.disabled = true;
 
-/* ==========================================================
-   LOGIKA PENGIRIMAN TIKET (KE SHEETS & WHATSAPP)
-   ========================================================== */
-const formTiket = $("ticketForm");
-const btnSubmitTiket = $("btnSubmitTiket");
-const fileInput = $("buktiTransfer");
+      const reader = new FileReader();
+      reader.onload = async function() {
+        const base64Data = reader.result;
+        const nama = document.getElementById("namaPembeli").value.trim();
+        const whatsapp = document.getElementById("waPembeli").value.trim();
+        const unit = document.getElementById("unitPembeli").value.trim();
+        const catatan = document.getElementById("catatanTambahan").value.trim();
 
-formTiket.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  
-  const file = fileInput.files[0];
-  if (!file) {
-    alert("Silakan upload foto bukti transfer terlebih dahulu.");
-    return;
-  }
-  if (file.size > 3 * 1024 * 1024) { 
-    alert("Ukuran gambar maksimal 3MB.");
-    return;
-  }
+        const formData = new URLSearchParams();
+        formData.append("nama", nama);
+        formData.append("whatsapp", whatsapp);
+        formData.append("unit", unit);
+        formData.append("metode", "QRIS Statis");
+        formData.append("catatan", catatan);
+        formData.append("fileData", base64Data);
+        formData.append("fileName", file.name);
 
-  btnSubmitTiket.textContent = "Mengunggah data... Mohon tunggu sebentar";
-  btnSubmitTiket.disabled = true;
+        const scriptURL = "https://script.google.com/macros/s/AKfycbylTilqil7caucGkGi7rhqyob3fDdKp30NsSsjyTu1jlGOLhR3OndAy5NgrEfbUFQod/exec";
 
-  const reader = new FileReader();
-  reader.onload = async function() {
-    const base64Data = reader.result;
-    const nama = $("namaPembeli").value.trim();
-    const whatsapp = $("waPembeli").value.trim();
-    const unit = $("unitPembeli").value.trim();
-    const catatan = $("catatanTambahan").value.trim();
+        try {
+          await fetch(scriptURL, {
+            method: "POST",
+            body: formData,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+          });
+        } catch (error) {
+          console.error("Gagal mengirim ke Sheets:", error);
+        }
 
-    const formData = new URLSearchParams();
-    formData.append("nama", nama);
-    formData.append("whatsapp", whatsapp);
-    formData.append("unit", unit);
-    formData.append("metode", "QRIS Statis");
-    formData.append("catatan", catatan);
-    formData.append("fileData", base64Data);
-    formData.append("fileName", file.name);
+        const WA_KA_ANING = "+6289691219728";
+        const textMsg = `Halo Ka Aning, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
 
-    // URL APPS SCRIPT TERBARU
-    const scriptURL = "https://script.google.com/macros/s/AKfycbylTilqil7caucGkGi7rhqyob3fDdKp30NsSsjyTu1jlGOLhR3OndAy5NgrEfbUFQod/exec";
+        const finalWaUrl = waUrl(WA_KA_ANING, textMsg);
+        window.open(finalWaUrl, "_blank");
 
-    try {
-      await fetch(scriptURL, { 
-        method: "POST", 
-        body: formData, 
-        headers: { "Content-Type": "application/x-www-form-urlencoded" } 
-      });
-    } catch (error) {
-      console.error("Gagal mengirim ke Sheets:", error);
-    }
+        document.getElementById("whatsappBtn").href = finalWaUrl;
+        document.getElementById("successBox").classList.remove("hidden");
+        formTiket.classList.add("hidden");
+      };
 
-    // Arahkan ke WhatsApp Ka Aning (+62 896-9121-9728)
-    const WA_KA_ANING = "+6289691219728";
-    const textMsg = `Halo Ka Aning, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
-    
-    const finalWaUrl = waUrl(WA_KA_ANING, textMsg);
-    window.open(finalWaUrl, "_blank");
-    
-    $("whatsappBtn").href = finalWaUrl;
-    $("successBox").style.display = "block";
-    formTiket.style.display = "none";
-  };
-  
-  reader.readAsDataURL(file);
-});
+      reader.readAsDataURL(file);
+    });
 
-function openModal(d){ if(typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", ""); }
-document.addEventListener("click", e => {
-  const t = e.target.closest("button");
-  if(!t) return;
-  if(t.hasAttribute("data-close")) t.closest("dialog").close();
-  else if(t.id === "mapBtn") openModal($("mapDlg"));
-});
-$("mapDlg").addEventListener("click", e => { if(e.target === $("mapDlg")) $("mapDlg").close(); });
-
-renderStatic();
-</script>
+    // 4. Modal Zoom Denah Lokasi
+    const mapDlg = document.getElementById("mapDlg");
+    document.getElementById("mapBtn").addEventListener("click", () => mapDlg.showModal());
+    document.getElementById("closeDlg").addEventListener("click", () => mapDlg.close());
+    mapDlg.addEventListener("click", (e) => { if (e.target === mapDlg) mapDlg.close(); });
+  </script>
 </body>
 </html>
