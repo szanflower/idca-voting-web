@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Susunan Panitia SMESTA 7 - IDCA Kab. Bekasi</title>
+  <link id="favicon" rel="icon" type="image/jpeg" href="logo idca.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#386CAF',
+              dark: '#254a78',
+              light: '#5384c7',
+              subtle: '#eef4fb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen relative">
+
+  <!-- NAVBAR KHUSUS HALAMAN PANITIA -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Brand (Kembali ke Beranda) -->
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white transition-colors">
+            <i class="fa-solid fa-arrow-left"></i>
+          </div>
+          <div>
+            <span class="block text-sm font-black text-slate-900 tracking-tight uppercase leading-none">Kembali ke Beranda</span>
+            <span class="text-xs text-brand font-semibold tracking-wider uppercase">SMESTA 7</span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-5 font-medium text-sm text-slate-600">
+          <a href="index.html#event" class="hover:text-brand transition-colors">Tentang Event</a>
+          <a href="juri.html" class="hover:text-brand transition-colors">Dewan Juri</a>
+          <a href="favorit.html" class="hover:text-brand transition-colors">Juara Favorit</a>
+          <a href="tiket.html" class="hover:text-brand transition-colors font-bold text-brand">Tiket Penonton</a>
+        </nav>
+
+        <!-- Hamburger Menu Button (Khusus HP) -->
+        <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-600 hover:text-brand hover:bg-brand/10 transition-colors focus:outline-none">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+
+      </div>
+
+      <!-- MOBILE MENU DROPDOWN -->
+      <div id="mobileMenu" class="hidden md:hidden absolute left-0 right-0 top-20 bg-white border-b border-slate-100 shadow-xl px-4 py-6 z-40">
+        <nav class="flex flex-col gap-4 text-base font-bold text-slate-700">
+          <a href="index.html" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Beranda Utama <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="juri.html" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Dewan Juri <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <div class="flex flex-col gap-3 mt-4">
+            <a href="tiket.html" class="mobile-link py-3 text-center rounded-xl bg-brand text-white text-sm shadow-md shadow-brand/20">
+              <i class="fa-solid fa-ticket mr-2"></i> Beli Tiket Masuk
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- TITLE SECTION -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Di Balik Layar</h2>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Susunan Kepanitiaan SMESTA 7</h1>
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          Tim pelaksana yang berdedikasi untuk menyukseskan jalannya kejuaraan SMESTA 7 Kabupaten Bekasi Tahun 2026.
+        </p>
+      </div>
+
+      <!-- PENGURUS INTI -->
+      <div class="mb-14">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px bg-slate-200 flex-grow max-w-[50px]"></div>
+          <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest text-center">Pengurus Inti</h3>
+          <div class="h-px bg-slate-200 flex-grow max-w-[50px]"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Ketua -->
+          <div class="bg-brand text-white p-6 rounded-2xl shadow-md text-center transform transition-transform hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-full bg-white/20 mx-auto flex items-center justify-center text-xl mb-3">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <p class="text-[11px] font-bold text-brand-subtle uppercase tracking-wider mb-1">Ketua Pelaksana</p>
+            <p class="font-extrabold text-xl">Yoga Bataviana</p>
+          </div>
+          
+          <!-- Sekretariat -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center transition-all hover:border-brand">
+            <div class="w-10 h-10 rounded-full bg-brand/10 text-brand mx-auto flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-pen-nib"></i>
+            </div>
+            <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-1">Sekretariat</p>
+            <p class="font-extrabold text-slate-900 text-lg">Aning Andriani</p>
+          </div>
+
+          <!-- Bendahara -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center transition-all hover:border-brand">
+            <div class="w-10 h-10 rounded-full bg-brand/10 text-brand mx-auto flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+            <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-1">Bendahara</p>
+            <p class="font-extrabold text-slate-900 text-lg">Satiri Ahmad</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVISI & KOORDINATOR -->
+      <div>
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px bg-slate-200 flex-grow max-w-[50px]"></div>
+          <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest text-center">Seksi & Divisi Utama</h3>
+          <div class="h-px bg-slate-200 flex-grow max-w-[50px]"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- Koordinator Peserta -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
+            <div>
+              <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-2"><i class="fa-solid fa-users mr-1"></i> Koordinator Peserta</p>
+              <p class="font-bold text-slate-900 text-sm">Saiful Rizky Ramadhan <span class="text-slate-500 font-normal">(Koor)</span></p>
+            </div>
+            <div class="text-xs text-slate-500 mt-3 border-t border-slate-200/60 pt-3">
+              <p class="font-bold text-slate-600 mb-1">Anggota:</p>
+              <ul class="list-disc list-inside space-y-0.5 ml-1">
+                <li>Irgi Dewa Saputra</li>
+                <li>Anggi</li>
+                <li>Budi</li>
+                <li>Ajat Sudrajat</li>
+                <li>Fajar</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Kominfo -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
+            <div>
+              <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-2"><i class="fa-solid fa-bullhorn mr-1"></i> Kominfo</p>
+              <p class="font-bold text-slate-900 text-sm">Sandi Nopriyandi <span class="text-slate-500 font-normal">(Koor)</span></p>
+            </div>
+            <div class="text-xs text-slate-500 mt-3 border-t border-slate-200/60 pt-3">
+              <p class="font-bold text-slate-600 mb-1">Anggota:</p>
+              <ul class="list-disc list-inside space-y-0.5 ml-1">
+                <li>Rafe’e Mahfuz Abdullah</li>
+                <li>Wulan Maulidina S.</li>
+                <li>Wawa</li>
+                <li>Nurul</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Peralatan -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
+            <div>
+              <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-2"><i class="fa-solid fa-toolbox mr-1"></i> Peralatan</p>
+              <p class="font-bold text-slate-900 text-sm">Yaya Sunarya <span class="text-slate-500 font-normal">(Koor)</span></p>
+            </div>
+            <div class="text-xs text-slate-500 mt-3 border-t border-slate-200/60 pt-3">
+              <p class="font-bold text-slate-600 mb-1">Anggota:</p>
+              <ul class="list-disc list-inside space-y-0.5 ml-1">
+                <li>Ahmad Fauzi</li>
+                <li>Fery</li>
+                <li>Panjul</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Seksi Acara -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col">
+            <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-3"><i class="fa-solid fa-clipboard-list mr-1"></i> Seksi Acara</p>
+            <ul class="font-bold text-slate-900 text-sm space-y-1.5 ml-1">
+              <li><i class="fa-solid fa-circle-check text-[10px] text-brand mr-1.5"></i> Ari Yahdi</li>
+              <li><i class="fa-solid fa-circle-check text-[10px] text-brand mr-1.5"></i> Nuri Mahdianto</li>
+              <li><i class="fa-solid fa-circle-check text-[10px] text-brand mr-1.5"></i> Wartono</li>
+            </ul>
+          </div>
+
+          <!-- Asisten Juri & Kamar Hitung -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col">
+            <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-3"><i class="fa-solid fa-laptop-code mr-1"></i> Penjurian & Kamar Hitung</p>
+            <div class="space-y-3">
+              <div>
+                <p class="text-xs text-slate-500 mb-0.5">Asisten Juri:</p>
+                <p class="font-bold text-slate-900 text-sm">Nano Sugiarto</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 mb-0.5">Kamar Hitung:</p>
+                <p class="font-bold text-slate-900 text-sm">Harry S</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trofi & Konsumsi -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-center gap-4">
+            <div>
+              <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-1"><i class="fa-solid fa-trophy mr-1"></i> Koordinator Piala</p>
+              <p class="font-bold text-slate-900 text-sm">Cardi</p>
+            </div>
+            <div class="border-t border-slate-200/60 pt-3">
+              <p class="text-[11px] font-bold text-brand uppercase tracking-wider mb-1"><i class="fa-solid fa-utensils mr-1"></i> Konsumsi</p>
+              <p class="font-bold text-slate-900 text-sm">Febriyanti</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-sm py-10 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-bold text-white text-base">SMESTA 7 &middot; IDCA Kabupaten Bekasi</p>
+        <p class="text-xs text-slate-500 mt-0.5">Minggu, 22 November 2026 &middot; Go! Wet Waterpark Grand Wisata Bekasi</p>
+      </div>
+      <p class="text-xs text-slate-500">
+        &copy; <span id="year"></span> IDCA Kabupaten Bekasi. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- TOMBOL KEMBALI KE ATAS -->
+  <button id="backToTopBtn" class="fixed bottom-8 right-6 z-40 w-11 h-11 rounded-full bg-slate-800 text-white shadow-xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center justify-center hover:bg-slate-700 focus:outline-none">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Logika Mobile Menu (Hamburger)
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const icon = mobileMenuBtn.querySelector("i");
+        if (mobileMenu.classList.contains("hidden")) {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+        } else {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+        }
+      });
+    }
+
+    // Skrip untuk tombol Back to Top
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        backToTopBtn.classList.remove("opacity-0", "pointer-events-none", "translate-y-4");
+        backToTopBtn.classList.add("opacity-100", "translate-y-0");
+      } else {
+        backToTopBtn.classList.remove("opacity-100", "translate-y-0");
+        backToTopBtn.classList.add("opacity-0", "pointer-events-none", "translate-y-4");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
