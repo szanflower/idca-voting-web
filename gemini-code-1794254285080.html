@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beli Tiket SMESTA 7 - IDCA Kab. Bekasi</title>
+  <link id="favicon" rel="icon" type="image/jpeg" href="logo idca.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#386CAF',
+              dark: '#254a78',
+              light: '#5384c7',
+              subtle: '#eef4fb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+  <!-- NAVBAR KHUSUS HALAMAN TIKET -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Brand (Kembali ke Beranda) -->
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white transition-colors">
+            <i class="fa-solid fa-arrow-left"></i>
+          </div>
+          <div>
+            <span class="block text-sm font-black text-slate-900 tracking-tight uppercase leading-none">Kembali ke Beranda</span>
+            <span class="text-xs text-brand font-semibold tracking-wider uppercase">SMESTA 7</span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-5 font-medium text-sm text-slate-600">
+          <a href="index.html#event" class="hover:text-brand transition-colors">Tentang Event</a>
+          <a href="index.html#rundown" class="hover:text-brand transition-colors">Rundown</a>
+          <a href="index.html#juri" class="hover:text-brand transition-colors">Dewan Juri</a>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12">
+    <!-- FORM PEMBELIAN TIKET -->
+    <section id="tiket" class="bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Tiket Masuk</h2>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Beli Tiket Penonton Resmi</h1>
+          <p class="text-sm text-slate-500 mt-2">Pemesanan online melalui QRIS Statis atau pembelian langsung di lokasi (On The Spot).</p>
+        </div>
+
+        <div class="max-w-xl mx-auto">
+          <!-- Box Peringatan Tiket -->
+          <div class="mb-6 p-5 rounded-2xl bg-brand-subtle border border-brand/20 text-xs sm:text-sm text-slate-700 space-y-3">
+            <p>
+              🎟️ <b>Keuntungan Tiket Resmi Rp 85.000:</b><br>
+              Tiket yang dibeli melalui website / panitia resmi SMESTA 7 <b>sudah termasuk akses berenang di Go Wet! Waterpark dan izin menonton di arena perlombaan</b>.
+            </p>
+            <div class="border-t border-brand/20 pt-2 text-rose-700">
+              ⚠️ <b>Peringatan Tiket Reguler Go Wet:</b> Tiket yang dibeli di loket kolam renang biasa atau tiket online Go Wet <b>TIDAK BISA</b> digunakan untuk menonton kejuaraan lomba.
+            </div>
+            <div class="border-t border-brand/20 pt-2 text-slate-600">
+              📍 <b>Bisa Beli On The Spot (OTS):</b> Penonton yang belum beli online dapat membeli langsung di loket meja registrasi panitia saat hari-H.
+            </div>
+          </div>
+
+          <!-- Box Form Tiket -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Formulir Pemesanan Tiket</h3>
+            <p class="text-xs text-slate-500 mb-6">Harga tiket: <b>Rp 85.000</b> (1 tiket per pengisian. Ulangi pengisian untuk tiket berikutnya).</p>
+
+            <form id="ticketForm" class="space-y-4">
+              <div>
+                <label for="namaPembeli" class="block text-xs font-bold uppercase text-slate-700 mb-1">1. Nama Lengkap</label>
+                <input type="text" id="namaPembeli" placeholder="Sesuai kartu identitas" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-brand">
+              </div>
+
+              <div>
+                <label for="waPembeli" class="block text-xs font-bold uppercase text-slate-700 mb-1">2. Nomor WhatsApp</label>
+                <input type="tel" id="waPembeli" placeholder="08xxxxxxxxxx" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-brand">
+              </div>
+
+              <div>
+                <label for="unitPembeli" class="block text-xs font-bold uppercase text-slate-700 mb-1">3. Nama Unit Band / Sekolah / Umum</label>
+                <input type="text" id="unitPembeli" placeholder="Nama sekolah / unit yang didukung" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-brand">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-700 mb-1">4. Jumlah Tiket</label>
+                  <input type="number" value="1" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm font-bold cursor-not-allowed">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-700 mb-1">5. Metode Pembayaran</label>
+                  <input type="text" value="QRIS Statis" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm font-bold cursor-not-allowed">
+                </div>
+              </div>
+
+              <!-- Section QRIS -->
+              <div class="pt-3 border-t border-slate-100 text-center">
+                <p class="text-xs font-bold text-slate-700 mb-2">Scan QRIS Resmi Pembayaran (Rp 85.000)</p>
+                <div class="max-w-[190px] mx-auto p-2.5 rounded-xl border border-slate-200 bg-white shadow-sm mb-3">
+                  <img src="qris-idca.jpg" alt="QRIS IDCA Kabupaten Bekasi" class="w-full h-auto rounded-lg">
+                </div>
+              </div>
+
+              <div>
+                <label for="buktiTransfer" class="block text-xs font-bold uppercase text-slate-700 mb-1">6. Unggah Bukti Transfer (Maks. 3MB)</label>
+                <input type="file" id="buktiTransfer" accept="image/*" required class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-subtle file:text-brand hover:file:bg-brand/20">
+              </div>
+
+              <div>
+                <label for="catatanTambahan" class="block text-xs font-bold uppercase text-slate-700 mb-1">7. Catatan Tambahan (Opsional)</label>
+                <textarea id="catatanTambahan" rows="2" placeholder="Catatan untuk panitia (opsional)" class="w-full px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-brand"></textarea>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-600 uppercase">Total Pembayaran</span>
+                <span class="text-2xl font-black text-brand">Rp 85.000</span>
+              </div>
+
+              <button type="submit" id="btnSubmitTiket" class="w-full py-3.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold text-sm shadow-lg shadow-brand/25 transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Kirim Data & Konfirmasi WhatsApp
+              </button>
+            </form>
+
+            <!-- Box Fallback WhatsApp jika pop-up terblokir -->
+            <div id="successBox" class="hidden mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2 text-lg">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <h4 class="text-base font-bold text-emerald-900 mb-1">Data Anda Berhasil Dicatat!</h4>
+              <p class="text-xs text-emerald-700 mb-4">Jika aplikasi WhatsApp tidak otomatis terbuka, silakan klik tombol di bawah ini untuk mengirim bukti ke Ka Aning:</p>
+              <a id="whatsappBtn" href="#" target="_blank" class="w-full py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm shadow-md transition-all inline-flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Buka WhatsApp Ka Aning Sekarang
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-sm py-10 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-bold text-white text-base">SMESTA 7 &middot; IDCA Kabupaten Bekasi</p>
+        <p class="text-xs text-slate-500 mt-0.5">Minggu, 22 November 2026 &middot; Go! Wet Waterpark Grand Wisata Bekasi</p>
+      </div>
+      <p class="text-xs text-slate-500">
+        &copy; <span id="year"></span> IDCA Kabupaten Bekasi. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+    const digits = p => p.replace(/\D/g, "");
+    const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
+
+    // Form Pembelian Tiket & Integrasi Google Apps Script
+    const formTiket = document.getElementById("ticketForm");
+    const btnSubmitTiket = document.getElementById("btnSubmitTiket");
+    const fileInput = document.getElementById("buktiTransfer");
+
+    formTiket.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Silakan unggah foto bukti transfer terlebih dahulu.");
+        return;
+      }
+      if (file.size > 3 * 1024 * 1024) {
+        alert("Ukuran gambar maksimal 3MB.");
+        return;
+      }
+
+      btnSubmitTiket.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengunggah data...';
+      btnSubmitTiket.disabled = true;
+
+      const reader = new FileReader();
+      reader.onload = async function() {
+        const base64Data = reader.result;
+        const nama = document.getElementById("namaPembeli").value.trim();
+        const whatsapp = document.getElementById("waPembeli").value.trim();
+        const unit = document.getElementById("unitPembeli").value.trim();
+        const catatan = document.getElementById("catatanTambahan").value.trim();
+
+        const formData = new URLSearchParams();
+        formData.append("nama", nama);
+        formData.append("whatsapp", whatsapp);
+        formData.append("unit", unit);
+        formData.append("metode", "QRIS Statis");
+        formData.append("catatan", catatan);
+        formData.append("fileData", base64Data);
+        formData.append("fileName", file.name);
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycbylTilqil7caucGkGi7rhqyob3fDdKp30NsSsjyTu1jlGOLhR3OndAy5NgrEfbUFQod/exec";
+
+        try {
+          await fetch(scriptURL, {
+            method: "POST",
+            body: formData,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+          });
+        } catch (error) {
+          console.error("Gagal mengirim ke Sheets:", error);
+        }
+
+        const WA_KA_ANING = "+6289691219728";
+        const textMsg = `Halo Ka Aning, saya sudah mengisi form pembelian tiket SMESTA 7 di website.\n\n*Rincian Pembeli:*\n- Nama Lengkap: ${nama}\n- Nomor WA: ${whatsapp}\n- Unit / Sekolah: ${unit}\n- Jumlah Tiket: 1 Tiket\n- Total Bayar: Rp 85.000\n- Catatan Tambahan: ${catatan || '-'}\n\n*PENTING: Berikut saya lampirkan foto gambar bukti transfernya di chat ini.*`;
+
+        const finalWaUrl = waUrl(WA_KA_ANING, textMsg);
+        window.open(finalWaUrl, "_blank");
+
+        document.getElementById("whatsappBtn").href = finalWaUrl;
+        document.getElementById("successBox").classList.remove("hidden");
+        formTiket.classList.add("hidden");
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
