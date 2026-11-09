@@ -37,7 +37,7 @@
     }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen relative">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen relative overflow-x-hidden w-full">
 
   <!-- NAVBAR -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
@@ -206,7 +206,7 @@
                 <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">Divisi TK</span>
                 <span class="text-xs font-bold text-slate-500">08.30 - 09.20 WIB</span>
               </div>
-              <div class="overflow-x-auto">
+              <div class="overflow-x-auto w-full">
                 <table class="w-full text-xs text-left">
                   <thead>
                     <tr class="text-slate-400 font-bold uppercase text-[10px] border-b border-slate-200">
@@ -257,7 +257,7 @@
                 <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">Divisi Junior</span>
                 <span class="text-xs font-bold text-slate-500">10.00 - 12.00 WIB</span>
               </div>
-              <div class="overflow-x-auto">
+              <div class="overflow-x-auto w-full">
                 <table class="w-full text-xs text-left">
                   <thead>
                     <tr class="text-slate-400 font-bold uppercase text-[10px] border-b border-slate-200">
@@ -343,7 +343,7 @@
                 <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">Divisi Senior</span>
                 <span class="text-xs font-bold text-slate-500">13.00 - 14.10 WIB</span>
               </div>
-              <div class="overflow-x-auto">
+              <div class="overflow-x-auto w-full">
                 <table class="w-full text-xs text-left">
                   <thead>
                     <tr class="text-slate-400 font-bold uppercase text-[10px] border-b border-slate-200">
@@ -607,7 +607,7 @@
       </div>
     </section>
 
-    <!-- FAQ SECTION (FITUR BARU) -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="py-16 bg-slate-50 border-t border-slate-100">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -688,8 +688,9 @@
           <!-- Diisi otomatis oleh JavaScript -->
         </div>
 
+        <!-- Social Media Area (Diperbarui dengan flex-wrap untuk mencegah overflow di mobile) -->
         <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-600">
-          <div class="flex items-center gap-6">
+          <div class="flex flex-wrap items-center gap-4 sm:gap-6">
             <a href="https://www.instagram.com/marco.community/" target="_blank" rel="noopener" class="hover:text-brand flex items-center gap-2">
               <i class="fa-brands fa-instagram text-brand text-lg"></i> @marco.community
             </a>
@@ -701,8 +702,8 @@
             </a>
           </div>
           <div>
-            <a href="mailto:smestabekasi@gmail.com" class="hover:text-brand flex items-center gap-2">
-              <i class="fa-regular fa-envelope text-brand"></i> smestabekasi@gmail.com
+            <a href="mailto:smestabekasi@gmail.com" class="hover:text-brand flex items-center gap-2 break-all">
+              <i class="fa-regular fa-envelope text-brand flex-shrink-0"></i> smestabekasi@gmail.com
             </a>
           </div>
         </div>
@@ -731,7 +732,7 @@
   <!-- FLOATING WHATSAPP BUTTON -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
     <!-- Popover Menu Kontak WhatsApp -->
-    <div id="waPopup" class="hidden mb-3 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 transition-all">
+    <div id="waPopup" class="hidden mb-3 w-64 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 transition-all">
       <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
         <span class="text-xs font-black text-slate-800 uppercase tracking-wide">Pusat Bantuan Resmi</span>
         <button id="closeWaPopup" class="text-slate-400 hover:text-slate-600 text-sm font-bold">&times;</button>
@@ -791,13 +792,13 @@
 
     const panitiaList = document.getElementById("panitiaList");
     panitiaList.innerHTML = CONTACTS.map(c => `
-      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm flex flex-col justify-between w-full overflow-hidden">
         <div>
           <span class="text-[11px] font-bold text-brand uppercase tracking-wider">${c.role}</span>
-          <p class="font-bold text-slate-900 text-base mt-0.5">${c.name}</p>
+          <p class="font-bold text-slate-900 text-base mt-0.5 truncate">${c.name}</p>
           <p class="text-xs text-slate-500 font-mono mt-1">${c.phone}</p>
         </div>
-        <a href="${waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya seputar event SMESTA 7...")}" target="_blank" class="mt-4 px-3 py-2 rounded-lg bg-white border border-slate-200 hover:border-brand text-slate-700 text-xs font-bold text-center transition-colors flex items-center justify-center gap-1.5">
+        <a href="${waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya seputar event SMESTA 7...")}" target="_blank" class="mt-4 px-3 py-2 rounded-lg bg-white border border-slate-200 hover:border-brand text-slate-700 text-xs font-bold text-center transition-colors flex items-center justify-center gap-1.5 whitespace-nowrap">
           <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Chat WhatsApp
         </a>
       </div>
