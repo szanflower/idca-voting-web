@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard Favorit SMESTA 7</title>
+  <link id="favicon" rel="icon" type="image/jpeg" href="logo idca.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#386CAF',
+              dark: '#254a78',
+              light: '#5384c7',
+              subtle: '#eef4fb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen relative">
+
+  <!-- NAVBAR KHUSUS HALAMAN FAVORIT -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Brand (Kembali ke Beranda) -->
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white transition-colors">
+            <i class="fa-solid fa-arrow-left"></i>
+          </div>
+          <div>
+            <span class="block text-sm font-black text-slate-900 tracking-tight uppercase leading-none">Kembali ke Beranda</span>
+            <span class="text-xs text-brand font-semibold tracking-wider uppercase">SMESTA 7</span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-5 font-medium text-sm text-slate-600">
+          <a href="index.html#event" class="hover:text-brand transition-colors">Tentang Event</a>
+          <a href="index.html#rundown" class="hover:text-brand transition-colors">Rundown</a>
+          <a href="tiket.html" class="hover:text-brand transition-colors">Tiket Penonton</a>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- SEKSI LEADERBOARD VIDEO FAVORIT (SEMI-LIVE DARI GOOGLE SHEETS) -->
+    <section id="favorit" class="py-12 sm:py-16 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-bold uppercase tracking-wider">
+            <i class="fa-brands fa-instagram text-rose-500"></i> Perlombaan Video Favorit
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-2">Leaderboard Like Instagram</h2>
+          <p class="text-xs text-slate-500 mt-1">
+            Penghargaan kategori tunggal untuk unit dengan jumlah perolehan like video terbanyak di akun resmi <b>@marco.community</b>.
+          </p>
+          <div class="mt-3 inline-block px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold leading-relaxed">
+            🔒 <b>Perhatian Regulasi:</b> Akun berstatus Private untuk mencegah bot. Like yang dihitung sah hanya like riil dari follower yang telah disetujui panitia.
+          </div>
+        </div>
+
+        <!-- Box Container Leaderboard -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Status Live: Terhubung ke Panitia</span>
+            </div>
+            <button id="btnRefreshLeaderboard" class="text-xs font-bold text-brand hover:text-brand-dark flex items-center gap-1 transition-colors">
+              <i class="fa-solid fa-arrows-rotate"></i> Segarkan Data
+            </button>
+          </div>
+
+          <!-- Dynamic List Wrapper -->
+          <div id="leaderboardList" class="space-y-3">
+            <div class="py-12 text-center text-xs text-slate-400">
+              <i class="fa-solid fa-spinner fa-spin text-lg text-brand mb-2"></i>
+              <p>Sedang menghubungkan ke server Google Sheets...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <p class="text-[11px] text-slate-400">
+            *Data diperbarui secara semi-live oleh panitia kamar hitung setelah verifikasi follower asli.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-sm py-10 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-bold text-white text-base">SMESTA 7 &middot; IDCA Kabupaten Bekasi</p>
+        <p class="text-xs text-slate-500 mt-0.5">Minggu, 22 November 2026 &middot; Go! Wet Waterpark Grand Wisata Bekasi</p>
+      </div>
+      <p class="text-xs text-slate-500">
+        &copy; <span id="year"></span> IDCA Kabupaten Bekasi. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Fetch Leaderboard Semi-Live dari Google Apps Script
+    const LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbxlacP8QEE5zLmXAewkrAS6V_XkSQRB4WgtbGvFA_FdG2RiuAWIxvES91OhOkgZNBoy1Q/exec";
+
+    async function loadLeaderboard() {
+      const container = document.getElementById("leaderboardList");
+      try {
+        const response = await fetch(LEADERBOARD_API);
+        if (!response.ok) {
+           throw new Error("Akses diblokir Google (Izin belum diset ke 'Anyone').");
+        }
+        
+        const data = await response.json();
+
+        if (data.error) {
+           throw new Error(data.error);
+        }
+
+        if (!data || data.length === 0) {
+          container.innerHTML = `
+            <div class="p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200">
+              Belum ada data nilai like yang dimasukkan oleh panitia di Google Sheets.
+            </div>`;
+          return;
+        }
+
+        // Cari perolehan like paling tinggi untuk skala baris persentase
+        const maxLikes = Math.max(...data.map(d => d.likes), 1);
+
+        container.innerHTML = data.map((item, index) => {
+          const rank = index + 1;
+          const percentage = Math.min(Math.round((item.likes / maxLikes) * 100), 100);
+
+          let rankBadge = `<span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-600 font-black text-xs flex items-center justify-center flex-shrink-0">${rank}</span>`;
+          let rankBorder = "border-slate-100 bg-slate-50/60";
+
+          if (rank === 1) {
+            rankBadge = `<span class="w-8 h-8 rounded-xl bg-amber-500 text-white font-black text-xs flex items-center justify-center shadow-md shadow-amber-500/25 flex-shrink-0"><i class="fa-solid fa-crown text-xs"></i></span>`;
+            rankBorder = "border-amber-200 bg-amber-50/50";
+          } else if (rank === 2) {
+            rankBadge = `<span class="w-8 h-8 rounded-xl bg-slate-400 text-white font-black text-xs flex items-center justify-center flex-shrink-0">2</span>`;
+            rankBorder = "border-slate-200 bg-slate-50";
+          } else if (rank === 3) {
+            rankBadge = `<span class="w-8 h-8 rounded-xl bg-amber-700 text-white font-black text-xs flex items-center justify-center flex-shrink-0">3</span>`;
+            rankBorder = "border-amber-900/10 bg-amber-900/5";
+          }
+
+          return `
+            <div class="p-4 rounded-xl border ${rankBorder} transition-all">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3 min-w-0">
+                  ${rankBadge}
+                  <div class="truncate">
+                    <p class="font-extrabold text-slate-900 text-sm truncate">${item.nama}</p>
+                    <p class="text-[11px] text-slate-400">Peringkat #${rank} Sementara</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-shrink-0">
+                  <i class="fa-solid fa-heart text-rose-500 text-xs"></i>
+                  <span class="font-black text-slate-900 text-sm sm:text-base">${Number(item.likes).toLocaleString("id-ID")}</span>
+                  <span class="text-[11px] text-slate-500 font-semibold">Like</span>
+                </div>
+              </div>
+              <!-- Progress Bar -->
+              <div class="w-full bg-slate-200/70 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div class="bg-rose-500 h-full rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+      } catch (err) {
+        console.error("Error Detail:", err.message);
+        container.innerHTML = `
+          <div class="p-4 text-center text-xs text-rose-700 bg-rose-50 rounded-xl border border-rose-200 shadow-sm">
+            <b>Akses Ditolak oleh Server.</b><br>Pastikan Anda mendeploy API Apps Script dengan Izin Akses <b>"Anyone"</b> (Siapa saja).<br>
+            <span class="text-[10px] text-rose-500">Log Error: ${err.message}</span>
+          </div>`;
+      }
+    }
+
+    loadLeaderboard();
+
+    document.getElementById("btnRefreshLeaderboard").addEventListener("click", () => {
+      const container = document.getElementById("leaderboardList");
+      container.innerHTML = `
+        <div class="py-10 text-center text-xs text-slate-400">
+          <i class="fa-solid fa-spinner fa-spin text-brand text-lg mb-2"></i>
+          <p>Memperbarui urutan peringkat...</p>
+        </div>`;
+      loadLeaderboard();
+    });
+  </script>
+</body>
+</html>
