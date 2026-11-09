@@ -33,7 +33,7 @@
 
   <!-- NAVBAR -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="flex items-center justify-between h-20">
         
         <!-- Logo Brand -->
@@ -45,31 +45,73 @@
           </div>
         </a>
 
-        <!-- Desktop Menu -->
+        <!-- Desktop Menu (Sembunyi di HP) -->
         <nav class="hidden md:flex items-center gap-5 font-medium text-sm text-slate-600">
           <a href="#event" class="hover:text-brand transition-colors">Tentang Event</a>
           <a href="#rundown" class="hover:text-brand transition-colors">Rundown</a>
-          <!-- Link Menu Baru ke halaman terpisah -->
           <a href="favorit.html" class="hover:text-brand transition-colors font-bold text-brand">Juara Favorit</a>
           <a href="#juri" class="hover:text-brand transition-colors">Dewan Juri</a>
           <a href="#countdown" class="hover:text-brand transition-colors">Jadwal</a>
-          <!-- Link Menu Baru ke halaman terpisah -->
           <a href="tiket.html" class="hover:text-brand transition-colors font-bold">Tiket Penonton</a>
           <a href="#denah" class="hover:text-brand transition-colors">Denah & Venue</a>
           <a href="#kontak" class="hover:text-brand transition-colors">Kontak</a>
         </nav>
 
-        <!-- CTA Action -->
-        <div class="hidden sm:flex items-center gap-3">
-          <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-brand transition-colors flex items-center gap-2">
-            <i class="fa-solid fa-file-pdf text-brand"></i> Juklak
-          </a>
-          <!-- Mengarah ke file tiket.html -->
-          <a href="tiket.html" class="px-5 py-2.5 rounded-xl bg-brand hover:bg-brand-dark text-white text-sm font-semibold shadow-md shadow-brand/20 transition-all transform active:scale-95">
-            Beli Tiket
-          </a>
+        <!-- CTA Action & Hamburger -->
+        <div class="flex items-center gap-3">
+          <!-- Tombol Desktop & Tablet -->
+          <div class="hidden sm:flex items-center gap-3">
+            <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-brand transition-colors flex items-center gap-2">
+              <i class="fa-solid fa-file-pdf text-brand"></i> Juklak
+            </a>
+            <a href="tiket.html" class="px-5 py-2.5 rounded-xl bg-brand hover:bg-brand-dark text-white text-sm font-semibold shadow-md shadow-brand/20 transition-all transform active:scale-95">
+              Beli Tiket
+            </a>
+          </div>
+          
+          <!-- Hamburger Menu Button (Khusus HP) -->
+          <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-600 hover:text-brand hover:bg-brand/10 transition-colors focus:outline-none">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
         </div>
 
+      </div>
+
+      <!-- MOBILE MENU DROPDOWN (Tampil saat Hamburger diklik) -->
+      <div id="mobileMenu" class="hidden md:hidden absolute left-0 right-0 top-20 bg-white border-b border-slate-100 shadow-xl px-4 py-6 z-40">
+        <nav class="flex flex-col gap-4 text-base font-bold text-slate-700">
+          <a href="#event" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Tentang Event <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="#rundown" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Rundown & Lineup <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="favorit.html" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2 text-rose-600">
+            <span><i class="fa-brands fa-instagram mr-2"></i> Leaderboard Favorit</span> <i class="fa-solid fa-chevron-right text-xs text-rose-200"></i>
+          </a>
+          <a href="#juri" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Dewan Juri <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="#countdown" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Jadwal TM & Hari H <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="#denah" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Denah Venue <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="#kontak" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Kontak Panitia <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          
+          <!-- Tombol Aksi di Menu HP -->
+          <div class="flex flex-col gap-3 mt-4">
+            <a href="Juklak%20SMESTA%20VII.pdf" target="_blank" class="mobile-link py-3 text-center rounded-xl bg-slate-100 text-slate-700 text-sm flex items-center justify-center gap-2">
+              <i class="fa-solid fa-file-pdf text-brand"></i> Download Juklak
+            </a>
+            <a href="tiket.html" class="mobile-link py-3 text-center rounded-xl bg-brand text-white text-sm shadow-md shadow-brand/20">
+              <i class="fa-solid fa-ticket mr-2"></i> Beli Tiket Masuk
+            </a>
+          </div>
+        </nav>
       </div>
     </div>
   </header>
@@ -95,7 +137,6 @@
         </p>
 
         <div class="mt-8 flex flex-wrap justify-center gap-4">
-          <!-- Mengarah ke file tiket.html -->
           <a href="tiket.html" class="px-7 py-3.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold shadow-lg shadow-brand/25 transition-all transform active:scale-95 flex items-center gap-2">
             <i class="fa-solid fa-ticket"></i> Beli Tiket Penonton
           </a>
@@ -123,7 +164,7 @@
       </div>
     </section>
 
-    <!-- RUNDOWN ACARA & URUTAN TAMPIL RESMI (FULL WEB) -->
+    <!-- RUNDOWN ACARA & URUTAN TAMPIL RESMI -->
     <section id="rundown" class="py-16 bg-white border-y border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -369,7 +410,7 @@
     </section>
 
     <!-- PROFIL DEWAN JURI -->
-    <section id="juri" class="py-16 bg-white border-b border-slate-100">
+    <section id="juri" class="py-16 bg-white border-y border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Penilaian Profesional</h2>
@@ -995,6 +1036,32 @@
     });
     closeWaPopup.addEventListener("click", () => {
       waPopup.classList.add("hidden");
+    });
+
+    // 5. Logika Mobile Menu (Hamburger)
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      const icon = mobileMenuBtn.querySelector("i");
+      if (mobileMenu.classList.contains("hidden")) {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+      } else {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        const icon = mobileMenuBtn.querySelector("i");
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+      });
     });
   </script>
 </body>
