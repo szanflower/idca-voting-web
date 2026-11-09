@@ -12,6 +12,14 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <style>
+    /* Animasi untuk Akordeon FAQ */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+    @keyframes sweep { 0% {opacity: 0; margin-top: -10px;} 100% {opacity: 1; margin-top: 0px;} }
+  </style>
+
   <script>
     tailwind.config = {
       theme: {
@@ -45,21 +53,19 @@
           </div>
         </a>
 
-        <!-- Desktop Menu (Sembunyi di HP) -->
+        <!-- Desktop Menu -->
         <nav class="hidden md:flex items-center gap-5 font-medium text-sm text-slate-600">
-          <a href="#event" class="hover:text-brand transition-colors">Tentang Event</a>
+          <a href="#event" class="hover:text-brand transition-colors">Event</a>
           <a href="#rundown" class="hover:text-brand transition-colors">Rundown</a>
-          <a href="favorit.html" class="hover:text-brand transition-colors font-bold text-brand">Juara Favorit</a>
-          <a href="juri.html" class="hover:text-brand transition-colors font-bold text-brand">Dewan Juri</a>
-          <a href="#countdown" class="hover:text-brand transition-colors">Jadwal</a>
-          <a href="tiket.html" class="hover:text-brand transition-colors font-bold text-brand">Tiket Penonton</a>
-          <a href="#denah" class="hover:text-brand transition-colors">Denah & Venue</a>
-          <a href="#kontak" class="hover:text-brand transition-colors">Kontak</a>
+          <a href="favorit.html" class="hover:text-brand transition-colors font-bold text-brand">Favorit</a>
+          <a href="juri.html" class="hover:text-brand transition-colors font-bold text-brand">Juri</a>
+          <a href="#denah" class="hover:text-brand transition-colors">Denah</a>
+          <a href="#faq" class="hover:text-brand transition-colors">F.A.Q</a>
+          <a href="tiket.html" class="hover:text-brand transition-colors font-bold text-brand">Tiket</a>
         </nav>
 
         <!-- CTA Action & Hamburger -->
         <div class="flex items-center gap-3">
-          <!-- Tombol Desktop & Tablet -->
           <div class="hidden sm:flex items-center gap-3">
             <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-brand transition-colors flex items-center gap-2">
               <i class="fa-solid fa-file-pdf text-brand"></i> Juklak
@@ -69,7 +75,6 @@
             </a>
           </div>
           
-          <!-- Hamburger Menu Button (Khusus HP) -->
           <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-600 hover:text-brand hover:bg-brand/10 transition-colors focus:outline-none">
             <i class="fa-solid fa-bars text-lg"></i>
           </button>
@@ -77,7 +82,7 @@
 
       </div>
 
-      <!-- MOBILE MENU DROPDOWN (Tampil saat Hamburger diklik) -->
+      <!-- MOBILE MENU DROPDOWN -->
       <div id="mobileMenu" class="hidden md:hidden absolute left-0 right-0 top-20 bg-white border-b border-slate-100 shadow-xl px-4 py-6 z-40">
         <nav class="flex flex-col gap-4 text-base font-bold text-slate-700">
           <a href="#event" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
@@ -92,17 +97,16 @@
           <a href="juri.html" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2 text-brand">
             <span><i class="fa-solid fa-users mr-2"></i> Dewan Juri</span> <i class="fa-solid fa-chevron-right text-xs text-brand/30"></i>
           </a>
-          <a href="#countdown" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
-            Jadwal TM & Hari H <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
-          </a>
           <a href="#denah" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
             Denah Venue <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+          </a>
+          <a href="#faq" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
+            Pusat Bantuan (F.A.Q) <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
           </a>
           <a href="#kontak" class="mobile-link flex items-center justify-between border-b border-slate-50 pb-2">
             Kontak Panitia <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
           </a>
           
-          <!-- Tombol Aksi di Menu HP -->
           <div class="flex flex-col gap-3 mt-4">
             <a href="Juklak%20SMESTA%20VII.pdf" target="_blank" class="mobile-link py-3 text-center rounded-xl bg-slate-100 text-slate-700 text-sm flex items-center justify-center gap-2">
               <i class="fa-solid fa-file-pdf text-brand"></i> Download Juklak
@@ -145,7 +149,6 @@
           </a>
         </div>
 
-        <!-- DIVIDER BADGES (KATEGORI KELAS) -->
         <div id="kategori" class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto">
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center justify-center gap-3">
             <i class="fa-solid fa-child text-brand text-lg"></i>
@@ -164,7 +167,7 @@
       </div>
     </section>
 
-    <!-- RUNDOWN ACARA & URUTAN TAMPIL RESMI -->
+    <!-- RUNDOWN ACARA -->
     <section id="rundown" class="py-16 bg-white border-y border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -174,7 +177,6 @@
           <p class="text-sm text-slate-500 mt-2">Jadwal pelaksanaan langsung dan nomor urut tampil kontingen SMESTA Jilid 7 pada Minggu, 22 November 2026.</p>
         </div>
 
-        <!-- Agenda Seremoni Pagi -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 max-w-4xl mx-auto">
           <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs sm:text-sm">
             <span class="font-bold text-slate-800 flex items-center gap-2">
@@ -387,7 +389,6 @@
               </div>
             </div>
 
-            <!-- Rangkaian Penutup Langsung -->
             <div class="mt-4 pt-3 border-t border-slate-200 space-y-2 text-xs">
               <div class="p-2 rounded-lg bg-white border border-slate-100 flex items-center justify-between">
                 <span class="text-slate-500">14.10 - 16.00 WIB</span>
@@ -405,15 +406,13 @@
           </div>
 
         </div>
-
       </div>
     </section>
 
     <!-- COUNTDOWN SECTION -->
-    <section id="countdown" class="py-14 bg-slate-50 border-y border-slate-100">
+    <section id="countdown" class="py-14 bg-slate-50 border-b border-slate-100">
       <div class="max-w-5xl mx-auto px-4 text-center">
         
-        <!-- Countdown Hari H -->
         <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Hitung Mundur</h2>
         <p class="text-xl sm:text-2xl font-black text-slate-900 mb-6">Menuju Pelaksanaan SMESTA 7 (22 Nov 2026)</p>
 
@@ -436,7 +435,6 @@
           </div>
         </div>
 
-        <!-- Box Banner Technical Meeting -->
         <div class="max-w-xl mx-auto p-4 rounded-xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-left shadow-sm">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-lg flex-shrink-0">
@@ -465,7 +463,6 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
-          <!-- Rincian Acara -->
           <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
             <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
               <i class="fa-solid fa-circle-info text-brand"></i> Detail Pelaksanaan
@@ -474,10 +471,6 @@
               <div class="py-3.5 flex justify-between gap-4">
                 <dt class="text-slate-500 font-medium">Nama Event</dt>
                 <dd class="font-bold text-slate-900 text-right">SMESTA 7 (Sound of Music Ensemble Talent)</dd>
-              </div>
-              <div class="py-3.5 flex justify-between gap-4">
-                <dt class="text-slate-500 font-medium">Technical Meeting</dt>
-                <dd class="font-bold text-slate-900 text-right">Minggu, 08 November 2026 <span class="ml-1 text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Selesai</span></dd>
               </div>
               <div class="py-3.5 flex justify-between gap-4">
                 <dt class="text-slate-500 font-medium">Hari & Tanggal Lomba</dt>
@@ -499,7 +492,6 @@
             </div>
           </div>
 
-          <!-- Rincian Piala -->
           <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
             <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
               <i class="fa-solid fa-trophy text-amber-500"></i> Penghargaan & Trofi Kejuaraan
@@ -514,7 +506,6 @@
                   <p class="text-xs text-slate-600 mt-0.5">Piala Bergilir Gubernur Jawa Barat & Piala Bupati Kabupaten Bekasi</p>
                 </div>
               </div>
-
               <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-3">
                 <span class="w-8 h-8 rounded-lg bg-slate-400 text-white font-black text-sm flex items-center justify-center flex-shrink-0">2</span>
                 <div>
@@ -522,7 +513,6 @@
                   <p class="text-xs text-slate-600 mt-0.5">Piala Dispora Kabupaten Bekasi</p>
                 </div>
               </div>
-
               <div class="p-4 rounded-xl bg-amber-900/5 border border-amber-900/10 flex items-start gap-3">
                 <span class="w-8 h-8 rounded-lg bg-amber-700 text-white font-black text-sm flex items-center justify-center flex-shrink-0">3</span>
                 <div>
@@ -534,62 +524,6 @@
           </div>
 
         </div>
-      </div>
-    </section>
-
-    <!-- PUSAT DOKUMEN & BERKAS -->
-    <section id="dokumen" class="py-16 bg-slate-50 border-t border-slate-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
-          <div>
-            <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Pusat Unduhan</h2>
-            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dokumen Regulasi & Berkas</p>
-          </div>
-          <p class="text-sm text-slate-500 mt-2 sm:mt-0 max-w-sm">
-            Unduh petunjuk teknis pelaksanaan dan ketentuan lomba resmi SMESTA 7.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-          <!-- Card Juklak -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-xl mb-5">
-                <i class="fa-solid fa-book-open"></i>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 leading-snug">Petunjuk Pelaksanaan (Juklak) Resmi</h3>
-              <p class="text-sm text-slate-600 mt-2">
-                Pedoman kategori lomba, durasi penampilan, kriteria penilaian dewan juri, serta ketentuan teknis arena.
-              </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-xs font-semibold text-slate-400 uppercase">PDF Resmi</span>
-              <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="inline-flex items-center text-sm font-bold text-brand hover:text-brand-dark">
-                Unduh Berkas <i class="fa-solid fa-arrow-down-to-bracket ml-2"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Card Pendaftaran Unit -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-xl mb-5">
-                <i class="fa-solid fa-file-pen"></i>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 leading-snug">Portal Pendaftaran Tim Peserta</h3>
-              <p class="text-sm text-slate-600 mt-2">
-                Formulir pendaftaran digital unit marching band, verifikasi roster pemain, dan kelengkapan administrasi kontingen.
-              </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-xs font-semibold text-slate-400 uppercase">Formulir Online</span>
-              <a href="https://smestajilid7.netlify.app" target="_blank" rel="noopener" class="inline-flex items-center text-sm font-bold text-brand hover:text-brand-dark">
-                Buka Pendaftaran <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -609,7 +543,6 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          <!-- Gambar Denah -->
           <div class="lg:col-span-5 bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
             <button type="button" id="mapBtn" class="w-full block relative cursor-zoom-in" aria-label="Perbesar Denah">
               <img src="denah lokasi.jpg" alt="Denah Lokasi SMESTA 7" class="w-full h-auto object-cover group-hover:opacity-95 transition-opacity">
@@ -619,9 +552,7 @@
             </button>
           </div>
 
-          <!-- Keterangan Denah & Aturan -->
           <div class="lg:col-span-7 space-y-6">
-            
             <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm">
               <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700 mb-4">Keterangan Titik Area</h3>
               <ul class="divide-y divide-slate-100 text-sm">
@@ -630,9 +561,6 @@
                   <div>
                     <p class="font-bold text-slate-900">FOH & Broadcast Control</p>
                     <p class="text-xs text-slate-500">Pusat audio sistem venue dan live streaming kamera perlombaan.</p>
-                    <a href="https://www.youtube.com/@SmestaBekasi" target="_blank" rel="noopener" class="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1 mt-1">
-                      <i class="fa-brands fa-youtube"></i> Tonton Live Streaming YouTube
-                    </a>
                   </div>
                 </li>
                 <li class="py-3 flex items-start gap-3">
@@ -656,17 +584,9 @@
                     <p class="text-xs text-slate-500">Area performa unit drum band & marching band.</p>
                   </div>
                 </li>
-                <li class="py-3 flex items-start gap-3">
-                  <span class="w-7 h-7 rounded-lg bg-brand text-white font-black text-xs flex items-center justify-center flex-shrink-0">6</span>
-                  <div>
-                    <p class="font-bold text-slate-900">Tenan Bazaar & Konsumsi</p>
-                    <p class="text-xs text-slate-500">Area kuliner resmi di dalam venue Go Wet! Waterpark.</p>
-                  </div>
-                </li>
               </ul>
             </div>
 
-            <!-- Tata Tertib Venue -->
             <div class="bg-amber-50/60 rounded-2xl p-6 border border-amber-200/70 text-xs sm:text-sm text-slate-700">
               <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2 text-sm">
                 <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Tata Tertib Venue & Transit Alat
@@ -674,90 +594,75 @@
               <ul class="list-disc list-inside space-y-1.5 text-slate-600">
                 <li><b>Transit Alat:</b> Jalur bongkar muat alat kontingen mengikuti titik <b>Load In & Load Out</b> di denah.</li>
                 <li><b>Makanan Luar:</b> Dilarang keras membawa makanan dari luar ke area Go Wet! Waterpark.</li>
-                <li><b>Minuman:</b> Pengunjung dan kontingen wajib menggunakan <b>tumbler / botol minum isi ulang</b> (dilarang botol plastik sekali pakai).</li>
+                <li><b>Minuman:</b> Pengunjung dan kontingen wajib menggunakan <b>tumbler / botol minum isi ulang</b>.</li>
               </ul>
             </div>
-
           </div>
-
         </div>
 
       </div>
     </section>
 
-    <!-- MITRA & SPONSOR -->
-    <section id="mitra" class="py-16 bg-slate-50 border-t border-slate-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- FAQ SECTION (FITUR BARU) -->
+    <section id="faq" class="py-16 bg-slate-50 border-t border-slate-100">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-xl mx-auto mb-10">
-          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Dukungan Sponsor</p>
-          <p class="text-xl sm:text-2xl font-extrabold text-slate-800">Sponsor & Mitra Penyelenggara</p>
+        <div class="text-center mb-10">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Pusat Bantuan</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Pertanyaan Sering Diajukan</p>
         </div>
 
-        <div class="space-y-10">
-          <!-- Disponsori -->
-          <div>
-            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 text-center sm:text-left">Disponsori Oleh</p>
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-1.png" alt="Sponsor 1" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-2.png" alt="Sponsor 2" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-3.png" alt="Sponsor 3" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-4.png" alt="Sponsor 4" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-5.png" alt="Sponsor 5" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-6.png" alt="Sponsor 6" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-7.png" alt="Sponsor 7" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="sponsor-8.png" alt="Sponsor 8" class="max-h-full max-w-full object-contain">
-              </div>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-2 sm:p-4">
+          
+          <details class="group border-b border-slate-100 p-4">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none text-slate-800">
+              <span class="text-sm sm:text-base">Apakah anak balita wajib membeli tiket masuk?</span>
+              <span class="transition group-open:rotate-180 text-brand ml-4">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </summary>
+            <div class="text-slate-600 mt-3 text-sm leading-relaxed">
+              Sesuai dengan regulasi resmi dari manajemen Go! Wet Waterpark, anak dengan usia di atas 3 tahun atau yang sudah memiliki tinggi badan minimal 90cm wajib memiliki tiket masuk (*berlaku tarif normal*).
             </div>
-          </div>
+          </details>
 
-          <!-- Didukung -->
-          <div class="pt-8 border-t border-slate-200/60">
-            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 text-center sm:text-left">Didukung Oleh</p>
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-1.png" alt="Support 1" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-2.png" alt="Support 2" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-3.png" alt="Support 3" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-4.png" alt="Support 4" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-5.png" alt="Support 5" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-6.png" alt="Support 6" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-7.png" alt="Support 7" class="max-h-full max-w-full object-contain">
-              </div>
-              <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
-                <img src="support-8.png" alt="Support 8" class="max-h-full max-w-full object-contain">
-              </div>
+          <details class="group border-b border-slate-100 p-4">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none text-slate-800">
+              <span class="text-sm sm:text-base">Di mana titik parkir untuk bus dan truk alat?</span>
+              <span class="transition group-open:rotate-180 text-brand ml-4">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </summary>
+            <div class="text-slate-600 mt-3 text-sm leading-relaxed">
+              Kendaraan truk pengangkut alat musik/pit diarahkan menuju titik bongkar muat (*Load-In & Load-Out*) sesuai pada denah panitia. Sementara untuk bus pariwisata kontingen, akan disediakan area parkir khusus rombongan di dekat gerbang masuk Go! Wet.
             </div>
-          </div>
+          </details>
+
+          <details class="group border-b border-slate-100 p-4">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none text-slate-800">
+              <span class="text-sm sm:text-base">Apakah kami boleh membawa bekal makanan sendiri?</span>
+              <span class="transition group-open:rotate-180 text-brand ml-4">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </summary>
+            <div class="text-slate-600 mt-3 text-sm leading-relaxed">
+              Pengunjung dan peserta dilarang keras membawa makanan dari luar ke dalam area wahana/venue lomba. Panitia telah menyediakan *food court* dan tenan bazaar khusus yang beroperasi selama lomba berlangsung. Anda diwajibkan membawa tumbler (botol minum isi ulang sendiri).
+            </div>
+          </details>
+
+          <details class="group p-4">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none text-slate-800">
+              <span class="text-sm sm:text-base">Bagaimana prosedur penukaran tiket online menjadi tiket fisik?</span>
+              <span class="transition group-open:rotate-180 text-brand ml-4">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </summary>
+            <div class="text-slate-600 mt-3 text-sm leading-relaxed">
+              Simpan bukti konfirmasi chat WhatsApp Anda. Penukaran *e-ticket* menjadi gelang tiket fisik dapat dilakukan pada meja helpdesk registrasi di depan gerbang masuk Go! Wet mulai hari Minggu tanggal 22 Nov 2026 pukul 07.30 WIB.
+            </div>
+          </details>
+
         </div>
-
       </div>
     </section>
 
@@ -798,7 +703,6 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-400 text-sm py-10 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
       <div>
@@ -810,6 +714,11 @@
       </p>
     </div>
   </footer>
+
+  <!-- TOMBOL KEMBALI KE ATAS (BACK TO TOP) -->
+  <button id="backToTopBtn" class="fixed bottom-24 right-6 z-40 w-11 h-11 rounded-full bg-slate-800 text-white shadow-xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center justify-center hover:bg-slate-700 focus:outline-none">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <!-- FLOATING WHATSAPP BUTTON -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
@@ -845,7 +754,6 @@
     </button>
   </div>
 
-  <!-- MODAL ZOOM DENAH -->
   <dialog id="mapDlg" class="rounded-2xl p-0 backdrop:bg-slate-900/70 border border-slate-200 max-w-4xl w-[calc(100%-2rem)] max-h-[90vh] overflow-hidden">
     <div class="p-4 bg-white border-b border-slate-100 flex items-center justify-between">
       <h3 class="text-base font-bold text-slate-900">Denah Lokasi Go! Wet Waterpark</h3>
@@ -871,7 +779,6 @@
     const digits = p => p.replace(/\D/g, "");
     const waUrl = (phone, text) => "https://wa.me/" + digits(phone) + (text ? "?text=" + encodeURIComponent(text) : "");
 
-    // 1. Inisialisasi Data Dinamis & Kontak
     document.getElementById("year").innerText = new Date().getFullYear();
 
     const panitiaList = document.getElementById("panitiaList");
@@ -888,10 +795,8 @@
       </div>
     `).join("");
 
-    // 2. Countdown Real-Time Hari H
     function updateCountdown() {
       const now = new Date().getTime();
-
       const diffEvent = EVENT_DATE - now;
       if (diffEvent <= 0) {
         document.getElementById('days').innerText = "00";
@@ -918,13 +823,11 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // 3. Modal Zoom Denah Lokasi
     const mapDlg = document.getElementById("mapDlg");
     document.getElementById("mapBtn").addEventListener("click", () => mapDlg.showModal());
     document.getElementById("closeDlg").addEventListener("click", () => mapDlg.close());
     mapDlg.addEventListener("click", (e) => { if (e.target === mapDlg) mapDlg.close(); });
 
-    // 4. Logika Floating Button WhatsApp
     const waToggleBtn = document.getElementById("waToggleBtn");
     const waPopup = document.getElementById("waPopup");
     const closeWaPopup = document.getElementById("closeWaPopup");
@@ -936,7 +839,6 @@
       waPopup.classList.add("hidden");
     });
 
-    // 5. Logika Mobile Menu (Hamburger)
     const mobileMenuBtn = document.getElementById("mobileMenuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
     const mobileLinks = document.querySelectorAll(".mobile-link");
@@ -962,6 +864,22 @@
         icon.classList.remove("fa-xmark");
         icon.classList.add("fa-bars");
       });
+    });
+
+    // Skrip untuk tombol Back to Top
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.remove("opacity-0", "pointer-events-none", "translate-y-4");
+        backToTopBtn.classList.add("opacity-100", "translate-y-0");
+      } else {
+        backToTopBtn.classList.remove("opacity-100", "translate-y-0");
+        backToTopBtn.classList.add("opacity-0", "pointer-events-none", "translate-y-4");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
 </body>
