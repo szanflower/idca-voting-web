@@ -29,7 +29,7 @@
     }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen relative">
 
   <!-- NAVBAR -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
@@ -46,8 +46,9 @@
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden md:flex items-center gap-6 font-medium text-sm text-slate-600">
+        <nav class="hidden md:flex items-center gap-5 font-medium text-sm text-slate-600">
           <a href="#event" class="hover:text-brand transition-colors">Tentang Event</a>
+          <a href="#rundown" class="hover:text-brand transition-colors">Rundown & Urutan</a>
           <a href="#juri" class="hover:text-brand transition-colors">Dewan Juri</a>
           <a href="#countdown" class="hover:text-brand transition-colors">Jadwal</a>
           <a href="#tiket" class="hover:text-brand transition-colors">Tiket Penonton</a>
@@ -118,8 +119,253 @@
       </div>
     </section>
 
+    <!-- RUNDOWN ACARA & URUTAN TAMPIL RESMI (FULL TAMPILAN DI WEB) -->
+    <section id="rundown" class="py-16 bg-white border-y border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Jadwal & Lineup Resmi</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Rundown & Urutan Tampil Peserta</p>
+          <p class="text-sm text-slate-500 mt-2">Jadwal pelaksanaan langsung dan nomor urut tampil kontingen SMESTA Jilid 7 pada Minggu, 22 November 2026.</p>
+        </div>
+
+        <!-- Agenda Seremoni Pagi -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 max-w-4xl mx-auto">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs sm:text-sm">
+            <span class="font-bold text-slate-800 flex items-center gap-2">
+              <i class="fa-solid fa-clock text-brand"></i> 07.30 - 08.00 WIB
+            </span>
+            <span class="font-bold text-brand uppercase tracking-wider">Registrasi Peserta</span>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs sm:text-sm">
+            <span class="font-bold text-slate-800 flex items-center gap-2">
+              <i class="fa-solid fa-flag text-brand"></i> 08.00 - 08.30 WIB
+            </span>
+            <span class="font-bold text-brand uppercase tracking-wider">Upacara Pembukaan</span>
+          </div>
+        </div>
+
+        <!-- Tabel Per Divisi -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          
+          <!-- 1. Divisi TK -->
+          <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+                <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">Divisi TK</span>
+                <span class="text-xs font-bold text-slate-500">08.30 - 09.20 WIB</span>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left">
+                  <thead>
+                    <tr class="text-slate-400 font-bold uppercase text-[10px] border-b border-slate-200">
+                      <th class="py-2 px-1 text-center w-8">No</th>
+                      <th class="py-2 px-2">Waktu</th>
+                      <th class="py-2 px-2">Nama Unit / Sekolah</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-200/60 font-medium">
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">1</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">08.30 - 08.40</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">TK Al - Ghoni</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">2</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">08.40 - 08.50</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">TK Darul Adzkia</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">3</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">08.50 - 09.00</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">TK Strada Bhakti Wiyata</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">4</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">09.00 - 09.10</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">TK Al - Irsyad</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">5</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">09.10 - 09.20</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">TK Kemala Bhayangkari</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 text-center font-semibold">
+              Persiapan Divisi Junior: 09.20 - 10.00 WIB
+            </div>
+          </div>
+
+          <!-- 2. Divisi Junior -->
+          <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+                <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">Divisi Junior</span>
+                <span class="text-xs font-bold text-slate-500">10.00 - 12.00 WIB</span>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left">
+                  <thead>
+                    <tr class="text-slate-400 font-bold uppercase text-[10px] border-b border-slate-200">
+                      <th class="py-2 px-1 text-center w-8">No</th>
+                      <th class="py-2 px-2">Waktu</th>
+                      <th class="py-2 px-2">Nama Unit / Sekolah</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-200/60 font-medium">
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">1</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">10.00 - 10.10</td>
+                      <td class="py-2 px-2 font-bold text-slate-900">SDIT Al - Hikmah</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">2</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">10.10 - 10.20</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">MI Baitussalam</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">3</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">10.20 - 10.30</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">MI Al Ba'lawi</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">4</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">10.30 - 10.40</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">MI Raudhatul Amal</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">5</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">10.40 - 10.50</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">Gita Bahana Paranada</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">6</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">10.50 - 11.00</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SDN Telajung 02</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">7</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">11.00 - 11.10</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SDN Sukadami 01</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">8</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">11.10 - 11.20</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">MI Gita Fitri 28</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">9</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">11.20 - 11.30</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SDN Sukarukun 01</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">10</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">11.30 - 11.40</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SDN Jatimulya 11</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">11</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">11.40 - 11.50</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">MI Attaqwa 24</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2 px-1 text-center font-bold text-brand">12</td>
+                      <td class="py-2 px-2 text-slate-500 whitespace-nowrap">11.50 - 12.00</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SDN 1 Ciangsana</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 text-center font-semibold">
+              ISHOMA Siang: 12.00 - 13.00 WIB
+            </div>
+          </div>
+
+          <!-- 3. Divisi Senior & Agenda Penutup -->
+          <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+                <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider">Divisi Senior</span>
+                <span class="text-xs font-bold text-slate-500">13.00 - 14.10 WIB</span>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left">
+                  <thead>
+                    <tr class="text-slate-400 font-bold uppercase text-[10px] border-b border-slate-200">
+                      <th class="py-2 px-1 text-center w-8">No</th>
+                      <th class="py-2 px-2">Waktu</th>
+                      <th class="py-2 px-2">Nama Unit / Sekolah</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-200/60 font-medium">
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">1</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">13.00 - 13.10</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SMP Marsudirini</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">2</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">13.10 - 13.20</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SMP Jaya Suti Abadi</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">3</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">13.20 - 13.30</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">Melodia Gita Bahana</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">4</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">13.30 - 13.40</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">Harmony One</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">5</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">13.40 - 13.50</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">SMPIT Annida</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">6</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">13.50 - 14.00</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">Swara Harmania MTS At Taqwa 08</td>
+                    </tr>
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="py-2.5 px-1 text-center font-bold text-brand">7</td>
+                      <td class="py-2.5 px-2 text-slate-500 whitespace-nowrap">14.00 - 14.10</td>
+                      <td class="py-2.5 px-2 font-bold text-slate-900">MTS Rijan Jonggol</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Rangkaian Penutup Langsung -->
+            <div class="mt-4 pt-3 border-t border-slate-200 space-y-2 text-xs">
+              <div class="p-2 rounded-lg bg-white border border-slate-100 flex items-center justify-between">
+                <span class="text-slate-500">14.10 - 16.00 WIB</span>
+                <span class="font-bold text-slate-800">Istirahat / Sidang Juri</span>
+              </div>
+              <div class="p-2 rounded-lg bg-white border border-slate-100 flex items-center justify-between">
+                <span class="text-slate-500">16.00 - 16.20 WIB</span>
+                <span class="font-bold text-slate-800">Upacara Penutupan</span>
+              </div>
+              <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-between text-emerald-800">
+                <span class="font-bold">16.20 - 17.00 WIB</span>
+                <span class="font-bold">Pengumuman Juara & Awarding</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
     <!-- PROFIL DEWAN JURI -->
-    <section id="juri" class="py-16 bg-white border-y border-slate-100">
+    <section id="juri" class="py-16 bg-slate-50 border-b border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Penilaian Profesional</h2>
@@ -130,7 +376,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           
           <!-- Card Juri 1: Musical Performance -->
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
             <div class="w-full flex flex-col items-center">
               <div class="w-24 h-24 rounded-full overflow-hidden bg-brand/10 border-2 border-brand/30 mb-4 flex items-center justify-center">
                 <img src="juri-rifki.jpg" alt="Muhammad Rifki Prananda" class="w-full h-full object-cover" onerror="this.outerHTML='<i class=\'fa-solid fa-music text-3xl text-brand\'></i>'">
@@ -138,16 +384,16 @@
               <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-[11px] font-bold uppercase tracking-wider mb-2">Musical Performance</span>
               <h3 class="font-extrabold text-slate-900 text-base leading-tight">M. Rifki Prananda</h3>
               <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                Instructor & Music Arranger MB Gita Pakuan Pemprov Jabar. Juri Musical Performance IDCA & Adjudicator Nasional.
+                Instructor & Music Arranger MB Gita Pakuan Pemprov Jabar. Juri Musical Performance IDCA & Adjudicator Nasional[cite: 4].
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/60 w-full text-slate-500 text-[11px] font-semibold">
-              Certified Judge IDCA
+              Certified Judge IDCA[cite: 4]
             </div>
           </div>
 
           <!-- Card Juri 2: Visual Performance (Ilham Abdul Malik) -->
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
             <div class="w-full flex flex-col items-center">
               <div class="w-24 h-24 rounded-full overflow-hidden bg-brand/10 border-2 border-brand/30 mb-4 flex items-center justify-center">
                 <img src="juri-ilham.jpg" alt="Ilham Abdul Malik" class="w-full h-full object-cover" onerror="this.outerHTML='<i class=\'fa-solid fa-eye text-3xl text-brand\'></i>'">
@@ -155,16 +401,16 @@
               <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-[11px] font-bold uppercase tracking-wider mb-2">Visual Performance</span>
               <h3 class="font-extrabold text-slate-900 text-base leading-tight">Ilham Abdul Malik</h3>
               <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                Visual & Drill Designer MB Madah Bahana UI & PDBI Kab. Bandung. Juri Lisensi AMBC & IDCA Regional A.
+                Visual & Drill Designer MB Madah Bahana UI & PDBI Kab. Bandung. Juri Lisensi AMBC & IDCA Regional A[cite: 5].
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/60 w-full text-slate-500 text-[11px] font-semibold">
-              Certified Judge (AMBC & IDCA)
+              Certified Judge (AMBC & IDCA)[cite: 5]
             </div>
           </div>
 
           <!-- Card Juri 3: Overall Impression (Redi Restu Fadilah) -->
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
             <div class="w-full flex flex-col items-center">
               <div class="w-24 h-24 rounded-full overflow-hidden bg-brand/10 border-2 border-brand/30 mb-4 flex items-center justify-center">
                 <img src="juri-redi.jpg" alt="Redi Restu Fadilah (Tahe)" class="w-full h-full object-cover" onerror="this.outerHTML='<i class=\'fa-solid fa-wand-magic-sparkles text-3xl text-brand\'></i>'">
@@ -182,7 +428,7 @@
           </div>
 
           <!-- Card Juri 4: Juri Individual (IWAY) -->
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
             <div class="w-full flex flex-col items-center">
               <div class="w-24 h-24 rounded-full overflow-hidden bg-brand/10 border-2 border-brand/30 mb-4 flex items-center justify-center">
                 <img src="juri-iway.jpg" alt="Iwan Setiawan H (IWAY)" class="w-full h-full object-cover" onerror="this.outerHTML='<i class=\'fa-solid fa-user-check text-3xl text-brand\'></i>'">
@@ -191,16 +437,16 @@
               <h3 class="font-extrabold text-slate-900 text-base leading-tight">Iwan Setiawan H</h3>
               <p class="text-[11px] font-bold text-slate-500 uppercase">"IWAY"</p>
               <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                Praktisi kepelatihan MB Akpol, AMNI, & Poltekim. Pengalaman festival internasional Australia, China, Thailand, dan Jepang.
+                Praktisi kepelatihan MB Akpol, AMNI, & Poltekim. Pengalaman festival internasional Australia, China, Thailand, dan Jepang[cite: 7, 8].
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/60 w-full text-slate-500 text-[11px] font-semibold">
-              Asosiasi Juri PDBI & IDCA
+              Asosiasi Juri PDBI & IDCA[cite: 9]
             </div>
           </div>
 
           <!-- Card Juri 5: Juri Counting Room (Vimenia Vidigratia) -->
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow text-center flex flex-col items-center justify-between">
             <div class="w-full flex flex-col items-center">
               <div class="w-24 h-24 rounded-full overflow-hidden bg-brand/10 border-2 border-brand/30 mb-4 flex items-center justify-center">
                 <img src="juri-vimenia.jpg" alt="Vimenia Vidigratia" class="w-full h-full object-cover" onerror="this.outerHTML='<i class=\'fa-solid fa-calculator text-3xl text-brand\'></i>'">
@@ -208,11 +454,11 @@
               <span class="px-3 py-1 rounded-full bg-brand/10 text-brand text-[11px] font-bold uppercase tracking-wider mb-2">Counting Room</span>
               <h3 class="font-extrabold text-slate-900 text-base leading-tight">Vimenia Vidigratia</h3>
               <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                Juri Kamar Hitung CISSOS 2024, Pengurus IDCA Kota Cimahi, serta Asisten Pelatih & Pemain Colour Guard.
+                Juri Kamar Hitung CISSOS 2024, Pengurus IDCA Kota Cimahi, serta Asisten Pelatih & Pemain Colour Guard[cite: 11].
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/60 w-full text-slate-500 text-[11px] font-semibold">
-              Juri Kamar Hitung & IDCA
+              Juri Kamar Hitung & IDCA[cite: 11]
             </div>
           </div>
 
@@ -221,7 +467,7 @@
     </section>
 
     <!-- COUNTDOWN SECTION -->
-    <section id="countdown" class="py-14 bg-slate-50 border-b border-slate-100">
+    <section id="countdown" class="py-14 bg-white border-b border-slate-100">
       <div class="max-w-5xl mx-auto px-4 text-center">
         
         <!-- Countdown Hari H -->
@@ -229,19 +475,19 @@
         <p class="text-xl sm:text-2xl font-black text-slate-900 mb-6">Menuju Pelaksanaan SMESTA 7 (22 Nov 2026)</p>
 
         <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-2xl mx-auto mb-10">
-          <div class="bg-white border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
             <span id="days" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
             <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Hari</span>
           </div>
-          <div class="bg-white border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
             <span id="hours" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
             <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Jam</span>
           </div>
-          <div class="bg-white border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
             <span id="minutes" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
             <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Menit</span>
           </div>
-          <div class="bg-white border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-4 sm:p-5 shadow-sm">
             <span id="seconds" class="block text-2xl sm:text-5xl font-black text-brand">00</span>
             <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1 block">Detik</span>
           </div>
@@ -267,7 +513,7 @@
     </section>
 
     <!-- TENTANG EVENT & PIALA -->
-    <section id="event" class="py-16 bg-white">
+    <section id="event" class="py-16 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-12">
           <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Informasi Kompetisi</h2>
@@ -277,11 +523,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
           <!-- Rincian Acara -->
-          <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
             <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
               <i class="fa-solid fa-circle-info text-brand"></i> Detail Pelaksanaan
             </h3>
-            <dl class="divide-y divide-slate-200/60 text-sm">
+            <dl class="divide-y divide-slate-100 text-sm">
               <div class="py-3.5 flex justify-between gap-4">
                 <dt class="text-slate-500 font-medium">Nama Event</dt>
                 <dd class="font-bold text-slate-900 text-right">SMESTA 7 (Sound of Music Ensemble Talent)</dd>
@@ -303,7 +549,7 @@
                 <dd class="font-bold text-slate-900 text-right">IDCA Kabupaten Bekasi</dd>
               </div>
             </dl>
-            <div class="mt-6 pt-4 border-t border-slate-200/60">
+            <div class="mt-6 pt-4 border-t border-slate-100">
               <a href="https://maps.app.goo.gl/gp3Cd1wvnh8mhHZM8" target="_blank" rel="noopener" class="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1.5">
                 <i class="fa-solid fa-location-dot"></i> Buka Petunjuk Arah Google Maps
               </a>
@@ -311,7 +557,7 @@
           </div>
 
           <!-- Rincian Piala -->
-          <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
             <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
               <i class="fa-solid fa-trophy text-amber-500"></i> Penghargaan & Trofi Kejuaraan
             </h3>
@@ -326,7 +572,7 @@
                 </div>
               </div>
 
-              <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-3">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
                 <span class="w-8 h-8 rounded-lg bg-slate-400 text-white font-black text-sm flex items-center justify-center flex-shrink-0">2</span>
                 <div>
                   <h4 class="text-sm font-bold text-slate-900">JUARA II</h4>
@@ -349,7 +595,7 @@
     </section>
 
     <!-- PUSAT DOKUMEN & BERKAS -->
-    <section id="dokumen" class="py-16 bg-slate-50 border-t border-slate-100">
+    <section id="dokumen" class="py-16 bg-white border-t border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
           <div>
@@ -363,7 +609,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
           <!-- Card Juklak -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
             <div>
               <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-xl mb-5">
                 <i class="fa-solid fa-book-open"></i>
@@ -373,7 +619,7 @@
                 Pedoman kategori lomba, durasi penampilan, kriteria penilaian dewan juri, serta ketentuan teknis arena.
               </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div class="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between">
               <span class="text-xs font-semibold text-slate-400 uppercase">PDF Resmi</span>
               <a href="Juklak%20SMESTA%20VII.pdf" download="Juklak SMESTA VII.pdf" target="_blank" class="inline-flex items-center text-sm font-bold text-brand hover:text-brand-dark">
                 Unduh Berkas <i class="fa-solid fa-arrow-down-to-bracket ml-2"></i>
@@ -382,7 +628,7 @@
           </div>
 
           <!-- Card Pendaftaran Unit -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
             <div>
               <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-xl mb-5">
                 <i class="fa-solid fa-file-pen"></i>
@@ -392,7 +638,7 @@
                 Formulir pendaftaran digital unit marching band, verifikasi roster pemain, dan kelengkapan administrasi kontingen.
               </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div class="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between">
               <span class="text-xs font-semibold text-slate-400 uppercase">Formulir Online</span>
               <a href="https://smestajilid7.netlify.app" target="_blank" rel="noopener" class="inline-flex items-center text-sm font-bold text-brand hover:text-brand-dark">
                 Buka Pendaftaran <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
@@ -405,7 +651,7 @@
     </section>
 
     <!-- FORM PEMBELIAN TIKET -->
-    <section id="tiket" class="py-16 bg-white border-t border-slate-100">
+    <section id="tiket" class="py-16 bg-slate-50 border-t border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-10">
@@ -431,7 +677,7 @@
           </div>
 
           <!-- Box Form Tiket -->
-          <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
             <h3 class="text-lg font-bold text-slate-900 mb-2">Formulir Pemesanan Tiket</h3>
             <p class="text-xs text-slate-500 mb-6">Harga tiket: <b>Rp 85.000</b> (1 tiket per pengisian. Ulangi pengisian untuk tiket berikutnya).</p>
 
@@ -454,16 +700,16 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-bold uppercase text-slate-700 mb-1">4. Jumlah Tiket</label>
-                  <input type="number" value="1" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-200/60 text-slate-500 text-sm font-bold cursor-not-allowed">
+                  <input type="number" value="1" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm font-bold cursor-not-allowed">
                 </div>
                 <div>
                   <label class="block text-xs font-bold uppercase text-slate-700 mb-1">5. Metode Pembayaran</label>
-                  <input type="text" value="QRIS Statis" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-200/60 text-slate-500 text-sm font-bold cursor-not-allowed">
+                  <input type="text" value="QRIS Statis" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm font-bold cursor-not-allowed">
                 </div>
               </div>
 
               <!-- Section QRIS -->
-              <div class="pt-3 border-t border-slate-200/60 text-center">
+              <div class="pt-3 border-t border-slate-100 text-center">
                 <p class="text-xs font-bold text-slate-700 mb-2">Scan QRIS Resmi Pembayaran (Rp 85.000)</p>
                 <div class="max-w-[190px] mx-auto p-2.5 rounded-xl border border-slate-200 bg-white shadow-sm mb-3">
                   <img src="qris-idca.jpg" alt="QRIS IDCA Kabupaten Bekasi" class="w-full h-auto rounded-lg">
@@ -480,7 +726,7 @@
                 <textarea id="catatanTambahan" rows="2" placeholder="Catatan untuk panitia (opsional)" class="w-full px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-brand"></textarea>
               </div>
 
-              <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <span class="text-xs font-bold text-slate-600 uppercase">Total Pembayaran</span>
                 <span class="text-2xl font-black text-brand">Rp 85.000</span>
               </div>
@@ -510,7 +756,7 @@
     </section>
 
     <!-- DENAH & VENUE GUIDE -->
-    <section id="denah" class="py-16 bg-slate-50 border-t border-slate-100">
+    <section id="denah" class="py-16 bg-white border-t border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
@@ -538,7 +784,7 @@
           <!-- Keterangan Denah & Aturan -->
           <div class="lg:col-span-7 space-y-6">
             
-            <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm">
               <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700 mb-4">Keterangan Titik Area</h3>
               <ul class="divide-y divide-slate-100 text-sm">
                 <li class="py-3 flex items-start gap-3">
@@ -602,7 +848,7 @@
     </section>
 
     <!-- MITRA & SPONSOR (KOTAK BUJUR SANGKAR RAPI) -->
-    <section id="mitra" class="py-16 bg-white border-t border-slate-100">
+    <section id="mitra" class="py-16 bg-slate-50 border-t border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-xl mx-auto mb-10">
@@ -643,7 +889,7 @@
           </div>
 
           <!-- Didukung (Total 8 Logo Support - Kotak Presisi) -->
-          <div class="pt-8 border-t border-slate-100">
+          <div class="pt-8 border-t border-slate-200/60">
             <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 text-center sm:text-left">Didukung Oleh</p>
             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
               <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 aspect-square flex-shrink-0">
@@ -678,7 +924,7 @@
     </section>
 
     <!-- KONTAK & PANITIA -->
-    <section id="kontak" class="py-16 bg-slate-50 border-t border-slate-100">
+    <section id="kontak" class="py-16 bg-white border-t border-slate-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="max-w-xl mb-10">
@@ -691,7 +937,7 @@
           <!-- Diisi otomatis oleh JavaScript -->
         </div>
 
-        <div class="mt-8 pt-6 border-t border-slate-200/60 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-600">
+        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-600">
           <div class="flex items-center gap-6">
             <a href="https://www.instagram.com/marco.community/" target="_blank" rel="noopener" class="hover:text-brand flex items-center gap-2">
               <i class="fa-brands fa-instagram text-brand text-lg"></i> @marco.community
@@ -727,6 +973,40 @@
     </div>
   </footer>
 
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Popover Menu Kontak WhatsApp -->
+    <div id="waPopup" class="hidden mb-3 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+        <span class="text-xs font-black text-slate-800 uppercase tracking-wide">Pusat Bantuan Resmi</span>
+        <button id="closeWaPopup" class="text-slate-400 hover:text-slate-600 text-sm font-bold">&times;</button>
+      </div>
+      <p class="text-[11px] text-slate-500 mb-3">Butuh bantuan cepat seputar acara atau tiket? Pilih panitia:</p>
+      <div class="space-y-2">
+        <a href="https://wa.me/6289691219728?text=Halo%20Ka%20Aning%2C%20saya%20ingin%20bertanya%20seputar%20verifikasi%20tiket%20SMESTA%207" target="_blank" class="flex items-center gap-2.5 p-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-950 transition-colors">
+          <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+          <div>
+            <span class="block text-xs font-bold leading-none">Ka Aning</span>
+            <span class="text-[10px] text-emerald-700">Pemesanan & Bukti Tiket</span>
+          </div>
+        </a>
+        <a href="https://wa.me/6285771212779?text=Halo%20Ka%20Tere%2C%20saya%20ingin%20bertanya%20seputar%20teknis%20lomba%20SMESTA%207" target="_blank" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 transition-colors">
+          <i class="fa-brands fa-whatsapp text-slate-600 text-lg"></i>
+          <div>
+            <span class="block text-xs font-bold leading-none">Ka Tere</span>
+            <span class="text-[10px] text-slate-500">Informasi Teknis Lomba</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Floating Button Toggle -->
+    <button id="waToggleBtn" class="flex items-center gap-2 px-4 py-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold shadow-xl shadow-emerald-600/30 transition-transform active:scale-95">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+      <span class="text-xs tracking-wide">Tanya Panitia</span>
+    </button>
+  </div>
+
   <!-- MODAL ZOOM DENAH -->
   <dialog id="mapDlg" class="rounded-2xl p-0 backdrop:bg-slate-900/70 border border-slate-200 max-w-4xl w-[calc(100%-2rem)] max-h-[90vh] overflow-hidden">
     <div class="p-4 bg-white border-b border-slate-100 flex items-center justify-between">
@@ -758,13 +1038,13 @@
 
     const panitiaList = document.getElementById("panitiaList");
     panitiaList.innerHTML = CONTACTS.map(c => `
-      <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm flex flex-col justify-between">
         <div>
           <span class="text-[11px] font-bold text-brand uppercase tracking-wider">${c.role}</span>
           <p class="font-bold text-slate-900 text-base mt-0.5">${c.name}</p>
           <p class="text-xs text-slate-500 font-mono mt-1">${c.phone}</p>
         </div>
-        <a href="${waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya seputar event SMESTA 7...")}" target="_blank" class="mt-4 px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 hover:border-brand text-slate-700 text-xs font-bold text-center transition-colors flex items-center justify-center gap-1.5">
+        <a href="${waUrl(c.phone, "Halo " + c.name + ", saya mau bertanya seputar event SMESTA 7...")}" target="_blank" class="mt-4 px-3 py-2 rounded-lg bg-white border border-slate-200 hover:border-brand text-slate-700 text-xs font-bold text-center transition-colors flex items-center justify-center gap-1.5">
           <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Chat WhatsApp
         </a>
       </div>
@@ -793,7 +1073,6 @@
         document.getElementById('seconds').innerText = String(s).padStart(2, '0');
       }
 
-      // Keterangan TM tetap berstatus "Selesai" tanpa rincian waktu
       const elTM = document.getElementById("countdownTM");
       if (elTM) {
         elTM.innerText = "Selesai";
@@ -871,6 +1150,18 @@
     document.getElementById("mapBtn").addEventListener("click", () => mapDlg.showModal());
     document.getElementById("closeDlg").addEventListener("click", () => mapDlg.close());
     mapDlg.addEventListener("click", (e) => { if (e.target === mapDlg) mapDlg.close(); });
+
+    // 5. Logika Floating Button WhatsApp
+    const waToggleBtn = document.getElementById("waToggleBtn");
+    const waPopup = document.getElementById("waPopup");
+    const closeWaPopup = document.getElementById("closeWaPopup");
+
+    waToggleBtn.addEventListener("click", () => {
+      waPopup.classList.toggle("hidden");
+    });
+    closeWaPopup.addEventListener("click", () => {
+      waPopup.classList.add("hidden");
+    });
   </script>
 </body>
 </html>
